@@ -1,37 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig.json",
-
-  "compilerOptions": {
-    /* Modules */
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-
-    /* Language and Environment */
-    "target": "ES2021",
-    "lib": ["ES2021"],
-
-    /* Interop Constraints */
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Type Checking */
-    "strict": true,
-    "useUnknownInCatchVariables": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "exactOptionalPropertyTypes": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-
-    /* Completeness */
-    "skipLibCheck": true
-  },
+  "extends": ["@tabula/typescript-config/tsconfig.node.json"],
 
   "include": ["src", "tests"]
 }
