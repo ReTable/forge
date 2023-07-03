@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig/tsconfig.node.json",
+  "extends": "@tabula/typescript-config/tsconfig.node.json",
 
   "include": ["src"]
 }

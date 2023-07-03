@@ -36,6 +36,7 @@
   ],
   "scripts": {
     "build": "tsx src/index.ts build node --production --no-typings",
+    "lint": "eslint .",
     "release": "changeset publish",
     "test": "NODE_OPTIONS='--no-warnings --loader tsx' ava"
   },
@@ -49,11 +50,16 @@
     "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
+    "@tabula/eslint-config": "^0.0.0",
+    "@tabula/prettier-config": "^0.0.0",
+    "@tabula/typescript-config": "^0.0.0",
     "@types/convert-source-map": "^2.0.0",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "ava": "^5.3.1",
+    "eslint": "^8.44.0",
     "lefthook": "^1.4.3",
+    "prettier": "^2.8.8",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   },
