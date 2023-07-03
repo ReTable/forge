@@ -39,6 +39,8 @@
     "test": "ava"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
     "@types/convert-source-map": "^2.0.0",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
