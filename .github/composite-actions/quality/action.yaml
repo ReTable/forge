@@ -1,0 +1,18 @@
+name: 'Check source code quality'
+description: 'Runs build, linters and tests'
+
+runs:
+  using: composite
+
+  steps:
+    - name: Install packages
+      shell: bash
+      run: pnpm install
+
+    - name: Build
+      shell: bash
+      run: pnpm build
+
+    - name: Test
+      shell: bash
+      run: pnpm test
