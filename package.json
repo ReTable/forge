@@ -36,8 +36,8 @@
   ],
   "scripts": {
     "build": "tsx src/index.ts build node --production --no-typings",
-    "test": "NODE_OPTIONS='--no-warnings --loader tsx' ava",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "test": "NODE_OPTIONS='--no-warnings --loader tsx' ava"
   },
   "packageManager": "pnpm@8.6.5",
   "engines": {
