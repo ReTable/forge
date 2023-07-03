@@ -52,6 +52,7 @@
     "@commitlint/config-conventional": "^17.6.6",
     "@tabula/eslint-config": "^0.0.0",
     "@tabula/prettier-config": "^0.0.0",
+    "@tabula/typescript-config": "^0.0.0",
     "@types/convert-source-map": "^2.0.0",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
