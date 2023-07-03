@@ -36,6 +36,7 @@
   ],
   "scripts": {
     "build": "tsx src/index.ts build node --production --no-typings",
+    "lint": "eslint .",
     "release": "changeset publish",
     "test": "NODE_OPTIONS='--no-warnings --loader tsx' ava"
   },
