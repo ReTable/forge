@@ -15,4 +15,4 @@ runs:
 
     - name: Test
       shell: bash
-      run: pnpm test
+      run: pnpm test -- --timeout=1m
