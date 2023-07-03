@@ -1,2 +1,7 @@
 lib
 typings
+
+tests/fixtures
+tests/tmp
+
+ava.config.js
