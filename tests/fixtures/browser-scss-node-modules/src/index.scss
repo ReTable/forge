@@ -1,0 +1,5 @@
+@use '~my-module' as module;
+
+.scssRoot ul {
+  background: module.$background-color;
+}
