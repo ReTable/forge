@@ -1,5 +1,41 @@
 # @tabula/forge
 
+## 0.2.0
+
+### Minor Changes
+
+- [#4](https://github.com/ReTable/forge/pull/4) [`8dddd8d`](https://github.com/ReTable/forge/commit/8dddd8d83e1f911b5f9ed315004b78c0846f7f8c) Thanks [@demiazz](https://github.com/demiazz)! - adds support of packages resolve in the Sass
+
+  The `forge` resolves external packages through `~<pkg>` urls.
+
+  Example:
+
+  ```scss
+  @use `~ @tabula / ui-theme` as theme;
+
+  .root {
+    background-color: theme.$color--primary;
+  }
+  ```
+
+  It will search `<pkg>` in dependencies through Node.js `require`, and try to read `sass` field in the `package.json`
+  of the founded package.
+
+  Example:
+
+  ```json
+  {
+    "name": "@tabula/ui-theme",
+    "sass": "./sass/index.scss"
+  }
+  ```
+
+  will be resolved to the `<node_modules>/@tabula/ui-theme/sass/index.scss`.
+
+### Patch Changes
+
+- [#4](https://github.com/ReTable/forge/pull/4) [`8dddd8d`](https://github.com/ReTable/forge/commit/8dddd8d83e1f911b5f9ed315004b78c0846f7f8c) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 0.1.1
 
 ### Patch Changes
