@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 0.2.1
+
+### Patch Changes
+
+- [#6](https://github.com/ReTable/forge/pull/6) [`b807fa7`](https://github.com/ReTable/forge/commit/b807fa7cdc82b14792b81a8f4982fe411e688df9) Thanks [@demiazz](https://github.com/demiazz)! - use conditional import for searching of Sass imports
+
 ## 0.2.0
 
 ### Minor Changes
