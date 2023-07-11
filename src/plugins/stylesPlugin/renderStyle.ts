@@ -1,9 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { extname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+import { dirname, extname, join } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
+import * as sass from 'sass';
 import { fromObject } from 'convert-source-map';
-import sass from 'sass';
 
 type Options = {
   path: string;
@@ -22,8 +23,47 @@ async function renderCss({ path }: Options): Promise<Result> {
   return { css };
 }
 
+function isValidURL(url: string) {
+  const parts = url.split('/');
+
+  return parts[0].startsWith('@') ? parts.length === 2 : parts.length === 1;
+}
+
+function createImporter(path: string): sass.FileImporter<'sync'> {
+  return {
+    findFileUrl(pkgUrl: string) {
+      if (!pkgUrl.startsWith('~')) {
+        return null;
+      }
+
+      const url = pkgUrl.slice(1);
+
+      if (!isValidURL(url)) {
+        throw new Error(`Wrong package name: "${url}"`);
+      }
+
+      const localRequire = createRequire(path);
+
+      const packageJsonPath = localRequire.resolve(`${url}/package.json`);
+      const packageJsonDir = dirname(packageJsonPath);
+      const packageJson = localRequire(packageJsonPath) as { sass?: string };
+
+      if (packageJson.sass != null) {
+        const importPath = join(packageJsonDir, packageJson.sass);
+
+        return pathToFileURL(importPath);
+      }
+
+      throw new Error(`Package "${url}" has no "sass" field`);
+    },
+  };
+}
+
 function renderScss({ path, sourcemap, sourcesContent }: Options): Result {
+  const importer = createImporter(path);
+
   const result = sass.compile(path, {
+    importers: [importer],
     sourceMap: sourcemap,
     sourceMapIncludeSources: sourcesContent,
   });

@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { cp, mkdir, readFile, rm, stat } from 'node:fs/promises';
+import { cp, mkdir, readFile, readdir, rename, rm, stat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -82,6 +82,29 @@ async function prepareWorkingDir(id: string, name: string): Promise<string> {
   return workingDir;
 }
 
+async function prepareMockedModules(workingDir: string): Promise<void> {
+  let entries: string[] = [];
+
+  try {
+    entries = await readdir(join(workingDir, '__node_modules__'));
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return;
+    }
+
+    throw error;
+  }
+
+  await mkdir(join(workingDir, 'node_modules'), { recursive: true });
+
+  for (const entry of entries) {
+    await rename(
+      join(workingDir, '__node_modules__', entry),
+      join(workingDir, 'node_modules', entry),
+    );
+  }
+}
+
 async function prepare(
   id: string,
   { check, dependencies, name, platform, production, storybook, typings }: SuiteOptions,
@@ -91,6 +114,8 @@ async function prepare(
   if (dependencies) {
     await run('/usr/bin/env', ['pnpm', 'install', '--no-lockfile', ...dependencies], workingDir);
   }
+
+  await prepareMockedModules(workingDir);
 
   const args = ['build', platform];
 

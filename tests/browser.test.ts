@@ -390,6 +390,18 @@ it(
 );
 
 it(
+  'resolves paths in SCSS',
+  {
+    name: 'browser-scss-node-modules',
+    platform: 'browser',
+    production: false,
+  },
+  async (t, c) => {
+    t.snapshot(await c.read('lib/index.css'));
+  },
+);
+
+it(
   'supports PostCSS preprocessor',
   {
     dependencies: ['postcss-nested'],
