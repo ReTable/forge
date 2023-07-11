@@ -2,6 +2,8 @@
 '@tabula/forge': minor
 ---
 
+adds support of packages resolve in the Sass
+
 The `forge` resolves external packages through `~<pkg>` urls.
 
 Example: 
