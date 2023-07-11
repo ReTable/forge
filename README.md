@@ -100,6 +100,26 @@ The `forge` supports usage of the [PostCSS](https://postcss.org/) and
 
 You should use `*.pcss` extension for PostCSS and `*.scss` for the Sass.
 
+#### Sass Imports
+
+We support imports in format of `~<pkg>`. It's similar to the Webpack, but
+has own restrictions.
+
+The `forge` doesn't support paths inside of the package. It does searce
+the `package.json` of the given package, and try to read `sass` field inside
+of it.
+
+Example:
+
+```json
+{
+  "name": "@tabula/ui-theme",
+  "sass": "./sass/index.scss"
+}
+```
+
+will be resolved to the `<node_modules>/@tabula/ui-theme/sass/index.scss`.
+
 ### vanilla-extract
 
 We support the [vanilla-extract](https://vanilla-extract.style/).
