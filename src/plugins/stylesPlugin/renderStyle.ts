@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import * as sass from 'sass';
 import { fromObject } from 'convert-source-map';
+import { readPackageUpSync } from 'read-pkg-up';
 
 type Options = {
   path: string;
@@ -29,6 +30,54 @@ function isValidURL(url: string) {
   return parts[0].startsWith('@') ? parts.length === 2 : parts.length === 1;
 }
 
+function findImportDirectly(name: string, localRequire: NodeJS.Require) {
+  try {
+    const path = localRequire.resolve(`${name}/package.json`);
+    const dir = dirname(path);
+    const json = localRequire(path) as { sass?: string };
+
+    if (json.sass == null) {
+      return null;
+    }
+
+    return join(dir, json.sass);
+  } catch {
+    return null;
+  }
+}
+
+function findImportConditionally(name: string, localRequire: NodeJS.Require) {
+  try {
+    const entry = localRequire.resolve(name);
+
+    const result = readPackageUpSync({ cwd: dirname(entry) });
+
+    if (result == null) {
+      return null;
+    }
+
+    const { packageJson, path } = result as { packageJson: { sass?: string }; path: string };
+
+    if (packageJson.sass == null) {
+      return null;
+    }
+
+    return join(dirname(path), packageJson.sass);
+  } catch {
+    return null;
+  }
+}
+
+function findImport(name: string, localRequire: NodeJS.Require) {
+  const directImport = findImportDirectly(name, localRequire);
+
+  if (directImport != null) {
+    return directImport;
+  }
+
+  return findImportConditionally(name, localRequire);
+}
+
 function createImporter(path: string): sass.FileImporter<'sync'> {
   return {
     findFileUrl(pkgUrl: string) {
@@ -44,13 +93,9 @@ function createImporter(path: string): sass.FileImporter<'sync'> {
 
       const localRequire = createRequire(path);
 
-      const packageJsonPath = localRequire.resolve(`${url}/package.json`);
-      const packageJsonDir = dirname(packageJsonPath);
-      const packageJson = localRequire(packageJsonPath) as { sass?: string };
+      const importPath = findImport(url, localRequire);
 
-      if (packageJson.sass != null) {
-        const importPath = join(packageJsonDir, packageJson.sass);
-
+      if (importPath != null) {
         return pathToFileURL(importPath);
       }
 
