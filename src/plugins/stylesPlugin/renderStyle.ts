@@ -42,13 +42,13 @@ function createImporter(path: string): sass.FileImporter<'sync'> {
         throw new Error(`Wrong package name: "${url}"`);
       }
 
-      const require = createRequire(path);
+      const localRequire = createRequire(path);
 
-      const packageJsonPath = require.resolve(`${url}/package.json`);
+      const packageJsonPath = localRequire.resolve(`${url}/package.json`);
       const packageJsonDir = dirname(packageJsonPath);
-      const packageJson = require(packageJsonPath);
+      const packageJson = localRequire(packageJsonPath) as { sass?: string };
 
-      if ('sass' in packageJson) {
+      if (packageJson.sass != null) {
         const importPath = join(packageJsonDir, packageJson.sass);
 
         return pathToFileURL(importPath);

@@ -1,11 +1,9 @@
 import { spawn } from 'node:child_process';
-import { cp, mkdir, readFile, rm, stat } from 'node:fs/promises';
+import { cp, mkdir, readFile, readdir, rename, rm, stat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import test, { ExecutionContext } from 'ava';
-
-import { readdir, rename } from 'fs/promises';
 
 // ----- Types
 
