@@ -126,6 +126,8 @@ We support the [vanilla-extract](https://vanilla-extract.style/).
 
 This is zero-runtime CSS-in-JS solution with TypeScript support.
 
+**IMPORTANT**: All imports of CSS files in `*.css.ts` files is ignored.
+
 ### SVGR
 
 We support the [SVGR](https://react-svgr.com/) to allow to use SVG images not
