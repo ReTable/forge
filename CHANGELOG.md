@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 0.2.3
+
+### Patch Changes
+
+- [#10](https://github.com/ReTable/forge/pull/10) [`585405a`](https://github.com/ReTable/forge/commit/585405a6a1499aa65434122fe56ddc0e120e9aa3) Thanks [@demiazz](https://github.com/demiazz)! - ignore import of CSS files inside `vanilla-extract` files
+
 ## 0.2.2
 
 ### Patch Changes
