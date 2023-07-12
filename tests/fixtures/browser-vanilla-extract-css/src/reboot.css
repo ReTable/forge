@@ -1,0 +1,38 @@
+@font-face {
+  font-family: VanillaExtract;
+  src: url('./assets/font.eot'), url('./assets/font.otf') format('opentype'),
+    url('./assets/font.ttf') format('truetype'), url('./assets/font.woff') format('woff'),
+    url('./assets/font.woff2') format('woff2');
+}
+
+.bmp {
+  background-image: url('./assets/image.bmp');
+}
+
+.gif {
+  background-image: url('./assets/image.gif');
+}
+
+.ico {
+  background-image: url('./assets/image.ico');
+}
+
+.jpeg {
+  background-image: url('./assets/image.jpeg');
+}
+
+.jpg {
+  background-image: url('./assets/image.jpg');
+}
+
+.png {
+  background-image: url('./assets/image.png');
+}
+
+.svg {
+  background-image: url('./assets/image.svg');
+}
+
+.webp {
+  background-image: url('./assets/image.webp');
+}
