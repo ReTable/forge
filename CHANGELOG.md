@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 0.2.2
+
+### Patch Changes
+
+- [#8](https://github.com/ReTable/forge/pull/8) [`23ff8c4`](https://github.com/ReTable/forge/commit/23ff8c4588f3e70894c36d0c8d501ef806ae0357) Thanks [@demiazz](https://github.com/demiazz)! - add support of import css files from in the `vanilla-extract` plugin
+
 ## 0.2.1
 
 ### Patch Changes
