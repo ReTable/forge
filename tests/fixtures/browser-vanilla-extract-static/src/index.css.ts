@@ -16,6 +16,8 @@ import ttfUrl from './assets/font.ttf';
 import woffUrl from './assets/font.woff';
 import woff2Url from './assets/font.woff2';
 
+import './assets/styles.css';
+
 export const bmp = style({
   backgroundImage: `url(${bmpUrl})`,
 });

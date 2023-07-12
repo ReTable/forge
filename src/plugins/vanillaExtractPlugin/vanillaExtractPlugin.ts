@@ -8,7 +8,7 @@ type PluginData = {
 };
 
 const staticOptions = {
-  filter: /\.(bmp|gif|ico|jpeg|jpg|png|svg|webp|eot|otf|ttf|woff|woff2)$/,
+  filter: /\.(css|bmp|gif|ico|jpeg|jpg|png|svg|webp|eot|otf|ttf|woff|woff2)$/,
 };
 
 // NOTE: The old `esbuild` has a little different `entries` format, but it's not a critical for our bundler.
