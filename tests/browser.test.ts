@@ -555,6 +555,8 @@ it(
     production: false,
   },
   async (t, c) => {
+    t.false(await c.isExists('lib/assets'));
+
     t.snapshot(await c.read('lib/index.css'));
   },
 );
@@ -581,6 +583,19 @@ it(
 
       t.is(asset.trim(), ext);
     }
+  },
+);
+
+it(
+  'ignores import of css files from `vanilla-extract` files',
+  {
+    dependencies: ['@vanilla-extract/css'],
+    name: 'browser-vanilla-extract-css',
+    platform: 'browser',
+    production: false,
+  },
+  async (t, c) => {
+    t.snapshot(await c.read('lib/index.css'));
   },
 );
 
