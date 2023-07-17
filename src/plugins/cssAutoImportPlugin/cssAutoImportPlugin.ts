@@ -1,24 +1,18 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { basename, join } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 
 import { Plugin } from 'esbuild';
 import { SourceMapConsumer, SourceNode } from 'source-map';
-
-const importCode = 'import "./index.css";\n\n';
 
 export function cssAutoImportPlugin(): Plugin {
   return {
     name: 'css-auto-import-plugin',
 
     setup({ initialOptions, onEnd }) {
-      const { absWorkingDir, outfile } = initialOptions;
+      const { absWorkingDir } = initialOptions;
 
       if (absWorkingDir == null) {
         throw new Error('The `absWorkingDir` option must be defined');
-      }
-
-      if (outfile == null) {
-        throw new Error('The `outfile` option must be defined');
       }
 
       onEnd(async (result) => {
@@ -28,27 +22,35 @@ export function cssAutoImportPlugin(): Plugin {
           return;
         }
 
-        const hasCss = Object.keys(outputs).some((it) => basename(it) === 'index.css');
+        for (const path in outputs) {
+          if (!path.endsWith('.js')) {
+            continue;
+          }
 
-        if (!hasCss) {
-          return;
+          const { cssBundle } = outputs[path];
+
+          if (cssBundle == null) {
+            continue;
+          }
+
+          const sourcePath = join(absWorkingDir, path);
+          const sourceContent = await readFile(sourcePath, 'utf8');
+
+          const sourcemapPath = join(absWorkingDir, `${path}.map`);
+          const sourcemapContent = await readFile(sourcemapPath, 'utf8');
+
+          const consumer = await new SourceMapConsumer(sourcemapContent);
+          const node = SourceNode.fromStringWithSourceMap(sourceContent, consumer);
+
+          const importPath = relative(dirname(path), cssBundle);
+
+          node.prepend(`import "./${importPath}";\n\n`);
+
+          const { code, map } = node.toStringWithSourceMap();
+
+          await writeFile(sourcePath, code, 'utf8');
+          await writeFile(sourcemapPath, map.toString(), 'utf8');
         }
-
-        const sourcePath = join(absWorkingDir, outfile);
-        const sourceContent = await readFile(sourcePath, 'utf8');
-
-        const sourcemapPath = join(absWorkingDir, `${outfile}.map`);
-        const sourcemapContent = await readFile(sourcemapPath, 'utf8');
-
-        const consumer = await new SourceMapConsumer(sourcemapContent);
-        const node = SourceNode.fromStringWithSourceMap(sourceContent, consumer);
-
-        node.prepend(importCode);
-
-        const { code, map } = node.toStringWithSourceMap();
-
-        await writeFile(sourcePath, code, 'utf8');
-        await writeFile(sourcemapPath, map.toString(), 'utf8');
       });
     },
   };

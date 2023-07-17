@@ -86,9 +86,16 @@ export function createCommand(action: Action, platform: Platform): CommandClass 
           })
         : false;
 
+    private readonly entries = Option.Array('-e,--entry', {
+      arity: 1,
+      description: 'Defines which entry points will be bundled (default: index)',
+      required: false,
+    });
+
     public override async execute(): Promise<void> {
       await bundle({
         check: this.check,
+        entries: this.entries ?? ['index'],
         platform,
         production: this.production,
         storybook: !this.production && this.storybook,

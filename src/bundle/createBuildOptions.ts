@@ -1,3 +1,5 @@
+import { join } from 'node:path';
+
 import { BuildOptions } from 'esbuild';
 
 import {
@@ -37,6 +39,22 @@ const staticLoaders: NonNullable<BuildOptions['loader']> = {};
 
 for (const extension of extensions) {
   staticLoaders[`.${extension}`] = 'file';
+}
+
+function parseEntries(entries: string[]) {
+  // NOTE: We cast result to the `entryPoints` type. Our parser returns the `Array<string | { in: string, out: string }`
+  //       type. But `entryPoints` has a type `string[] | Array<{ in: string, out: string }>` and it's actually an
+  //       error in typings.
+  //       Actually, `esbuild` can consume mixed entry points in the same time.
+  return entries.map((rawEntry) => {
+    const [relativeEntry, out] = rawEntry.split(':') as [string, string | undefined];
+
+    // NOTE: The `join` function trim leading `./` path section, but it's required for `esbuild` to be sure that's not
+    //       an external package (if entry hasn't extension).
+    const entry = `./${join('src', relativeEntry)}`;
+
+    return out == null ? entry : { in: entry, out };
+  }) as NonNullable<BuildOptions['entryPoints']>;
 }
 
 /* eslint-disable no-param-reassign */
@@ -87,6 +105,7 @@ function applyNodeOptions(buildOptions: BuildOptions) {
 
 type Options = {
   check: boolean;
+  entries: string[];
   name: string;
   packageRoot: string;
   platform: Platform;
@@ -98,6 +117,7 @@ type Options = {
 
 export async function createBuildOptions({
   check,
+  entries,
   name,
   packageRoot,
   platform,
@@ -109,13 +129,17 @@ export async function createBuildOptions({
   const options: BuildOptions = {
     absWorkingDir: packageRoot,
     bundle: true,
-    entryPoints: ['src/index.ts'],
+    chunkNames: 'shared/[hash]',
+    entryNames: '[dir]/[name]',
+    entryPoints: parseEntries(entries),
     format: 'esm',
     logLevel: 'info',
-    outfile: 'lib/index.js',
+    outbase: 'src',
+    outdir: 'lib',
     packages: 'external',
     sourcemap: true,
     sourcesContent: true,
+    splitting: true,
     treeShaking: true,
   };
 

@@ -11,6 +11,7 @@ import { createBuildOptions } from './createBuildOptions';
 
 type Options = {
   check: boolean;
+  entries: string[];
   platform: Platform;
   production: boolean;
   storybook: boolean;
@@ -20,6 +21,7 @@ type Options = {
 
 export async function bundle({
   check,
+  entries,
   platform,
   production,
   storybook,
@@ -50,6 +52,7 @@ export async function bundle({
 
   const buildOptions = await createBuildOptions({
     check,
+    entries,
     name,
     packageRoot,
     platform,
