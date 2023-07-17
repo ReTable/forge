@@ -1,5 +1,5 @@
 {
-  "name": "browser-vanilla-extract-css",
+  "name": "browser-multiple-entries-splitting",
   "version": "1.0.0",
   "type": "module",
   "module": "lib/index.js",

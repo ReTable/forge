@@ -1,5 +1,5 @@
 {
-  "name": "browser-scss",
+  "name": "browser-scss-node-modules",
   "version": "1.0.0",
   "type": "module",
   "module": "lib/index.js",

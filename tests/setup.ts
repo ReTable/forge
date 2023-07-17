@@ -3,7 +3,7 @@ import { cp, mkdir, readFile, readdir, rename, rm, stat } from 'node:fs/promises
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import test, { ExecutionContext } from 'ava';
+import test, { ExecutionContext, OnlyFn, SkipFn, TestFn } from 'ava';
 
 // ----- Types
 
@@ -17,11 +17,15 @@ type SourceMap = {
 
 type Platform = 'browser' | 'node';
 
+type SuiteFlag = 'only' | 'skip';
+
 type Suite = (t: ExecutionContext, c: Context) => Promise<void> | void;
 
 type BaseSuiteOptions = {
   check?: boolean;
   dependencies?: string[];
+  entries?: string[];
+  flag?: SuiteFlag;
   name: string;
   platform: Platform;
   production?: boolean;
@@ -107,7 +111,7 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
 
 async function prepare(
   id: string,
-  { check, dependencies, name, platform, production, storybook, typings }: SuiteOptions,
+  { check, dependencies, entries, name, platform, production, storybook, typings }: SuiteOptions,
 ): Promise<Fixture> {
   const workingDir = await prepareWorkingDir(id, name);
 
@@ -118,6 +122,12 @@ async function prepare(
   await prepareMockedModules(workingDir);
 
   const args = ['build', platform];
+
+  if (entries != null) {
+    for (const entry of entries) {
+      args.push('--entry', entry);
+    }
+  }
 
   if (production != null) {
     args.push(production ? '--production' : '--no-production');
@@ -145,14 +155,43 @@ async function prepare(
 }
 
 async function prepareFixture(options: SuiteOptions): Promise<Fixture> {
-  const id = [
-    options.name,
-    options.platform,
-    options.production ?? 'default',
-    options.check ?? 'default',
-    options.typings ?? 'default',
-    options.storybook ?? 'default',
-  ].join('-');
+  const platform = options.platform === 'node' ? 'pl_n' : 'pl_b';
+
+  let production = 'pr_d';
+
+  if (options.production != null) {
+    production = options.production ? 'pr_t' : 'pr_f';
+  }
+
+  let check = 'ch_d';
+
+  if (options.check != null) {
+    check = options.check ? 'ch_t' : 'ch_f';
+  }
+
+  let typings = 'ts_d';
+
+  if (options.typings != null) {
+    typings = options.typings ? 'ts_t' : 'ts_f';
+  }
+
+  let storybook = 'sb_d';
+
+  if (options.storybook != null) {
+    storybook = options.storybook ? 'sb_t' : 'sb_f';
+  }
+
+  let entries = 'default';
+
+  if (options.entries != null) {
+    entries = options.entries
+      .map((entry) =>
+        entry.replaceAll('.', '_dot_').replaceAll('/', '_slash_').replaceAll(':', '_colon_'),
+      )
+      .join('-dl-');
+  }
+
+  const id = [options.name, platform, entries, production, check, typings, storybook].join('-');
 
   let promise = fixturesCache.get(id);
 
@@ -218,7 +257,15 @@ export function setup(): DefineSuite {
   });
 
   return (title, options, suite) => {
-    test(title, async (t) => {
+    let define: OnlyFn | SkipFn | TestFn = test;
+
+    if (options.flag === 'only') {
+      define = test.only;
+    } else if (options.flag === 'skip') {
+      define = test.skip;
+    }
+
+    define(title, async (t) => {
       const fixture = await prepareFixture(options);
       const context = new Context(fixture);
 

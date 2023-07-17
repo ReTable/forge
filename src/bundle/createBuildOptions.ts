@@ -47,13 +47,20 @@ function parseEntries(entries: string[]) {
   //       error in typings.
   //       Actually, `esbuild` can consume mixed entry points in the same time.
   return entries.map((rawEntry) => {
-    const [relativeEntry, out] = rawEntry.split(':') as [string, string | undefined];
+    const [inPath, outPath] = rawEntry.split(':') as [string, string | undefined];
 
     // NOTE: The `join` function trim leading `./` path section, but it's required for `esbuild` to be sure that's not
     //       an external package (if entry hasn't extension).
-    const entry = `./${join('src', relativeEntry)}`;
+    const entry = `./${join('src', inPath)}`;
 
-    return out == null ? entry : { in: entry, out };
+    if (outPath == null) {
+      return entry;
+    }
+
+    return {
+      in: entry,
+      out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
+    };
   }) as NonNullable<BuildOptions['entryPoints']>;
 }
 

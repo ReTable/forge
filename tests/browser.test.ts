@@ -5,7 +5,224 @@ const it = setup();
 const images = ['bmp', 'gif', 'ico', 'jpeg', 'jpg', 'png', 'webp'];
 const fonts = ['eot', 'otf', 'ttf', 'woff', 'woff2'];
 
-// ----- Clean
+// region Entries
+
+const inputSamples = [
+  {
+    entries: ['index', 'index.tsx'],
+    in: 'index.tsx',
+    out: 'index.js',
+  },
+  {
+    entries: ['index.ts'],
+    in: 'index.ts',
+    out: 'index.js',
+  },
+  {
+    entries: ['file', 'file.tsx'],
+    in: 'file.tsx',
+    out: 'file.js',
+  },
+  {
+    entries: ['file.ts'],
+    in: 'file.ts',
+    out: 'file.js',
+  },
+  {
+    entries: ['subdir-ts-and-tsx'],
+    in: 'subdir-ts-and-tsx/index.tsx',
+    out: 'subdir-ts-and-tsx.js',
+  },
+  {
+    entries: ['subdir-ts-and-tsx/index.tsx'],
+    in: 'subdir-ts-and-tsx/index.tsx',
+    out: 'subdir-ts-and-tsx/index.js',
+  },
+  {
+    entries: ['subdir-ts-and-tsx/index.ts'],
+    in: 'subdir-ts-and-tsx/index.ts',
+    out: 'subdir-ts-and-tsx/index.js',
+  },
+  {
+    entries: ['subdir-ts'],
+    in: 'subdir-ts/index.ts',
+    out: 'subdir-ts.js',
+  },
+  {
+    entries: ['subdir-tsx'],
+    in: 'subdir-tsx/index.tsx',
+    out: 'subdir-tsx.js',
+  },
+  {
+    entries: ['file-or-subdir', 'file-or-subdir.tsx'],
+    in: 'file-or-subdir.tsx',
+    out: 'file-or-subdir.js',
+  },
+  {
+    entries: ['file-or-subdir/index', 'file-or-subdir/index.tsx'],
+    in: 'file-or-subdir/index.tsx',
+    out: 'file-or-subdir/index.js',
+  },
+];
+
+for (const sample of inputSamples) {
+  for (const entry of sample.entries) {
+    it(
+      `resolves "${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
+      {
+        name: 'browser-entry',
+        platform: 'browser',
+        entries: [entry],
+      },
+      async (t, c) => {
+        const bundle = await c.read(`lib/${sample.out}`);
+
+        t.true(bundle.startsWith(`// src/${sample.in}\n`));
+
+        t.snapshot(bundle);
+        t.snapshot(await c.read(`lib/${sample.out}.map`));
+      },
+    );
+
+    it(
+      `resolves "./${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
+      {
+        name: 'browser-entry',
+        platform: 'node',
+        entries: [`./${entry}`],
+      },
+      async (t, c) => {
+        const bundle = await c.read(`lib/${sample.out}`);
+
+        t.true(bundle.startsWith(`// src/${sample.in}\n`));
+
+        t.snapshot(bundle);
+        t.snapshot(await c.read(`lib/${sample.out}.map`));
+      },
+    );
+  }
+}
+
+const outputSamples = [
+  {
+    entry: 'index:main',
+    in: 'index.tsx',
+    out: 'main.js',
+  },
+  {
+    entry: 'index:main.bundle',
+    in: 'index.tsx',
+    out: 'main.bundle.js',
+  },
+  {
+    entry: 'index:main.js',
+    in: 'index.tsx',
+    out: 'main.js',
+  },
+  {
+    entry: 'index:bundles/main',
+    in: 'index.tsx',
+    out: 'bundles/main.js',
+  },
+];
+
+for (const sample of outputSamples) {
+  it(
+    `resolves "${sample.entry} to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
+    {
+      name: 'browser-entry',
+      platform: 'browser',
+      entries: [sample.entry],
+    },
+    async (t, c) => {
+      const bundle = await c.read(`lib/${sample.out}`);
+
+      t.true(bundle.startsWith(`// src/${sample.in}\n`));
+
+      t.snapshot(bundle);
+      t.snapshot(await c.read(`lib/${sample.out}.map`));
+    },
+  );
+}
+
+// endregion
+
+// region Multiple Entries
+
+it(
+  `allows to handle multiple entries`,
+  {
+    name: 'browser-multiple-entries',
+    platform: 'browser',
+    entries: ['submoduleA', 'submoduleB'],
+  },
+  async (t, c) => {
+    t.snapshot(await c.read(`lib/submoduleA.js`));
+    t.snapshot(await c.read(`lib/submoduleA.js.map`));
+    t.snapshot(await c.read(`lib/submoduleB.js`));
+    t.snapshot(await c.read(`lib/submoduleB.js.map`));
+  },
+);
+
+it(
+  'use splitting to share code between multiple entries',
+  {
+    name: 'browser-multiple-entries-splitting',
+    platform: 'browser',
+    entries: ['submoduleA', 'submoduleB'],
+  },
+  async (t, c) => {
+    t.snapshot(await c.read(`lib/submoduleA.js`));
+    t.snapshot(await c.read(`lib/submoduleA.js.map`));
+    t.snapshot(await c.read(`lib/submoduleB.js`));
+    t.snapshot(await c.read(`lib/submoduleB.js.map`));
+    t.snapshot(await c.read(`lib/shared/EB35NJ2I.js`));
+    t.snapshot(await c.read(`lib/shared/EB35NJ2I.js.map`));
+  },
+);
+
+it(
+  'create a own CSS bundle for each entry',
+  {
+    name: 'browser-multiple-entries',
+    platform: 'browser',
+    entries: ['submoduleA', 'submoduleB'],
+  },
+  async (t, c) => {
+    t.snapshot(await c.read(`lib/submoduleA.js`));
+    t.snapshot(await c.read(`lib/submoduleA.js.map`));
+    t.snapshot(await c.read(`lib/submoduleB.js`));
+    t.snapshot(await c.read(`lib/submoduleB.js.map`));
+    t.snapshot(await c.read(`lib/submoduleA.css`));
+    t.snapshot(await c.read(`lib/submoduleA.css.map`));
+    t.snapshot(await c.read(`lib/submoduleB.css`));
+    t.snapshot(await c.read(`lib/submoduleB.css.map`));
+  },
+);
+
+it(
+  'create non shared CSS bundle for each entry',
+  {
+    name: 'browser-multiple-entries-splitting-css',
+    platform: 'browser',
+    entries: ['submoduleA', 'submoduleB'],
+    dependencies: ['@vanilla-extract/css'],
+  },
+  async (t, c) => {
+    t.snapshot(await c.read(`lib/submoduleA.js`));
+    t.snapshot(await c.read(`lib/submoduleA.js.map`));
+    t.snapshot(await c.read(`lib/submoduleB.js`));
+    t.snapshot(await c.read(`lib/submoduleB.js.map`));
+    t.snapshot(await c.read(`lib/submoduleA.css`));
+    t.snapshot(await c.read(`lib/submoduleA.css.map`));
+    t.snapshot(await c.read(`lib/submoduleB.css`));
+    t.snapshot(await c.read(`lib/submoduleB.css.map`));
+  },
+);
+
+// endregion
+
+// region Clean
 
 it(
   "doesn't remove files from the previous build",
@@ -25,7 +242,9 @@ it(
   },
 );
 
-// ----- Source Maps
+// endregion
+
+// region Source Maps
 
 it('generates source maps', { name: 'browser-default', platform: 'browser' }, async (t, c) => {
   t.snapshot(await c.read('lib/index.js.map'));
@@ -57,7 +276,9 @@ it(
   },
 );
 
-// ----- Dependencies
+// endregion
+
+// region Dependencies
 
 it(
   'uses dependencies as external',
@@ -70,7 +291,9 @@ it(
   },
 );
 
-// ----- Default Flags
+// endregion
+
+// region Default Flags
 
 it('minify bundle by default', { name: 'browser-default', platform: 'browser' }, async (t, c) => {
   t.snapshot(await c.read('lib/index.js'));
@@ -85,7 +308,9 @@ it(
   },
 );
 
-// ----- Minify
+// endregion
+
+// region Minify
 
 it(
   'drops debugger in production mode',
@@ -95,7 +320,9 @@ it(
   },
 );
 
-// ----- Production Mode
+// endregion
+
+// region Production Mode
 
 it(
   "don't minify code when production mode is off",
@@ -121,7 +348,9 @@ it(
   },
 );
 
-// ----- Type Checking
+// endregion
+
+// region Type Checking
 
 it(
   "doesn't check types when check mode is off",
@@ -172,7 +401,9 @@ it(
   },
 );
 
-// ----- Typings Generation
+// endregion
+
+// region Typings Generation
 
 it(
   "doesn't generate typings when typings mode is off",
@@ -211,7 +442,9 @@ it(
   },
 );
 
-// ----- Static files
+// endregion
+
+// region Static files
 
 it(
   'bundles static files',
@@ -255,7 +488,9 @@ it(
   },
 );
 
-// ----- CSS
+// endregion
+
+// region CSS
 
 it(
   'supports CSS',
@@ -321,7 +556,9 @@ it(
   },
 );
 
-// ----- CSS Auto Import
+// endregion
+
+// region CSS Auto Import
 
 it(
   "doesn't add CSS import to the result bundle if CSS isn't used",
@@ -349,7 +586,9 @@ it(
   },
 );
 
-// ----- CSS Modules
+// endregion
+
+// region CSS Modules
 
 it(
   'supports CSS modules',
@@ -375,7 +614,9 @@ it(
   },
 );
 
-// ----- Preprocessors Support
+// endregion
+
+// region Preprocessors Support
 
 it(
   'supports SCSS postprocessor',
@@ -426,7 +667,9 @@ it(
   },
 );
 
-// ----- React Support
+// endregion
+
+// region React Support
 
 it(
   'supports development JSX runtime',
@@ -454,7 +697,9 @@ it(
   },
 );
 
-// ----- SVG Support
+// endregion
+
+// region SVG Support
 
 it(
   'supports SVG in CSS',
@@ -530,7 +775,9 @@ it(
   },
 );
 
-// ----- Vanilla Extract Support
+// endregion
+
+// region Vanilla Extract Support
 
 it(
   'supports `vanilla-extract` package',
@@ -599,7 +846,9 @@ it(
   },
 );
 
-// ----- Storybook
+// endregion
+
+// region Storybook
 
 it(
   "doesn't generate documentation by default",
@@ -648,3 +897,5 @@ it(
     t.snapshot(await c.read('lib/index.js'));
   },
 );
+
+// endregion
