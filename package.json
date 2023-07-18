@@ -38,7 +38,7 @@
     "build": "tsx src/index.ts build node --production --no-typings",
     "lint": "eslint .",
     "release": "changeset publish",
-    "test": "vitest --run --testTimeout 10000"
+    "test": "vitest --run"
   },
   "packageManager": "pnpm@8.6.5",
   "engines": {
