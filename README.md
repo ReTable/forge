@@ -23,10 +23,10 @@ You can use [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) too.
 
 It has the following commands:
 
-- `forge build browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook]`
-- `forge build node [-p,--production] [-c,--check] [-t,--typings]`
-- `forge watch browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook]`
-- `forge watch node [-p,--production] [-c,--check] [-t,--typings]`
+- `forge build browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook] [-e,--entry <in>[:<out>]]`
+- `forge build node [-p,--production] [-c,--check] [-t,--typings] [-e,--entry <in>[:<out>]]`
+- `forge watch browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook] [-e,--entry <in>[:<out>]]`
+- `forge watch node [-p,--production] [-c,--check] [-t,--typings] [-e,--entry <in>[:<out>]]`
 
 As you can see, all commands have the same options:
 
@@ -37,6 +37,8 @@ As you can see, all commands have the same options:
   runs `tsc` before bundling.
 - `-t,--typings` - (default: **true**) enables typings generation. It works only
   if type checking is enabled too.
+- `-e,--entry` - (default: **index**) defines an entry point. Can be used multiple times to
+  define multiple entry points.
 
 Also, an additional option is presented for browser:
 
@@ -47,13 +49,83 @@ Also, an additional option is presented for browser:
 
 The `forge` has a few moments which should be highlighted:
 
-- expects `<projectRoot>/src/index.ts` as entry point;
-- produces output to the `<projectRoot/lib` directory;
-- produces typings to the `<projectRoot/typings` directory;
-- bundle source code to the single module;
+- looking for sources in the `<packageRoot>/src` directory;
+- produces output to the `<packageRoot>/lib` directory;
+- produces typings to the `<packageRoot>/typings` directory;
 - uses ESM format for produced module;
 - doesn't bundle dependencies;
 - generates source maps which include sources content.
+
+## Entries
+
+By default, the `forge` looking for `<packageRoot>/src/index.tsx` or `<packageRoot/src/index.ts` file, and bundles it
+to the `<packageRoot>/lib/index.js`.
+
+You can provide entry in two possible variants:
+
+- only input: `<input>`;
+- input and output: `<input>:<output>`.
+
+### Input resolving
+
+All input files will be searched in the `<packageRoot>/src` directory.
+
+If you provide input as file name, then it will be searched exactly.
+
+For example the following command:
+
+```shell
+$ forge build node --entry nodes/entry.ts
+```
+
+The `forge` will use `<packageRoot>/src/nodes/entry.ts` as an entry file.
+
+But you can provide module name instead of file.
+
+Look at the next command:
+
+```shell
+$ forge build node --entry nodes/entry
+```
+
+In that case, the `forge` will looking for an entry file in the following order:
+
+- `<packageRoot>/src/nodes/entry.tsx`;
+- `<packageRoot>/src/nodes/entry.ts`;
+- `<packageRoot>/src/nodes/entry/index.tsx`;
+- `<packageRoot>/src/nodes/entry/index.ts`.
+
+### Output resolving
+
+By default, we use relative path of entry module as output path. For example:
+
+- when input is `nodes/entry`, then bundle will be `<packageRoot>/lib/nodes/entry.js` (for example, an entry file may be
+  `<packageRoot>/nodes/entry.ts` or `<packageRoot>/nodes/entry/index.ts`);
+- when input is `nodes/index.ts`, then bundle will be `<packageRoot>/lib/nodes/index.js`.
+
+But you can define your own path for bundle. For example:
+
+```shell
+forge build node --entry nodes/entry:bundles/nodes
+```
+
+This command creates a bundle `<packageRoot>/lib/bundles/nodes.js`.
+
+**NOTE:** Don't use `.js` extension for output module, because we add it by default before transfer parameters to the
+`esbuild`. But even if you add the extension, we will fix it and your bundle will haven't doubled `.js` extension
+anyway.
+
+### Code splitting
+
+We use code splitting feature of the `esbuild`. If you have multiple entries which share the same code, bundler will
+create ESM modules with shared code, and will use it in the bundles.
+
+### Code splitting and CSS
+
+Be carefully when use code splitting and CSS. Constants which extracted from CSS modules or `vanilla-extract` styles
+will be shared. But, extracted CSS from shared modules will be duplicated for each bundle.
+
+All hashed class names will be the same between all modules which use them.
 
 ## Node.js
 
@@ -105,7 +177,7 @@ You should use `*.pcss` extension for PostCSS and `*.scss` for the Sass.
 We support imports in format of `~<pkg>`. It's similar to the Webpack, but
 has own restrictions.
 
-The `forge` doesn't support paths inside of the package. It does searce
+The `forge` doesn't support paths inside the package. It does searce
 the `package.json` of the given package, and try to read `sass` field inside
 of it.
 

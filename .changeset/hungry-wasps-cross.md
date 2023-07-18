@@ -77,6 +77,8 @@ Support of multiple entries enables code splitting feature to share the code ins
 
 It creates ESM modules with shared code and uses them in bundles.
 
+Each JS bundle will automatically import own CSS bundle in beginning of file if a CSS bundle is exists.
+
 **IMPORTANT:** This feature not working with CSS. Yes, your imports from CSS modules or `vanilla-extract` will be
 shared, but own CSS bundle will be created for each JS bundle, even they have a similar styles inside. Hashed classes
 will be identical in all CSS bundles too. Keep it in mind.
