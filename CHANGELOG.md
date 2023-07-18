@@ -29,7 +29,7 @@
   Example:
 
   ```scss
-  @use `~ @tabula / ui-theme` as theme;
+  @use '~@tabula/ui-theme' as theme;
 
   .root {
     background-color: theme.$color--primary;
