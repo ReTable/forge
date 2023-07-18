@@ -1,5 +1,5 @@
 {
-  "name": "browser-vanilla-extract-static",
+  "name": "browser-vanilla-extract-css",
   "version": "1.0.0",
   "type": "module",
   "module": "lib/index.js",

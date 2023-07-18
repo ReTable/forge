@@ -1,5 +1,5 @@
 {
-  "name": "browser-react",
+  "name": "browser-storybook",
   "version": "1.0.0",
   "type": "module",
   "module": "lib/index.js",
