@@ -3,7 +3,7 @@ import { cp, mkdir, readFile, readdir, rename, rm, stat } from 'node:fs/promises
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import test, { ExecutionContext, OnlyFn, SkipFn, TestFn } from 'ava';
+import { TestAPI, afterAll, test } from 'vitest';
 
 // ----- Types
 
@@ -19,7 +19,7 @@ type Platform = 'browser' | 'node';
 
 type SuiteFlag = 'only' | 'skip';
 
-type Suite = (t: ExecutionContext, c: Context) => Promise<void> | void;
+type Suite = (c: Context) => Promise<void> | void;
 
 type BaseSuiteOptions = {
   check?: boolean;
@@ -36,7 +36,7 @@ type SuiteOptions =
   | (BaseSuiteOptions & { platform: 'browser'; storybook?: boolean })
   | (BaseSuiteOptions & { platform: 'node'; storybook?: never });
 
-type DefineSuite = (title: string, options: SuiteOptions, suite: Suite) => void;
+type DefineSuite = (title: string, options: SuiteOptions, suite: Suite) => Promise<void>;
 
 type Fixture = {
   isFailed: boolean;
@@ -248,7 +248,7 @@ class Context {
 // ----- Suite
 
 export function setup(): DefineSuite {
-  test.after.always(async () => {
+  afterAll(async () => {
     const fixtures = await Promise.all(fixturesCache.values());
 
     await Promise.all(
@@ -256,8 +256,8 @@ export function setup(): DefineSuite {
     );
   });
 
-  return (title, options, suite) => {
-    let define: OnlyFn | SkipFn | TestFn = test;
+  return async (title, options, testFn) => {
+    let define: TestAPI | TestAPI['only'] | TestAPI['skip'] = test;
 
     if (options.flag === 'only') {
       define = test.only;
@@ -265,11 +265,12 @@ export function setup(): DefineSuite {
       define = test.skip;
     }
 
-    define(title, async (t) => {
-      const fixture = await prepareFixture(options);
+    const fixture = await prepareFixture(options);
+
+    define(title, async () => {
       const context = new Context(fixture);
 
-      await suite(t, context);
+      await testFn(context);
     });
   };
 }
