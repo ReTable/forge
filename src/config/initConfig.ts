@@ -7,7 +7,7 @@ import { findUp } from 'find-up';
 import { Platform } from '../types';
 
 import { Config } from './config';
-import { defaultConfig } from './defaultConfig';
+import { initialConfig } from './initialConfig';
 
 const SCHEMA_URL = 'https://github.com/ReTable/forge/blob/main/schemas/forgerc.json';
 
@@ -25,7 +25,7 @@ export async function initConfig(platform: Platform): Promise<void> {
 
     platform,
 
-    ...defaultConfig,
+    ...initialConfig,
   };
 
   if (platform === 'node') {
