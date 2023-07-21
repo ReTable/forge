@@ -15,8 +15,8 @@
   ],
 
   "$defs": {
-    "platform": {
-      "description": "Target platform",
+    "target": {
+      "description": "Target platform for build",
       "type": "string",
       "enum": ["browser", "node"]
     },
@@ -123,8 +123,8 @@
       "description": "Defines a configuration with single entry point",
       "type": "object",
       "properties": {
-        "platform": {
-          "$ref": "#/$defs/platform"
+        "target": {
+          "$ref": "#/$defs/target"
         },
         "entry": {
           "$ref": "#/$defs/entry"
@@ -151,15 +151,15 @@
           "$ref": "#/$defs/scripts"
         }
       },
-      "required": ["platform"],
+      "required": ["target"],
       "additionalProperties": false
     },
     "multipleEntriesConfiguration": {
       "description": "Defines a configuration with single entry point",
       "type": "object",
       "properties": {
-        "platform": {
-          "$ref": "#/$defs/platform"
+        "target": {
+          "$ref": "#/$defs/target"
         },
         "entries": {
           "$ref": "#/$defs/entries"
@@ -186,7 +186,7 @@
           "$ref": "#/$defs/scripts"
         }
       },
-      "required": ["platform"],
+      "required": ["target"],
       "additionalProperties": false
     }
   }

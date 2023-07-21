@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-const platform = z.enum(['browser', 'node'], {
-  description: 'Target platform',
+const target = z.enum(['browser', 'node'], {
+  description: 'Target platform for build',
 });
 
 const production = z.boolean({
@@ -70,7 +70,7 @@ const perCommandConfiguration = z.object(
 const baseConfiguration = perCommandConfiguration.extend({
   $schema: z.string().optional(),
 
-  platform,
+  target,
   build: perCommandConfiguration.optional(),
   watch: perCommandConfiguration.optional(),
   postBuild: scripts.optional(),
