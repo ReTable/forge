@@ -2,6 +2,7 @@ import { Builtins, Cli } from 'clipanion';
 
 import { version } from '../../package.json';
 
+import { InitCommand } from './InitCommand';
 import { createCommand } from './createCommand';
 
 export async function run(): Promise<void> {
@@ -16,6 +17,8 @@ export async function run(): Promise<void> {
   cli.register(createCommand('build', 'node'));
   cli.register(createCommand('watch', 'browser'));
   cli.register(createCommand('watch', 'node'));
+
+  cli.register(InitCommand);
 
   cli.register(Builtins.HelpCommand);
   cli.register(Builtins.VersionCommand);

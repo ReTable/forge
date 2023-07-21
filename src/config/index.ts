@@ -1,0 +1,1 @@
+export { createConfigFor } from './createConfigFor';

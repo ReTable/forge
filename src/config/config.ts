@@ -68,6 +68,8 @@ const perCommandConfiguration = z.object(
 );
 
 const baseConfiguration = perCommandConfiguration.extend({
+  $schema: z.string().optional(),
+
   platform,
   build: perCommandConfiguration.optional(),
   watch: perCommandConfiguration.optional(),
@@ -82,8 +84,8 @@ const multipleEntriesConfiguration = baseConfiguration.extend({
   entries: entries.optional(),
 });
 
-export const schema = z.union([singleEntryConfiguration, multipleEntriesConfiguration], {
+export const config = z.union([singleEntryConfiguration, multipleEntriesConfiguration], {
   description: 'Defines a configuration',
 });
 
-export type Schema = z.infer<typeof schema>;
+export type Config = z.infer<typeof config>;
