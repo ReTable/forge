@@ -84,7 +84,8 @@
     "sass": "^1.63.6",
     "source-map": "^0.7.4",
     "svgo": "^3.0.2",
-    "typanion": "^3.13.0"
+    "typanion": "^3.13.0",
+    "zod": "^3.21.4"
   },
   "peerDependencies": {
     "typescript": "^5.1.6"
