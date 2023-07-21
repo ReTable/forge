@@ -21,20 +21,37 @@ type SuiteFlag = 'only' | 'skip';
 
 type Suite = (c: Context) => Promise<void> | void;
 
-type BaseSuiteOptions = {
-  check?: boolean;
-  dependencies?: string[];
-  entries?: string[];
-  flag?: SuiteFlag;
+type BaseSuiteOptions<Command extends 'build' | 'init', Options> = Options & {
+  command: Command;
   name: string;
-  platform: Platform;
-  production?: boolean;
-  typings?: boolean;
+
+  flag?: SuiteFlag;
 };
 
-type SuiteOptions =
-  | (BaseSuiteOptions & { platform: 'browser'; storybook?: boolean })
-  | (BaseSuiteOptions & { platform: 'node'; storybook?: never });
+type InitSuiteOptions = BaseSuiteOptions<
+  'init',
+  {
+    platform: Platform;
+  }
+>;
+
+type BaseBuildSuiteOptions<CommandPlatform extends Platform> = BaseSuiteOptions<
+  'build',
+  {
+    check?: boolean;
+    dependencies?: string[];
+    entries?: string[];
+    flag?: SuiteFlag;
+    platform: CommandPlatform;
+    production?: boolean;
+    typings?: boolean;
+    storybook?: CommandPlatform extends 'browser' ? boolean : never;
+  }
+>;
+
+type BuildSuiteOptions = BaseBuildSuiteOptions<'browser'> | BaseBuildSuiteOptions<'node'>;
+
+type SuiteOptions = BuildSuiteOptions | InitSuiteOptions;
 
 type DefineSuite = (title: string, options: SuiteOptions, suite: Suite) => Promise<void>;
 
@@ -109,12 +126,16 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
   }
 }
 
-async function prepare(
-  id: string,
-  { check, dependencies, entries, name, platform, production, storybook, typings }: SuiteOptions,
-): Promise<Fixture> {
-  const workingDir = await prepareWorkingDir(id, name);
+async function prepareForInit(workingDir: string, { platform }: InitSuiteOptions) {
+  const args = ['init', `--${platform}`];
 
+  await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
+}
+
+async function prepareForBuild(
+  workingDir: string,
+  { check, dependencies, entries, platform, production, storybook, typings }: BuildSuiteOptions,
+) {
   if (dependencies) {
     await run('/usr/bin/env', ['pnpm', 'install', '--no-lockfile', ...dependencies], workingDir);
   }
@@ -145,8 +166,16 @@ async function prepare(
     args.push(storybook ? '--storybook' : '--no-storybook');
   }
 
+  await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
+}
+
+async function prepare(id: string, options: SuiteOptions): Promise<Fixture> {
+  const workingDir = await prepareWorkingDir(id, options.name);
+
   try {
-    await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
+    await (options.command === 'build'
+      ? prepareForBuild(workingDir, options)
+      : prepareForInit(workingDir, options));
 
     return { isFailed: false, workingDir };
   } catch {
@@ -155,43 +184,51 @@ async function prepare(
 }
 
 async function prepareFixture(options: SuiteOptions): Promise<Fixture> {
-  const platform = options.platform === 'node' ? 'pl_n' : 'pl_b';
+  const chunks: string[] = [
+    options.command,
+    options.name,
+    options.platform === 'node' ? 'pl_n' : 'pl_b',
+  ];
 
-  let production = 'pr_d';
+  if (options.command === 'build') {
+    let production = 'pr_d';
 
-  if (options.production != null) {
-    production = options.production ? 'pr_t' : 'pr_f';
+    if (options.production != null) {
+      production = options.production ? 'pr_t' : 'pr_f';
+    }
+
+    let check = 'ch_d';
+
+    if (options.check != null) {
+      check = options.check ? 'ch_t' : 'ch_f';
+    }
+
+    let typings = 'ts_d';
+
+    if (options.typings != null) {
+      typings = options.typings ? 'ts_t' : 'ts_f';
+    }
+
+    let storybook = 'sb_d';
+
+    if (options.storybook != null) {
+      storybook = options.storybook ? 'sb_t' : 'sb_f';
+    }
+
+    let entries = 'default';
+
+    if (options.entries != null) {
+      entries = options.entries
+        .map((entry) =>
+          entry.replaceAll('.', '_dot_').replaceAll('/', '_slash_').replaceAll(':', '_colon_'),
+        )
+        .join('-dl-');
+    }
+
+    chunks.push(entries, production, check, typings, storybook);
   }
 
-  let check = 'ch_d';
-
-  if (options.check != null) {
-    check = options.check ? 'ch_t' : 'ch_f';
-  }
-
-  let typings = 'ts_d';
-
-  if (options.typings != null) {
-    typings = options.typings ? 'ts_t' : 'ts_f';
-  }
-
-  let storybook = 'sb_d';
-
-  if (options.storybook != null) {
-    storybook = options.storybook ? 'sb_t' : 'sb_f';
-  }
-
-  let entries = 'default';
-
-  if (options.entries != null) {
-    entries = options.entries
-      .map((entry) =>
-        entry.replaceAll('.', '_dot_').replaceAll('/', '_slash_').replaceAll(':', '_colon_'),
-      )
-      .join('-dl-');
-  }
-
-  const id = [options.name, platform, entries, production, check, typings, storybook].join('-');
+  const id = chunks.join('-');
 
   let promise = fixturesCache.get(id);
 

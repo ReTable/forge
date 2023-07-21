@@ -44,11 +44,7 @@ describe('node', () => {
         for (const entry of sample.entries) {
           await it(
             `resolves "${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
-            {
-              name: 'node-entry',
-              platform: 'node',
-              entries: [entry],
-            },
+            { command: 'build', name: 'node-entry', platform: 'node', entries: [entry] },
             async (c) => {
               const bundle = await c.read(`lib/${sample.out}`);
 
@@ -61,11 +57,7 @@ describe('node', () => {
 
           await it(
             `resolves "./${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
-            {
-              name: 'node-entry',
-              platform: 'node',
-              entries: [`./${entry}`],
-            },
+            { command: 'build', name: 'node-entry', platform: 'node', entries: [`./${entry}`] },
             async (c) => {
               const bundle = await c.read(`lib/${sample.out}`);
 
@@ -106,11 +98,7 @@ describe('node', () => {
       for (const sample of outputSamples) {
         await it(
           `resolves "${sample.entry} to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
-          {
-            name: 'node-entry',
-            platform: 'node',
-            entries: [sample.entry],
-          },
+          { command: 'build', name: 'node-entry', platform: 'node', entries: [sample.entry] },
           async (c) => {
             const bundle = await c.read(`lib/${sample.out}`);
 
@@ -127,6 +115,7 @@ describe('node', () => {
       await it(
         `allows to handle multiple entries`,
         {
+          command: 'build',
           name: 'node-multiple-entries',
           platform: 'node',
           entries: ['submoduleA', 'submoduleB'],
@@ -142,6 +131,7 @@ describe('node', () => {
       await it(
         'use splitting to share code between multiple entries',
         {
+          command: 'build',
           name: 'node-multiple-entries-splitting',
           platform: 'node',
           entries: ['submoduleA', 'submoduleB'],
@@ -161,7 +151,7 @@ describe('node', () => {
   describe('clean', async () => {
     await it(
       "doesn't remove files from the previous build",
-      { name: 'node-clean', platform: 'node', production: false },
+      { command: 'build', name: 'node-clean', platform: 'node', production: false },
       async (c) => {
         expect(await c.isExists('lib/previous.js')).toBe(true);
         expect(await c.isExists('typings/previous.d.ts')).toBe(true);
@@ -170,7 +160,7 @@ describe('node', () => {
 
     await it(
       'removes files from the previous build before production build',
-      { name: 'node-clean', platform: 'node', production: true },
+      { command: 'build', name: 'node-clean', platform: 'node', production: true },
       async (c) => {
         expect(await c.isExists('lib/previous.js')).toBe(false);
         expect(await c.isExists('typings/previous.d.ts')).toBe(false);
@@ -179,13 +169,17 @@ describe('node', () => {
   });
 
   describe('source maps', async () => {
-    await it('generates source maps', { name: 'node-default', platform: 'node' }, async (c) => {
-      expect(await c.read('lib/index.js.map')).toMatchSnapshot();
-    });
+    await it(
+      'generates source maps',
+      { command: 'build', name: 'node-default', platform: 'node' },
+      async (c) => {
+        expect(await c.read('lib/index.js.map')).toMatchSnapshot();
+      },
+    );
 
     await it(
       'generates source maps with relative paths',
-      { name: 'node-default', platform: 'node' },
+      { command: 'build', name: 'node-default', platform: 'node' },
       async (c) => {
         const { sources } = await c.readSourceMap('lib/index.js.map');
 
@@ -197,7 +191,7 @@ describe('node', () => {
 
     await it(
       'generates source maps with sources content',
-      { name: 'node-default', platform: 'node' },
+      { command: 'build', name: 'node-default', platform: 'node' },
       async (c) => {
         const { sourcesContent } = await c.readSourceMap('lib/index.js.map');
 
@@ -210,7 +204,7 @@ describe('node', () => {
   describe('dependencies', async () => {
     await it(
       'uses dependencies as external',
-      { name: 'node-default', platform: 'node' },
+      { command: 'build', name: 'node-default', platform: 'node' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
         expect(await c.read('lib/index.js.map')).toMatchSnapshot();
@@ -221,13 +215,17 @@ describe('node', () => {
   });
 
   describe('default flags', async () => {
-    await it('minify bundle by default', { name: 'node-default', platform: 'node' }, async (c) => {
-      expect(await c.read('lib/index.js')).toMatchSnapshot();
-    });
+    await it(
+      'minify bundle by default',
+      { command: 'build', name: 'node-default', platform: 'node' },
+      async (c) => {
+        expect(await c.read('lib/index.js')).toMatchSnapshot();
+      },
+    );
 
     await it(
       'generates typings by default',
-      { name: 'node-default', platform: 'node' },
+      { command: 'build', name: 'node-default', platform: 'node' },
       async (c) => {
         expect(await c.read('typings/index.d.ts')).toMatchSnapshot();
         expect(await c.read('typings/readJson.d.ts')).toMatchSnapshot();
@@ -238,7 +236,7 @@ describe('node', () => {
   describe('minify', async () => {
     await it(
       'drops debugger in production mode',
-      { name: 'node-debugger', platform: 'node' },
+      { command: 'build', name: 'node-debugger', platform: 'node' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
@@ -248,11 +246,7 @@ describe('node', () => {
   describe('production mode', async () => {
     await it(
       "don't minify code when production mode is off",
-      {
-        name: 'node-default',
-        platform: 'node',
-        production: false,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', production: false },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
@@ -260,11 +254,7 @@ describe('node', () => {
 
     await it(
       'minify code when production mode is on',
-      {
-        name: 'node-default',
-        platform: 'node',
-        production: true,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', production: true },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
@@ -274,11 +264,7 @@ describe('node', () => {
   describe('type checking', async () => {
     await it(
       "doesn't check types when check mode is off",
-      {
-        name: 'node-check',
-        platform: 'node',
-        check: false,
-      },
+      { command: 'build', name: 'node-check', platform: 'node', check: false },
       async (c) => {
         expect(await c.isExists('lib')).toBe(true);
       },
@@ -286,11 +272,7 @@ describe('node', () => {
 
     await it(
       "doesn't generate typings when check mode is off",
-      {
-        name: 'node-default',
-        platform: 'node',
-        check: false,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', check: false },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
@@ -298,11 +280,7 @@ describe('node', () => {
 
     await it(
       'fails when types are invalid and check mode is on',
-      {
-        name: 'node-check',
-        platform: 'node',
-        check: true,
-      },
+      { command: 'build', name: 'node-check', platform: 'node', check: true },
       (c) => {
         expect(c.isFailed).toBe(true);
       },
@@ -310,11 +288,7 @@ describe('node', () => {
 
     await it(
       "doesn't emit when errors are existed",
-      {
-        name: 'node-check',
-        platform: 'node',
-        check: true,
-      },
+      { command: 'build', name: 'node-check', platform: 'node', check: true },
       async (c) => {
         expect(await c.isExists('lib')).toBe(false);
         expect(await c.isExists('typings')).toBe(false);
@@ -325,11 +299,7 @@ describe('node', () => {
   describe('typings generation', async () => {
     await it(
       "doesn't generate typings when typings mode is off",
-      {
-        name: 'node-default',
-        platform: 'node',
-        typings: false,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', typings: false },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
@@ -337,11 +307,7 @@ describe('node', () => {
 
     await it(
       'generates typings when typings mode is on',
-      {
-        name: 'node-default',
-        platform: 'node',
-        typings: true,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', typings: true },
       async (c) => {
         expect(await c.isExists('typings')).toBe(true);
       },
@@ -349,12 +315,7 @@ describe('node', () => {
 
     await it(
       "doesn't generates typings when check mode is off",
-      {
-        name: 'node-default',
-        platform: 'node',
-        check: false,
-        typings: true,
-      },
+      { command: 'build', name: 'node-default', platform: 'node', check: false, typings: true },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
