@@ -2,8 +2,8 @@ import { Builtins, Cli } from 'clipanion';
 
 import { version } from '../../package.json';
 
+import { BuildCommand } from './BuildCommand';
 import { InitCommand } from './InitCommand';
-import { createCommand } from './createCommand';
 
 export async function run(): Promise<void> {
   const cli = new Cli({
@@ -13,11 +13,7 @@ export async function run(): Promise<void> {
     enableColors: true,
   });
 
-  cli.register(createCommand('build', 'browser'));
-  cli.register(createCommand('build', 'node'));
-  cli.register(createCommand('watch', 'browser'));
-  cli.register(createCommand('watch', 'node'));
-
+  cli.register(BuildCommand);
   cli.register(InitCommand);
 
   cli.register(Builtins.HelpCommand);
