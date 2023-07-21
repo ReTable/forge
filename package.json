@@ -76,6 +76,7 @@
     "convert-source-map": "^2.0.0",
     "esbuild": "^0.18.13",
     "find-up": "^6.3.0",
+    "lilconfig": "^2.1.0",
     "postcss": "^8.4.26",
     "postcss-load-config": "^4.0.1",
     "postcss-modules": "^6.0.0",

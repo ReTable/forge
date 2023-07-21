@@ -35,6 +35,9 @@ dependencies:
   find-up:
     specifier: ^6.3.0
     version: 6.3.0
+  lilconfig:
+    specifier: ^2.1.0
+    version: 2.1.0
   postcss:
     specifier: ^8.4.26
     version: 8.4.26
