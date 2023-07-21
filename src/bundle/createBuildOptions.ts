@@ -11,7 +11,7 @@ import {
   vanillaExtractPlugin,
 } from '../plugins';
 import { createCssProcessor } from '../postcss';
-import { Platform } from '../types';
+import { Target } from '../types';
 
 type BrowserOptions = {
   name: string;
@@ -115,10 +115,10 @@ type Options = {
   entries: string[];
   name: string;
   packageRoot: string;
-  platform: Platform;
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
+  target: Target;
   typings: boolean;
 };
 
@@ -127,7 +127,7 @@ export async function createBuildOptions({
   entries,
   name,
   packageRoot,
-  platform,
+  target,
   production,
   repositoryRoot,
   storybook,
@@ -154,7 +154,7 @@ export async function createBuildOptions({
     options.drop = ['debugger'];
   }
 
-  switch (platform) {
+  switch (target) {
     case 'browser': {
       await applyBrowserOptions(options, { name, production, repositoryRoot, storybook });
 

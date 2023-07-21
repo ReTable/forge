@@ -1,1 +1,1 @@
-export type Platform = 'browser' | 'node';
+export type Target = 'browser' | 'node';

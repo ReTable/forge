@@ -4,14 +4,14 @@ import { dirname, join } from 'node:path';
 import chalk from 'chalk';
 import { findUp } from 'find-up';
 
-import { Platform } from '../types';
+import { Target } from '../types';
 
 import { Config } from './config';
 import { initialConfig } from './initialConfig';
 
 const SCHEMA_URL = 'https://github.com/ReTable/forge/blob/main/schemas/forgerc.json';
 
-export async function initConfig(platform: Platform): Promise<void> {
+export async function initConfig(target: Target): Promise<void> {
   const packageJsonPath = await findUp('package.json');
 
   if (packageJsonPath == null) {
@@ -23,12 +23,12 @@ export async function initConfig(platform: Platform): Promise<void> {
   const config: Config = {
     $schema: SCHEMA_URL,
 
-    platform,
+    target,
 
     ...initialConfig,
   };
 
-  if (platform === 'node') {
+  if (target === 'node') {
     delete config.storybook;
     delete config.build?.storybook;
     delete config.watch?.storybook;

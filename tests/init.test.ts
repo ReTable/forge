@@ -10,7 +10,7 @@ describe('init', async () => {
     {
       command: 'init',
       name: 'browser-init-config',
-      platform: 'browser',
+      target: 'browser',
     },
     async (c) => {
       expect(await c.read('.forgerc')).toMatchSnapshot();
@@ -22,7 +22,7 @@ describe('init', async () => {
     {
       command: 'init',
       name: 'node-init-config',
-      platform: 'node',
+      target: 'node',
     },
     async (c) => {
       expect(await c.read('.forgerc')).toMatchSnapshot();

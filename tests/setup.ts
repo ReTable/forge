@@ -15,7 +15,7 @@ type SourceMap = {
   names: string[];
 };
 
-type Platform = 'browser' | 'node';
+type Target = 'browser' | 'node';
 
 type SuiteFlag = 'only' | 'skip';
 
@@ -31,21 +31,21 @@ type BaseSuiteOptions<Command extends 'build' | 'init', Options> = Options & {
 type InitSuiteOptions = BaseSuiteOptions<
   'init',
   {
-    platform: Platform;
+    target: Target;
   }
 >;
 
-type BaseBuildSuiteOptions<CommandPlatform extends Platform> = BaseSuiteOptions<
+type BaseBuildSuiteOptions<CommandTarget extends Target> = BaseSuiteOptions<
   'build',
   {
     check?: boolean;
     dependencies?: string[];
     entries?: string[];
     flag?: SuiteFlag;
-    platform: CommandPlatform;
     production?: boolean;
+    storybook?: CommandTarget extends 'browser' ? boolean : never;
+    target: CommandTarget;
     typings?: boolean;
-    storybook?: CommandPlatform extends 'browser' ? boolean : never;
   }
 >;
 
@@ -126,15 +126,15 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
   }
 }
 
-async function prepareForInit(workingDir: string, { platform }: InitSuiteOptions) {
-  const args = ['init', `--${platform}`];
+async function prepareForInit(workingDir: string, { target }: InitSuiteOptions) {
+  const args = ['init', `--${target}`];
 
   await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
 }
 
 async function prepareForBuild(
   workingDir: string,
-  { check, dependencies, entries, platform, production, storybook, typings }: BuildSuiteOptions,
+  { check, dependencies, entries, target, production, storybook, typings }: BuildSuiteOptions,
 ) {
   if (dependencies) {
     await run('/usr/bin/env', ['pnpm', 'install', '--no-lockfile', ...dependencies], workingDir);
@@ -142,7 +142,7 @@ async function prepareForBuild(
 
   await prepareMockedModules(workingDir);
 
-  const args = ['build', platform];
+  const args = ['--target', target];
 
   if (entries != null) {
     for (const entry of entries) {
@@ -187,7 +187,7 @@ async function prepareFixture(options: SuiteOptions): Promise<Fixture> {
   const chunks: string[] = [
     options.command,
     options.name,
-    options.platform === 'node' ? 'pl_n' : 'pl_b',
+    options.target === 'node' ? 'tg_n' : 'tg_b',
   ];
 
   if (options.command === 'build') {

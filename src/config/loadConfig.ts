@@ -1,6 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
 
-import { Platform } from '../types';
+import { Target } from '../types';
 
 import { config } from './config';
 import { defaultBuildConfig, defaultWatchConfig } from './initialConfig';
@@ -20,7 +20,7 @@ async function loadUserConfig() {
 }
 
 type Options = {
-  target?: Platform;
+  target?: Target;
 
   entries?: string[];
 
@@ -33,7 +33,7 @@ type Options = {
 };
 
 type Result = {
-  platform: Platform;
+  target: Target;
 
   entries: string[];
 
@@ -50,10 +50,10 @@ export async function loadConfig(options: Options): Promise<Result> {
 
   const userConfig = await loadUserConfig();
 
-  const platform = options.target ?? userConfig?.platform;
+  const target = options.target ?? userConfig?.target;
 
-  if (platform == null) {
-    throw new Error('Platform must be provided through CLI arguments or config file');
+  if (target == null) {
+    throw new Error('Target must be provided through CLI arguments or config file');
   }
 
   const commandConfig = options.watch ? userConfig?.watch : userConfig?.build;
@@ -73,14 +73,14 @@ export async function loadConfig(options: Options): Promise<Result> {
     options.storybook ?? commandConfig?.storybook ?? userConfig?.storybook ?? defaults.storybook;
 
   return {
-    platform,
+    target,
 
     entries: ['index'],
 
     production,
     check,
     typings: check && typings,
-    storybook: platform === 'browser' && storybook,
+    storybook: target === 'browser' && storybook,
 
     watch: options.watch,
   };

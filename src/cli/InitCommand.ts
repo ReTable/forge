@@ -1,5 +1,5 @@
 import { Command, Option } from 'clipanion';
-import { hasAtLeastOneKey, hasMutuallyExclusiveKeys } from 'typanion';
+import { isLiteral, isOneOf } from 'typanion';
 
 import { initConfig } from '../config';
 
@@ -10,22 +10,12 @@ export class InitCommand extends Command {
     description: 'Creates an initial file for the selected platform.',
   });
 
-  public static override schema = [
-    hasAtLeastOneKey(['browser', 'node'], {
-      missingIf: 'falsy',
-    }),
-    hasMutuallyExclusiveKeys(['browser', 'node'], {
-      missingIf: 'falsy',
-    }),
-  ];
-
-  private readonly browser = Option.Boolean('--browser,-b', false);
-  // @ts-expect-error We don't use `node` property, because have validators.
-  private readonly node = Option.Boolean('--node,-n', false);
+  private readonly target = Option.String('-t,--target', {
+    required: true,
+    validator: isOneOf([isLiteral('browser'), isLiteral('node')], { exclusive: true }),
+  });
 
   public override async execute(): Promise<void> {
-    const platform = this.browser ? 'browser' : 'node';
-
-    await initConfig(platform);
+    await initConfig(this.target);
   }
 }
