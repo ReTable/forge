@@ -1,1 +1,1 @@
-export { createConfigFor } from './createConfigFor';
+export { initConfig } from './initConfig';

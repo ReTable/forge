@@ -7,8 +7,11 @@ import { findUp } from 'find-up';
 import { Platform } from '../types';
 
 import { Config } from './config';
+import { defaultConfig } from './defaultConfig';
 
-export async function createConfigFor(platform: Platform): Promise<void> {
+const SCHEMA_URL = 'https://github.com/ReTable/forge/blob/main/schemas/forgerc.json';
+
+export async function initConfig(platform: Platform): Promise<void> {
   const packageJsonPath = await findUp('package.json');
 
   if (packageJsonPath == null) {
@@ -18,24 +21,18 @@ export async function createConfigFor(platform: Platform): Promise<void> {
   const configFilePath = join(dirname(packageJsonPath), '.forgerc');
 
   const config: Config = {
-    $schema: 'https://github.com/ReTable/forge/blob/main/schemas/forgerc.json',
+    $schema: SCHEMA_URL,
 
     platform,
 
-    entry: 'index',
-
-    check: true,
-    typings: true,
-
-    build: {
-      production: true,
-    },
-
-    watch: {
-      production: false,
-      storybook: platform === 'browser' ? true : undefined,
-    },
+    ...defaultConfig,
   };
+
+  if (platform === 'node') {
+    delete config.storybook;
+    delete config.build?.storybook;
+    delete config.watch?.storybook;
+  }
 
   await writeFile(configFilePath, JSON.stringify(config, null, 2), 'utf8');
 

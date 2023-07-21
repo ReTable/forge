@@ -1,7 +1,7 @@
 import { Command, Option } from 'clipanion';
 import { hasAtLeastOneKey, hasMutuallyExclusiveKeys } from 'typanion';
 
-import { createConfigFor } from '../config';
+import { initConfig } from '../config';
 
 export class InitCommand extends Command {
   public static override paths = [['init'], ['i']];
@@ -26,6 +26,6 @@ export class InitCommand extends Command {
   public override async execute(): Promise<void> {
     const platform = this.browser ? 'browser' : 'node';
 
-    await createConfigFor(platform);
+    await initConfig(platform);
   }
 }
