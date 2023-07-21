@@ -71,6 +71,7 @@
     "@svgr/plugin-jsx": "^8.0.1",
     "@vanilla-extract/esbuild-plugin": "^2.2.2",
     "autoprefixer": "^10.4.14",
+    "chalk": "^5.3.0",
     "clipanion": "^3.2.1",
     "convert-source-map": "^2.0.0",
     "esbuild": "^0.18.13",
