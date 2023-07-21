@@ -127,7 +127,7 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
 }
 
 async function prepareForInit(workingDir: string, { target }: InitSuiteOptions) {
-  const args = ['init', `--${target}`];
+  const args = ['init', `--target`, target];
 
   await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
 }

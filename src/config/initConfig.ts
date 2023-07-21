@@ -6,8 +6,8 @@ import { findUp } from 'find-up';
 
 import { Target } from '../types';
 
-import { Config } from './config';
 import { initialConfig } from './initialConfig';
+import { Config } from './schema';
 
 const SCHEMA_URL = 'https://github.com/ReTable/forge/blob/main/schemas/forgerc.json';
 

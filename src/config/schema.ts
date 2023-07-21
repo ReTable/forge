@@ -84,8 +84,8 @@ const multipleEntriesConfiguration = baseConfiguration.extend({
   entries: entries.optional(),
 });
 
-export const config = z.union([singleEntryConfiguration, multipleEntriesConfiguration], {
+export const schema = z.union([singleEntryConfiguration, multipleEntriesConfiguration], {
   description: 'Defines a configuration',
 });
 
-export type Config = z.infer<typeof config>;
+export type Config = z.infer<typeof schema>;

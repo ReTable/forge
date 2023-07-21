@@ -1848,7 +1848,7 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV(\\"button\\", { o
 }, this);
 Button.__docgenInfo = {
   \\"tags\\": {},
-  \\"filePath\\": \\"tests/tmp/build-browser-storybook-pl_b-default-pr_f-ch_d-ts_d-sb_t/src/Button.tsx\\",
+  \\"filePath\\": \\"tests/tmp/build-browser-storybook-tg_b-default-pr_f-ch_d-ts_d-sb_t/src/Button.tsx\\",
   \\"description\\": \\"This is awesome component.\\",
   \\"displayName\\": \\"Button\\",
   \\"methods\\": [],
@@ -1859,7 +1859,7 @@ Button.__docgenInfo = {
       \\"name\\": \\"onClick\\",
       \\"declarations\\": [
         {
-          \\"fileName\\": \\"tests/tmp/build-browser-storybook-pl_b-default-pr_f-ch_d-ts_d-sb_t/src/Button.tsx\\",
+          \\"fileName\\": \\"tests/tmp/build-browser-storybook-tg_b-default-pr_f-ch_d-ts_d-sb_t/src/Button.tsx\\",
           \\"name\\": \\"TypeLiteral\\"
         }
       ],

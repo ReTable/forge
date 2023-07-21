@@ -11,7 +11,7 @@ import {
   vanillaExtractPlugin,
 } from '../plugins';
 import { createCssProcessor } from '../postcss';
-import { Target } from '../types';
+import { Entry, Target } from '../types';
 
 type BrowserOptions = {
   name: string;
@@ -41,25 +41,23 @@ for (const extension of extensions) {
   staticLoaders[`.${extension}`] = 'file';
 }
 
-function parseEntries(entries: string[]) {
+function prependEntry(entry: string) {
+  return `./${join('src', entry)}`;
+}
+
+function parseEntries(entries: Entry[]) {
   // NOTE: We cast result to the `entryPoints` type. Our parser returns the `Array<string | { in: string, out: string }`
   //       type. But `entryPoints` has a type `string[] | Array<{ in: string, out: string }>` and it's actually an
   //       error in typings.
   //       Actually, `esbuild` can consume mixed entry points in the same time.
-  return entries.map((rawEntry) => {
-    const [inPath, outPath] = rawEntry.split(':') as [string, string | undefined];
-
-    // NOTE: The `join` function trim leading `./` path section, but it's required for `esbuild` to be sure that's not
-    //       an external package (if entry hasn't extension).
-    const entry = `./${join('src', inPath)}`;
-
-    if (outPath == null) {
-      return entry;
+  return entries.map((entry) => {
+    if (typeof entry === 'string') {
+      return prependEntry(entry);
     }
 
     return {
-      in: entry,
-      out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
+      in: prependEntry(entry.in),
+      out: entry.out,
     };
   }) as NonNullable<BuildOptions['entryPoints']>;
 }
@@ -112,7 +110,7 @@ function applyNodeOptions(buildOptions: BuildOptions) {
 
 type Options = {
   check: boolean;
-  entries: string[];
+  entries: Entry[];
   name: string;
   packageRoot: string;
   production: boolean;

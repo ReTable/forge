@@ -5,13 +5,13 @@ import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
 import { readPackageUp } from 'read-pkg-up';
 
-import { Target } from '../types';
+import { Entry, Target } from '../types';
 
 import { createBuildOptions } from './createBuildOptions';
 
 type Options = {
   check: boolean;
-  entries: string[];
+  entries: Entry[];
   production: boolean;
   storybook: boolean;
   target: Target;

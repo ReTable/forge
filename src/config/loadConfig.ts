@@ -1,9 +1,9 @@
 import { cosmiconfig } from 'cosmiconfig';
 
-import { Target } from '../types';
+import { Entry, Target } from '../types';
 
-import { config } from './config';
 import { defaultBuildConfig, defaultWatchConfig } from './initialConfig';
+import { schema } from './schema';
 
 async function loadUserConfig() {
   const result = await cosmiconfig('forge').search();
@@ -12,7 +12,7 @@ async function loadUserConfig() {
     return null;
   }
 
-  const userConfig = config.parse(result.config);
+  const userConfig = schema.parse(result.config);
 
   console.log(`Used config from ${result.filepath}`);
 
@@ -35,7 +35,7 @@ type Options = {
 type Result = {
   target: Target;
 
-  entries: string[];
+  entries: Entry[];
 
   production: boolean;
   check: boolean;
@@ -44,6 +44,21 @@ type Result = {
 
   watch: boolean;
 };
+
+function parseCliEntries(entries: string[]) {
+  return entries.map((entry) => {
+    const [inPath, outPath] = entry.split(':') as [string, string | undefined];
+
+    if (outPath == null) {
+      return inPath;
+    }
+
+    return {
+      in: inPath,
+      out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
+    };
+  });
+}
 
 export async function loadConfig(options: Options): Promise<Result> {
   const defaults = options.watch ? defaultWatchConfig : defaultBuildConfig;
@@ -57,6 +72,18 @@ export async function loadConfig(options: Options): Promise<Result> {
   }
 
   const commandConfig = options.watch ? userConfig?.watch : userConfig?.build;
+
+  let entries: Entry[] = defaults.entries;
+
+  if (options.entries != null) {
+    entries = parseCliEntries(options.entries);
+  } else if (userConfig != null) {
+    if ('entry' in userConfig && userConfig.entry != null) {
+      entries = [userConfig.entry];
+    } else if ('entries' in userConfig && userConfig.entries != null) {
+      entries = userConfig.entries;
+    }
+  }
 
   const production =
     options.production ??
@@ -75,7 +102,7 @@ export async function loadConfig(options: Options): Promise<Result> {
   return {
     target,
 
-    entries: ['index'],
+    entries,
 
     production,
     check,

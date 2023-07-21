@@ -3,7 +3,7 @@
 exports[`init > generates initial config for browser 1`] = `
 "{
   \\"$schema\\": \\"https://github.com/ReTable/forge/blob/main/schemas/forgerc.json\\",
-  \\"platform\\": \\"browser\\",
+  \\"target\\": \\"browser\\",
   \\"entry\\": \\"index\\",
   \\"check\\": true,
   \\"typings\\": true,
@@ -20,7 +20,7 @@ exports[`init > generates initial config for browser 1`] = `
 exports[`init > generates initial config for node 1`] = `
 "{
   \\"$schema\\": \\"https://github.com/ReTable/forge/blob/main/schemas/forgerc.json\\",
-  \\"platform\\": \\"node\\",
+  \\"target\\": \\"node\\",
   \\"entry\\": \\"index\\",
   \\"check\\": true,
   \\"typings\\": true,
