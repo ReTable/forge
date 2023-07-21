@@ -65,8 +65,8 @@
         "$ref": "#/$defs/entry"
       }
     },
-    "script": {
-      "description": "Defines a script which should be run",
+    "hook": {
+      "description": "Defines a hook which should be run",
       "anyOf": [
         {
           "type": "string"
@@ -74,28 +74,28 @@
         {
           "type": "object",
           "properties": {
-            "script": {
+            "command": {
               "type": "string"
             },
             "cwd": {
               "type": "string"
             }
           },
-          "required": ["script"],
+          "required": ["command"],
           "additionalProperties": false
         }
       ]
     },
-    "scripts": {
-      "description": "Defines scripts which should be run",
+    "hooks": {
+      "description": "Defines hooks which should be run",
       "anyOf": [
         {
-          "$ref": "#/$defs/script"
+          "$ref": "#/$defs/hook"
         },
         {
           "type": "array",
           "item": {
-            "$ref": "#/$defs/script"
+            "$ref": "#/$defs/hook"
           }
         }
       ]
@@ -148,7 +148,7 @@
           "$ref": "#/$defs/perCommandConfiguration"
         },
         "postBuild": {
-          "$ref": "#/$defs/scripts"
+          "$ref": "#/$defs/hooks"
         }
       },
       "required": ["target"],
@@ -183,7 +183,7 @@
           "$ref": "#/$defs/perCommandConfiguration"
         },
         "postBuild": {
-          "$ref": "#/$defs/scripts"
+          "$ref": "#/$defs/hooks"
         }
       },
       "required": ["target"],

@@ -1,6 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
 
-import { Entry, Target } from '../types';
+import { Entry, Hook, Target } from '../types';
 
 import { defaultBuildConfig, defaultWatchConfig } from './initialConfig';
 import { schema } from './schema';
@@ -42,6 +42,8 @@ type Result = {
   typings: boolean;
   storybook: boolean;
 
+  postBuild: Hook[];
+
   watch: boolean;
 };
 
@@ -58,6 +60,10 @@ function parseCliEntries(entries: string[]) {
       out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
     };
   });
+}
+
+function normalizeHooks(hooks: Hook | Hook[]) {
+  return Array.isArray(hooks) ? hooks : [hooks];
 }
 
 export async function loadConfig(options: Options): Promise<Result> {
@@ -108,6 +114,8 @@ export async function loadConfig(options: Options): Promise<Result> {
     check,
     typings: check && typings,
     storybook: target === 'browser' && storybook,
+
+    postBuild: normalizeHooks(userConfig?.postBuild ?? []),
 
     watch: options.watch,
   };

@@ -4,6 +4,7 @@ import { BuildOptions } from 'esbuild';
 
 import {
   cssAutoImportPlugin,
+  postBuildPlugin,
   reactDocgenPlugin,
   stylesPlugin,
   svgPlugin,
@@ -11,7 +12,7 @@ import {
   vanillaExtractPlugin,
 } from '../plugins';
 import { createCssProcessor } from '../postcss';
-import { Entry, Target } from '../types';
+import { Entry, Hook, Target } from '../types';
 
 type BrowserOptions = {
   name: string;
@@ -113,6 +114,7 @@ type Options = {
   entries: Entry[];
   name: string;
   packageRoot: string;
+  postBuild: Hook[];
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
@@ -125,10 +127,11 @@ export async function createBuildOptions({
   entries,
   name,
   packageRoot,
-  target,
+  postBuild,
   production,
   repositoryRoot,
   storybook,
+  target,
   typings,
 }: Options): Promise<BuildOptions> {
   const options: BuildOptions = {
@@ -165,9 +168,9 @@ export async function createBuildOptions({
     }
   }
 
-  if (check) {
-    options.plugins = options.plugins ?? [];
+  options.plugins = [postBuildPlugin(postBuild)];
 
+  if (check) {
     options.plugins.push(typescriptPlugin(typings));
   }
 

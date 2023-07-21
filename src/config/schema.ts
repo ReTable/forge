@@ -38,21 +38,21 @@ const entries = z.array(entry, {
   description: 'Defines entry points',
 });
 
-const script = z.union(
+const hook = z.union(
   [
     z.string(),
     z.object({
-      script: z.string(),
-      cwd: z.string().nullable(),
+      command: z.string(),
+      cwd: z.string().optional(),
     }),
   ],
   {
-    description: 'Defines a script which should be run',
+    description: 'Defines a hook which should be run',
   },
 );
 
-const scripts = z.union([script, z.array(script)], {
-  description: 'Defines scripts which should be run',
+const hooks = z.union([hook, z.array(hook)], {
+  description: 'Defines hooks which should be run',
 });
 
 const perCommandConfiguration = z.object(
@@ -71,9 +71,11 @@ const baseConfiguration = perCommandConfiguration.extend({
   $schema: z.string().optional(),
 
   target,
+
   build: perCommandConfiguration.optional(),
   watch: perCommandConfiguration.optional(),
-  postBuild: scripts.optional(),
+
+  postBuild: hooks.optional(),
 });
 
 const singleEntryConfiguration = baseConfiguration.extend({

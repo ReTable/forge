@@ -6,3 +6,10 @@ export type Entry =
       in: string;
       out?: string;
     };
+
+export type Hook =
+  | string
+  | {
+      command: string;
+      cwd?: string;
+    };

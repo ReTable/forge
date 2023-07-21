@@ -5,13 +5,14 @@ import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
 import { readPackageUp } from 'read-pkg-up';
 
-import { Entry, Target } from '../types';
+import { Entry, Hook, Target } from '../types';
 
 import { createBuildOptions } from './createBuildOptions';
 
 type Options = {
   check: boolean;
   entries: Entry[];
+  postBuild: Hook[];
   production: boolean;
   storybook: boolean;
   target: Target;
@@ -22,6 +23,7 @@ type Options = {
 export async function bundle({
   check,
   entries,
+  postBuild,
   production,
   storybook,
   target,
@@ -55,6 +57,7 @@ export async function bundle({
     entries,
     name,
     packageRoot,
+    postBuild,
     production,
     repositoryRoot,
     storybook,
