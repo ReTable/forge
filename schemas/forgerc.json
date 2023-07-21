@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "anyOf": [
+    {
+      "$ref": "#/$defs/singleEntryConfiguration"
+    },
+    {
+      "$ref": "#/$defs/multipleEntriesConfiguration"
+    }
+  ],
+
+  "$defs": {
+    "platform": {
+      "description": "Target platform",
+      "type": "string",
+      "enum": ["browser", "node"]
+    },
+    "production": {
+      "description": "Enables bundling for production environment",
+      "type": "boolean",
+      "default": true
+    },
+    "check": {
+      "description": "enables type checking with TypeScript",
+      "type": "boolean",
+      "default": false
+    },
+    "typings": {
+      "description": "enables typings generation",
+      "type": "boolean",
+      "default": true
+    },
+    "entry": {
+      "description": "defines an entry point",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "in": {
+              "description": "input file or module",
+              "type": "string"
+            },
+            "out": {
+              "description": "output bundle",
+              "type": "string"
+            }
+          },
+          "required": ["in"]
+        }
+      ]
+    },
+    "entries": {
+      "description": "defines entry points",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "script": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "script": {
+              "type": "string"
+            },
+            "cwd": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "scripts": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/script"
+        },
+        {
+          "type": "array",
+          "item": {
+            "$ref": "#/$defs/script"
+          }
+        }
+      ]
+    },
+    "perModeConfiguration": {
+      "description": "configuration object for command",
+      "type": "object",
+      "properties": {
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "additionalProperties": false
+      }
+    },
+    "singleEntryConfiguration": {
+      "description": "configuration with single entry point",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "$ref": "#/$defs/platform"
+        },
+        "entry": {
+          "$ref": "#/$defs/entry"
+        },
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "build": {
+          "$ref": "#/$defs/perModeConfiguration"
+        },
+        "watch": {
+          "$ref": "#/$defs/perModeConfiguration"
+        },
+        "postBuild": {
+          "$ref": "#/$defs/scripts"
+        }
+      },
+      "required": ["platform"],
+      "additionalProperties": false
+    },
+    "multipleEntriesConfiguration": {
+      "description": "configuration with multiple entry points",
+      "type": "object",
+      "properties": {
+        "platform": {
+          "$ref": "#/$defs/platform"
+        },
+        "entries": {
+          "$ref": "#/$defs/entries"
+        },
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "build": {
+          "$ref": "#/$defs/perModeConfiguration"
+        },
+        "watch": {
+          "$ref": "#/$defs/perModeConfiguration"
+        },
+        "postBuild": {
+          "$ref": "#/$defs/scripts"
+        }
+      },
+      "required": ["platform"],
+      "additionalProperties": false
+    }
+  }
+}
