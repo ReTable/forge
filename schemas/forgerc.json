@@ -1,6 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
 
+  "description": "Defines a configuration",
+
   "type": "object",
 
   "anyOf": [
@@ -20,21 +22,22 @@
     },
     "production": {
       "description": "Enables bundling for production environment",
-      "type": "boolean",
-      "default": true
+      "type": "boolean"
     },
     "check": {
-      "description": "enables type checking with TypeScript",
-      "type": "boolean",
-      "default": false
+      "description": "Enables type checking with TypeScript",
+      "type": "boolean"
     },
     "typings": {
-      "description": "enables typings generation",
-      "type": "boolean",
-      "default": true
+      "description": "Enables typings generation",
+      "type": "boolean"
+    },
+    "storybook": {
+      "description": "Enables emitting additional documentation for components to use it in the Storybook",
+      "type": "boolean"
     },
     "entry": {
-      "description": "defines an entry point",
+      "description": "Defines an entry point",
       "oneOf": [
         {
           "type": "string"
@@ -56,13 +59,14 @@
       ]
     },
     "entries": {
-      "description": "defines entry points",
+      "description": "Defines entry points",
       "type": "array",
       "items": {
         "$ref": "#/$defs/entry"
       }
     },
     "script": {
+      "description": "Defines a script which should be run",
       "anyOf": [
         {
           "type": "string"
@@ -83,6 +87,7 @@
       ]
     },
     "scripts": {
+      "description": "Defines scripts which should be run",
       "anyOf": [
         {
           "$ref": "#/$defs/script"
@@ -95,8 +100,8 @@
         }
       ]
     },
-    "perModeConfiguration": {
-      "description": "configuration object for command",
+    "perCommandConfiguration": {
+      "description": "Defines a configuration for build or watch command",
       "type": "object",
       "properties": {
         "production": {
@@ -108,11 +113,14 @@
         "typings": {
           "$ref": "#/$defs/typings"
         },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
         "additionalProperties": false
       }
     },
     "singleEntryConfiguration": {
-      "description": "configuration with single entry point",
+      "description": "Defines a configuration with single entry point",
       "type": "object",
       "properties": {
         "platform": {
@@ -130,11 +138,14 @@
         "typings": {
           "$ref": "#/$defs/typings"
         },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
         "build": {
-          "$ref": "#/$defs/perModeConfiguration"
+          "$ref": "#/$defs/perCommandConfiguration"
         },
         "watch": {
-          "$ref": "#/$defs/perModeConfiguration"
+          "$ref": "#/$defs/perCommandConfiguration"
         },
         "postBuild": {
           "$ref": "#/$defs/scripts"
@@ -144,7 +155,7 @@
       "additionalProperties": false
     },
     "multipleEntriesConfiguration": {
-      "description": "configuration with multiple entry points",
+      "description": "Defines a configuration with single entry point",
       "type": "object",
       "properties": {
         "platform": {
@@ -162,11 +173,14 @@
         "typings": {
           "$ref": "#/$defs/typings"
         },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
         "build": {
-          "$ref": "#/$defs/perModeConfiguration"
+          "$ref": "#/$defs/perCommandConfiguration"
         },
         "watch": {
-          "$ref": "#/$defs/perModeConfiguration"
+          "$ref": "#/$defs/perCommandConfiguration"
         },
         "postBuild": {
           "$ref": "#/$defs/scripts"
