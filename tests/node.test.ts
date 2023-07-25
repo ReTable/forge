@@ -1,8 +1,8 @@
 import { describe, expect } from 'vitest';
 
-import { setup } from './setup';
+import { createTestApi } from './helpers/createTestApi';
 
-const it = setup();
+const it = createTestApi();
 
 describe('node', () => {
   describe('entries', () => {

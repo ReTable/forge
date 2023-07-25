@@ -1,8 +1,8 @@
 import { describe, expect } from 'vitest';
 
-import { setup } from './setup';
+import { createTestApi } from './helpers/createTestApi';
 
-const it = setup();
+const it = createTestApi();
 
 const images = ['bmp', 'gif', 'ico', 'jpeg', 'jpg', 'png', 'webp'];
 const fonts = ['eot', 'otf', 'ttf', 'woff', 'woff2'];
