@@ -4,8 +4,8 @@ import { createTestApi } from './helpers/createTestApi';
 
 const it = createTestApi();
 
-describe('init', async () => {
-  await it(
+describe('init', () => {
+  it(
     'generates initial config for browser',
     {
       command: 'init',
@@ -17,7 +17,7 @@ describe('init', async () => {
     },
   );
 
-  await it(
+  it(
     'generates initial config for node',
     {
       command: 'init',

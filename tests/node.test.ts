@@ -6,7 +6,7 @@ const it = createTestApi();
 
 describe('node', () => {
   describe('entries', () => {
-    describe('input', async () => {
+    describe('input', () => {
       const inputSamples = [
         {
           entries: ['index', 'index.ts'],
@@ -42,7 +42,7 @@ describe('node', () => {
 
       for (const sample of inputSamples) {
         for (const entry of sample.entries) {
-          await it(
+          it(
             `resolves "${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
             { command: 'build', name: 'node-entry', target: 'node', entries: [entry] },
             async (c) => {
@@ -55,7 +55,7 @@ describe('node', () => {
             },
           );
 
-          await it(
+          it(
             `resolves "./${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
             { command: 'build', name: 'node-entry', target: 'node', entries: [`./${entry}`] },
             async (c) => {
@@ -71,7 +71,7 @@ describe('node', () => {
       }
     });
 
-    describe('output', async () => {
+    describe('output', () => {
       const outputSamples = [
         {
           entry: 'index:main',
@@ -96,7 +96,7 @@ describe('node', () => {
       ];
 
       for (const sample of outputSamples) {
-        await it(
+        it(
           `resolves "${sample.entry} to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
           { command: 'build', name: 'node-entry', target: 'node', entries: [sample.entry] },
           async (c) => {
@@ -111,8 +111,8 @@ describe('node', () => {
       }
     });
 
-    describe('multiple entries', async () => {
-      await it(
+    describe('multiple entries', () => {
+      it(
         `allows to handle multiple entries`,
         {
           command: 'build',
@@ -128,7 +128,7 @@ describe('node', () => {
         },
       );
 
-      await it(
+      it(
         'use splitting to share code between multiple entries',
         {
           command: 'build',
@@ -148,8 +148,8 @@ describe('node', () => {
     });
   });
 
-  describe('clean', async () => {
-    await it(
+  describe('clean', () => {
+    it(
       "doesn't remove files from the previous build",
       { command: 'build', name: 'node-clean', target: 'node', production: false },
       async (c) => {
@@ -158,7 +158,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'removes files from the previous build before production build',
       { command: 'build', name: 'node-clean', target: 'node', production: true },
       async (c) => {
@@ -168,8 +168,8 @@ describe('node', () => {
     );
   });
 
-  describe('source maps', async () => {
-    await it(
+  describe('source maps', () => {
+    it(
       'generates source maps',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -177,7 +177,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'generates source maps with relative paths',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -189,7 +189,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'generates source maps with sources content',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -201,8 +201,8 @@ describe('node', () => {
     );
   });
 
-  describe('dependencies', async () => {
-    await it(
+  describe('dependencies', () => {
+    it(
       'uses dependencies as external',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -214,8 +214,8 @@ describe('node', () => {
     );
   });
 
-  describe('default flags', async () => {
-    await it(
+  describe('default flags', () => {
+    it(
       'minify bundle by default',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -223,7 +223,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'generates typings by default',
       { command: 'build', name: 'node-default', target: 'node' },
       async (c) => {
@@ -233,8 +233,8 @@ describe('node', () => {
     );
   });
 
-  describe('minify', async () => {
-    await it(
+  describe('minify', () => {
+    it(
       'drops debugger in production mode',
       { command: 'build', name: 'node-debugger', target: 'node' },
       async (c) => {
@@ -243,8 +243,8 @@ describe('node', () => {
     );
   });
 
-  describe('production mode', async () => {
-    await it(
+  describe('production mode', () => {
+    it(
       "don't minify code when production mode is off",
       { command: 'build', name: 'node-default', target: 'node', production: false },
       async (c) => {
@@ -252,7 +252,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'minify code when production mode is on',
       { command: 'build', name: 'node-default', target: 'node', production: true },
       async (c) => {
@@ -261,8 +261,8 @@ describe('node', () => {
     );
   });
 
-  describe('type checking', async () => {
-    await it(
+  describe('type checking', () => {
+    it(
       "doesn't check types when check mode is off",
       { command: 'build', name: 'node-check', target: 'node', check: false },
       async (c) => {
@@ -270,7 +270,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       "doesn't generate typings when check mode is off",
       { command: 'build', name: 'node-default', target: 'node', check: false },
       async (c) => {
@@ -278,7 +278,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'fails when types are invalid and check mode is on',
       { command: 'build', name: 'node-check', target: 'node', check: true },
       (c) => {
@@ -286,7 +286,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       "doesn't emit when errors are existed",
       { command: 'build', name: 'node-check', target: 'node', check: true },
       async (c) => {
@@ -296,8 +296,8 @@ describe('node', () => {
     );
   });
 
-  describe('typings generation', async () => {
-    await it(
+  describe('typings generation', () => {
+    it(
       "doesn't generate typings when typings mode is off",
       { command: 'build', name: 'node-default', target: 'node', typings: false },
       async (c) => {
@@ -305,7 +305,7 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       'generates typings when typings mode is on',
       { command: 'build', name: 'node-default', target: 'node', typings: true },
       async (c) => {
@@ -313,9 +313,15 @@ describe('node', () => {
       },
     );
 
-    await it(
+    it(
       "doesn't generates typings when check mode is off",
-      { command: 'build', name: 'node-default', target: 'node', check: false, typings: true },
+      {
+        command: 'build',
+        name: 'node-default',
+        target: 'node',
+        check: false,
+        typings: true,
+      },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
