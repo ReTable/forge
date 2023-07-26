@@ -29,6 +29,8 @@ type Options = {
   typings?: boolean;
   storybook?: boolean;
 
+  postBuild?: string[];
+
   watch: boolean;
 };
 
@@ -58,6 +60,21 @@ function parseCliEntries(entries: string[]) {
     return {
       in: inPath,
       out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
+    };
+  });
+}
+
+function parseCliHooks(hooks: string[]) {
+  return hooks.map((hook) => {
+    const [command, cwd] = hook.split(':') as [string, string | undefined];
+
+    if (cwd == null) {
+      return command;
+    }
+
+    return {
+      command,
+      cwd,
     };
   });
 }
@@ -105,6 +122,16 @@ export async function loadConfig(options: Options): Promise<Result> {
   const storybook =
     options.storybook ?? commandConfig?.storybook ?? userConfig?.storybook ?? defaults.storybook;
 
+  let postBuild: Hook | Hook[] = [];
+
+  if (options.postBuild != null) {
+    postBuild = parseCliHooks(options.postBuild);
+  } else if (userConfig?.postBuild != null) {
+    postBuild = userConfig.postBuild;
+  }
+
+  postBuild = normalizeHooks(postBuild);
+
   return {
     target,
 
@@ -115,7 +142,7 @@ export async function loadConfig(options: Options): Promise<Result> {
     typings: check && typings,
     storybook: target === 'browser' && storybook,
 
-    postBuild: normalizeHooks(userConfig?.postBuild ?? []),
+    postBuild,
 
     watch: options.watch,
   };

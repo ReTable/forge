@@ -28,6 +28,9 @@ export class BuildCommand extends Command {
 
       If the \`-s,--storybook\` flag is set the additional documentation for Storybook will be emitted.
 
+      If the \`-b,--post-build\` options is given, then they will be used as post build hooks. A hook is an external
+      command, which executed in the shell.
+
       If the \`-w,--watch\` flag is set, then build run in watch mode.
     `,
   });
@@ -39,6 +42,12 @@ export class BuildCommand extends Command {
   private readonly entries = Option.Array('-e,--entry', {
     arity: 1,
     description: 'Defines which entry points will be bundled (default: index)',
+    required: false,
+  });
+
+  private readonly postBuild = Option.Array('-b,--post-build', {
+    arity: 1,
+    description: 'Defines hook which will be called after each build (default: none)',
     required: false,
   });
 
@@ -70,6 +79,8 @@ export class BuildCommand extends Command {
       check: this.check,
       typings: this.typings,
       storybook: this.storybook,
+
+      postBuild: this.postBuild,
 
       watch: false,
     });
