@@ -1925,6 +1925,19 @@ export {
 "
 `;
 
+exports[`browser > vanilla-extract support > bundles static files from \`vanilla-extract\` styles 1`] = `
+"// src/index.css.ts
+import { style } from \\"@vanilla-extract/css\\";
+var root = style({
+  backgroundColor: \\"red\\"
+});
+
+// src/index.ts
+document.body.classList.add(root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
 exports[`browser > vanilla-extract support > ignores import of css files from \`vanilla-extract\` files 1`] = `
 "/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LnNyY19yb290X18xZzdqYWhoMCB7CiAgY29sb3I6IHJlZDsKfQ== */
 .src_root__1g7jahh0 {

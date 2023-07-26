@@ -168,7 +168,11 @@ export async function createBuildOptions({
     }
   }
 
-  options.plugins = [postBuildPlugin(postBuild)];
+  if (options.plugins == null) {
+    options.plugins = [];
+  }
+
+  options.plugins.push(postBuildPlugin(postBuild));
 
   if (check) {
     options.plugins.push(typescriptPlugin(typings));
