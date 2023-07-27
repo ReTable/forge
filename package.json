@@ -35,7 +35,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsx src/index.ts build --target node --production --no-typings",
+    "build": "tsx src/index.ts",
     "lint": "eslint .",
     "release": "changeset publish",
     "test": "vitest --run --testTimeout=10000"
