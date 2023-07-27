@@ -3,7 +3,7 @@ export type Fixture = {
   workingDir: string;
 };
 
-type Target = 'browser' | 'node';
+export type Target = 'browser' | 'node';
 
 type BaseFixtureOptions<Command extends 'build' | 'init', Options> = Options & {
   command: Command;

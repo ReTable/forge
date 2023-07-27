@@ -1,6 +1,6 @@
 import { describe, expect } from 'vitest';
 
-import { createTestApi } from './helpers/createTestApi';
+import { createTestApi } from './helpers';
 
 const it = createTestApi();
 
