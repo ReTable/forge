@@ -1,0 +1,12 @@
+{
+  "$schema": "https://github.com/ReTable/forge/blob/main/schemas/forgerc.json",
+  "target": "node",
+  "check": true,
+  "typings": false,
+  "build": {
+    "production": true
+  },
+  "watch": {
+    "production": false
+  }
+}

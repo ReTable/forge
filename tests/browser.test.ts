@@ -1,15 +1,15 @@
 import { describe, expect } from 'vitest';
 
-import { setup } from './setup';
+import { createTestApi } from './helpers';
 
-const it = setup();
+const it = createTestApi();
 
 const images = ['bmp', 'gif', 'ico', 'jpeg', 'jpg', 'png', 'webp'];
 const fonts = ['eot', 'otf', 'ttf', 'woff', 'woff2'];
 
 describe('browser', () => {
   describe('entries', () => {
-    describe('input', async () => {
+    describe('input', () => {
       const inputSamples = [
         {
           entries: ['index', 'index.tsx'],
@@ -70,11 +70,12 @@ describe('browser', () => {
 
       for (const sample of inputSamples) {
         for (const entry of sample.entries) {
-          await it(
+          it(
             `resolves "${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
             {
+              command: 'build',
               name: 'browser-entry',
-              platform: 'browser',
+              target: 'browser',
               entries: [entry],
             },
             async (c) => {
@@ -87,13 +88,9 @@ describe('browser', () => {
             },
           );
 
-          await it(
+          it(
             `resolves "./${entry}" entry to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
-            {
-              name: 'browser-entry',
-              platform: 'node',
-              entries: [`./${entry}`],
-            },
+            { command: 'build', name: 'browser-entry', target: 'node', entries: [`./${entry}`] },
             async (c) => {
               const bundle = await c.read(`lib/${sample.out}`);
 
@@ -107,7 +104,7 @@ describe('browser', () => {
       }
     });
 
-    describe('output', async () => {
+    describe('output', () => {
       const outputSamples = [
         {
           entry: 'index:main',
@@ -132,13 +129,9 @@ describe('browser', () => {
       ];
 
       for (const sample of outputSamples) {
-        await it(
+        it(
           `resolves "${sample.entry} to "src/${sample.in}" and bundles to "lib/${sample.out}"`,
-          {
-            name: 'browser-entry',
-            platform: 'browser',
-            entries: [sample.entry],
-          },
+          { command: 'build', name: 'browser-entry', target: 'browser', entries: [sample.entry] },
           async (c) => {
             const bundle = await c.read(`lib/${sample.out}`);
 
@@ -151,12 +144,13 @@ describe('browser', () => {
       }
     });
 
-    describe('multiple entries', async () => {
-      await it(
+    describe('multiple entries', () => {
+      it(
         `allows to handle multiple entries`,
         {
+          command: 'build',
           name: 'browser-multiple-entries',
-          platform: 'browser',
+          target: 'browser',
           entries: ['submoduleA', 'submoduleB'],
         },
         async (c) => {
@@ -167,11 +161,12 @@ describe('browser', () => {
         },
       );
 
-      await it(
+      it(
         'use splitting to share code between multiple entries',
         {
+          command: 'build',
           name: 'browser-multiple-entries-splitting',
-          platform: 'browser',
+          target: 'browser',
           entries: ['submoduleA', 'submoduleB'],
         },
         async (c) => {
@@ -184,11 +179,12 @@ describe('browser', () => {
         },
       );
 
-      await it(
+      it(
         'create a own CSS bundle for each entry',
         {
+          command: 'build',
           name: 'browser-multiple-entries',
-          platform: 'browser',
+          target: 'browser',
           entries: ['submoduleA', 'submoduleB'],
         },
         async (c) => {
@@ -203,11 +199,12 @@ describe('browser', () => {
         },
       );
 
-      await it(
+      it(
         'create non shared CSS bundle for each entry',
         {
+          command: 'build',
           name: 'browser-multiple-entries-splitting-css',
-          platform: 'browser',
+          target: 'browser',
           entries: ['submoduleA', 'submoduleB'],
           dependencies: ['@vanilla-extract/css'],
         },
@@ -225,19 +222,19 @@ describe('browser', () => {
     });
   });
 
-  describe('clean', async () => {
-    await it(
+  describe('clean', () => {
+    it(
       "doesn't remove files from the previous build",
-      { name: 'browser-clean', platform: 'browser', production: false },
+      { command: 'build', name: 'browser-clean', target: 'browser', production: false },
       async (c) => {
         expect(await c.isExists('lib/previous.js')).toBe(true);
         expect(await c.isExists('typings/previous.d.ts')).toBe(true);
       },
     );
 
-    await it(
+    it(
       'removes files from the previous build before production build',
-      { name: 'browser-clean', platform: 'browser', production: true },
+      { command: 'build', name: 'browser-clean', target: 'browser', production: true },
       async (c) => {
         expect(await c.isExists('lib/previous.js')).toBe(false);
         expect(await c.isExists('typings/previous.d.ts')).toBe(false);
@@ -245,21 +242,18 @@ describe('browser', () => {
     );
   });
 
-  describe('source maps', async () => {
-    await it(
+  describe('source maps', () => {
+    it(
       'generates source maps',
-      { name: 'browser-default', platform: 'browser' },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         expect(await c.read('lib/index.js.map')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'generates source maps with relative paths',
-      {
-        name: 'browser-default',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         const { sources } = await c.readSourceMap('lib/index.js.map');
 
@@ -269,9 +263,9 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'generates source maps with sources content',
-      { name: 'browser-default', platform: 'browser' },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         const { sourcesContent } = await c.readSourceMap('lib/index.js.map');
 
@@ -281,10 +275,10 @@ describe('browser', () => {
     );
   });
 
-  describe('dependencies', async () => {
-    await it(
+  describe('dependencies', () => {
+    it(
       'uses dependencies as external',
-      { name: 'browser-default', platform: 'browser' },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
         expect(await c.read('lib/index.js.map')).toMatchSnapshot();
@@ -294,18 +288,18 @@ describe('browser', () => {
     );
   });
 
-  describe('default flags', async () => {
-    await it(
+  describe('default flags', () => {
+    it(
       'minify bundle by default',
-      { name: 'browser-default', platform: 'browser' },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'generates typings by default',
-      { name: 'browser-default', platform: 'browser' },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         expect(await c.read('typings/index.d.ts')).toMatchSnapshot();
         expect(await c.read('typings/fetchJson.d.ts')).toMatchSnapshot();
@@ -313,86 +307,62 @@ describe('browser', () => {
     );
   });
 
-  describe('minify', async () => {
-    await it(
+  describe('minify', () => {
+    it(
       'drops debugger in production mode',
-      { name: 'browser-debugger', platform: 'browser' },
+      { command: 'build', name: 'browser-debugger', target: 'browser' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
   });
 
-  describe('production mode', async () => {
-    await it(
+  describe('production mode', () => {
+    it(
       "don't minify code when production mode is off",
-      {
-        name: 'browser-default',
-        platform: 'browser',
-        production: false,
-      },
+      { command: 'build', name: 'browser-default', target: 'browser', production: false },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'minify code when production mode is on',
-      {
-        name: 'browser-default',
-        platform: 'browser',
-        production: true,
-      },
+      { command: 'build', name: 'browser-default', target: 'browser', production: true },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
   });
 
-  describe('type checking', async () => {
-    await it(
+  describe('type checking', () => {
+    it(
       "doesn't check types when check mode is off",
-      {
-        name: 'browser-check',
-        platform: 'browser',
-        check: false,
-      },
+      { command: 'build', name: 'browser-check', target: 'browser', check: false },
       async (c) => {
         expect(await c.isExists('lib')).toBe(true);
       },
     );
 
-    await it(
+    it(
       "doesn't generate typings when check mode is off",
-      {
-        name: 'browser-default',
-        platform: 'browser',
-        check: false,
-      },
+      { command: 'build', name: 'browser-default', target: 'browser', check: false },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
     );
 
-    await it(
+    it(
       'fails when types are invalid and check mode is on',
-      {
-        name: 'browser-check',
-        platform: 'browser',
-        check: true,
-      },
+      { command: 'build', name: 'browser-check', target: 'browser', check: true },
       (c) => {
         expect(c.isFailed).toBe(true);
       },
     );
 
-    await it(
+    it(
       "doesn't emit when errors are existed",
-      {
-        name: 'browser-check',
-        platform: 'browser',
-        check: true,
-      },
+      { command: 'build', name: 'browser-check', target: 'browser', check: true },
       async (c) => {
         expect(await c.isExists('lib')).toBe(false);
         expect(await c.isExists('typings')).toBe(false);
@@ -400,36 +370,29 @@ describe('browser', () => {
     );
   });
 
-  describe('typings generation', async () => {
-    await it(
+  describe('typings generation', () => {
+    it(
       "doesn't generate typings when typings mode is off",
-      {
-        name: 'browser-default',
-        platform: 'browser',
-        typings: false,
-      },
+      { command: 'build', name: 'browser-default', target: 'browser', typings: false },
       async (c) => {
         expect(await c.isExists('typings')).toBe(false);
       },
     );
 
-    await it(
+    it(
       'generates typings when typings mode is on',
-      {
-        name: 'browser-default',
-        platform: 'browser',
-        typings: true,
-      },
+      { command: 'build', name: 'browser-default', target: 'browser', typings: true },
       async (c) => {
         expect(await c.isExists('typings')).toBe(true);
       },
     );
 
-    await it(
+    it(
       "doesn't generates typings when check mode is off",
       {
+        command: 'build',
         name: 'browser-default',
-        platform: 'browser',
+        target: 'browser',
         check: false,
         typings: true,
       },
@@ -439,13 +402,10 @@ describe('browser', () => {
     );
   });
 
-  describe('static files', async () => {
-    await it(
+  describe('static files', () => {
+    it(
       'bundles static files',
-      {
-        name: 'browser-static',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-static', target: 'browser' },
       async (c) => {
         for (const ext of images) {
           // eslint-disable-next-line no-await-in-loop
@@ -463,12 +423,9 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'uses original imports for assets',
-      {
-        name: 'browser-static',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-static', target: 'browser' },
       async (c) => {
         const content = await c.read('lib/index.js');
 
@@ -483,35 +440,22 @@ describe('browser', () => {
     );
   });
 
-  describe('CSS', async () => {
-    await it(
-      'supports CSS',
-      {
-        name: 'browser-css',
-        platform: 'browser',
-      },
-      async (c) => {
-        expect(await c.isExists('lib/index.css')).toBe(true);
-      },
-    );
+  describe('CSS', () => {
+    it('supports CSS', { command: 'build', name: 'browser-css', target: 'browser' }, async (c) => {
+      expect(await c.isExists('lib/index.css')).toBe(true);
+    });
 
-    await it(
+    it(
       'generates source maps for CSS',
-      {
-        name: 'browser-css',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-css', target: 'browser' },
       async (c) => {
         expect(await c.isExists('lib/index.css.map')).toBe(true);
       },
     );
 
-    await it(
+    it(
       'bundles static files from CSS',
-      {
-        name: 'browser-static',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-static', target: 'browser' },
       async (c) => {
         for (const ext of images) {
           // eslint-disable-next-line no-await-in-loop
@@ -529,12 +473,9 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'uses original imports for assets in CSS',
-      {
-        name: 'browser-static',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-static', target: 'browser' },
       async (c) => {
         const content = await c.read('lib/index.css');
 
@@ -549,13 +490,10 @@ describe('browser', () => {
     );
   });
 
-  describe('CSS auto import', async () => {
-    await it(
+  describe('CSS auto import', () => {
+    it(
       "doesn't add CSS import to the result bundle if CSS isn't used",
-      {
-        name: 'browser-default',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-default', target: 'browser' },
       async (c) => {
         const content = await c.read('lib/index.js');
 
@@ -563,12 +501,9 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'adds CSS import to the result bundle if CSS is used',
-      {
-        name: 'browser-css',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-css', target: 'browser' },
       async (c) => {
         const content = await c.read('lib/index.js');
 
@@ -577,50 +512,39 @@ describe('browser', () => {
     );
   });
 
-  describe('CSS Modules', async () => {
-    await it(
+  describe('CSS Modules', () => {
+    it(
       'supports CSS modules',
-      {
-        name: 'browser-css-modules',
-        platform: 'browser',
-        production: false,
-      },
+      { command: 'build', name: 'browser-css-modules', target: 'browser', production: false },
       async (c) => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'uses short ids for CSS modules when the production mode is on',
-      {
-        name: 'browser-css-modules',
-        platform: 'browser',
-        production: true,
-      },
+      { command: 'build', name: 'browser-css-modules', target: 'browser', production: true },
       async (c) => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
   });
 
-  describe('preprocessors support', async () => {
-    await it(
+  describe('preprocessors support', () => {
+    it(
       'supports SCSS postprocessor',
-      {
-        name: 'browser-scss',
-        platform: 'browser',
-        production: false,
-      },
+      { command: 'build', name: 'browser-scss', target: 'browser', production: false },
       async (c) => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'resolves paths in SCSS',
       {
+        command: 'build',
         name: 'browser-scss-node-modules',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -628,11 +552,12 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'resolves paths in SCSS with conditional exports',
       {
+        command: 'build',
         name: 'browser-scss-node-modules-conditionals',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -640,12 +565,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports PostCSS preprocessor',
       {
+        command: 'build',
         dependencies: ['postcss-nested'],
         name: 'browser-postcss',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -654,13 +580,14 @@ describe('browser', () => {
     );
   });
 
-  describe('React support', async () => {
-    await it(
+  describe('React support', () => {
+    it(
       'supports development JSX runtime',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-react',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -668,12 +595,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports JSX runtime when the production mode is on',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-react',
-        platform: 'browser',
+        target: 'browser',
         production: true,
       },
       async (c) => {
@@ -682,13 +610,14 @@ describe('browser', () => {
     );
   });
 
-  describe('SVG support', async () => {
-    await it(
+  describe('SVG support', () => {
+    it(
       'supports SVG in CSS',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-svg',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -697,12 +626,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports import of SVG as URL in JS',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-svg',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -711,12 +641,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports import of SVG as React Component in JS',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-svg',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -725,12 +656,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports sharing the same SVG between CSS and JS',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-svg',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -740,12 +672,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'minify SVG when production mode is on',
       {
+        command: 'build',
         dependencies: ['@types/react'],
         name: 'browser-svg',
-        platform: 'browser',
+        target: 'browser',
         production: true,
       },
       async (c) => {
@@ -758,13 +691,14 @@ describe('browser', () => {
     );
   });
 
-  describe('vanilla-extract support', async () => {
-    await it(
+  describe('vanilla-extract support', () => {
+    it(
       'supports `vanilla-extract` package',
       {
+        command: 'build',
         dependencies: ['@vanilla-extract/css'],
         name: 'browser-vanilla-extract',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -773,12 +707,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'supports static files in the `vanilla-extract` styles',
       {
+        command: 'build',
         dependencies: ['@vanilla-extract/css'],
         name: 'browser-vanilla-extract',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -788,12 +723,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'bundles static files from `vanilla-extract` styles',
       {
+        command: 'build',
         dependencies: ['@vanilla-extract/css'],
         name: 'browser-vanilla-extract-static',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -813,12 +749,13 @@ describe('browser', () => {
       },
     );
 
-    await it(
+    it(
       'ignores import of css files from `vanilla-extract` files',
       {
+        command: 'build',
         dependencies: ['@vanilla-extract/css'],
         name: 'browser-vanilla-extract-css',
-        platform: 'browser',
+        target: 'browser',
         production: false,
       },
       async (c) => {
@@ -827,47 +764,37 @@ describe('browser', () => {
     );
   });
 
-  describe('storybook', async () => {
-    await it(
+  describe('storybook', () => {
+    it(
       "doesn't generate documentation by default",
-      {
-        name: 'browser-storybook',
-        platform: 'browser',
-      },
+      { command: 'build', name: 'browser-storybook', target: 'browser' },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       "doesn't generate documentation in production",
-      {
-        name: 'browser-storybook',
-        platform: 'browser',
-        production: true,
-      },
+      { command: 'build', name: 'browser-storybook', target: 'browser', production: true },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       "doesn't generate documentation by default in development",
-      {
-        name: 'browser-storybook',
-        platform: 'browser',
-        production: false,
-      },
+      { command: 'build', name: 'browser-storybook', target: 'browser', production: false },
       async (c) => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
 
-    await it(
+    it(
       'generates documentation if flag is given',
       {
+        command: 'build',
         name: 'browser-storybook',
-        platform: 'browser',
+        target: 'browser',
         production: false,
         storybook: true,
       },

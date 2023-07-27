@@ -19,32 +19,6 @@ pnpm add @tabula/forge --save-dev
 
 You can use [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) too.
 
-## Commands
-
-It has the following commands:
-
-- `forge build browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook] [-e,--entry <in>[:<out>]]`
-- `forge build node [-p,--production] [-c,--check] [-t,--typings] [-e,--entry <in>[:<out>]]`
-- `forge watch browser [-p,--production] [-c,--check] [-t,--typings] [-s,--storybook] [-e,--entry <in>[:<out>]]`
-- `forge watch node [-p,--production] [-c,--check] [-t,--typings] [-e,--entry <in>[:<out>]]`
-
-As you can see, all commands have the same options:
-
-- `-p,--production` - (default: **true**) enables bundling for production
-  environment. Build for production mode doesn't enable minification for debug
-  purposes in the target user application.
-- `-c,--check` - (default: **true**) enables type checking with TypeScript. It
-  runs `tsc` before bundling.
-- `-t,--typings` - (default: **true**) enables typings generation. It works only
-  if type checking is enabled too.
-- `-e,--entry` - (default: **index**) defines an entry point. Can be used multiple times to
-  define multiple entry points.
-
-Also, an additional option is presented for browser:
-
-- `-s,--storybook` - (default: **false**) enables emitting additional documentation
-  for components to use it in the Storybook.
-
 ## Common
 
 The `forge` has a few moments which should be highlighted:
@@ -55,6 +29,161 @@ The `forge` has a few moments which should be highlighted:
 - uses ESM format for produced module;
 - doesn't bundle dependencies;
 - generates source maps which include sources content.
+
+## Commands
+
+### init
+
+Create an initial file for the selected target.
+
+#### Usage
+
+`forge init -t,--target browser|node`
+
+#### Options
+
+- `-t,--target` - defines target for which a config will be generated.
+
+### build
+
+Build a package.
+
+#### Usage
+
+`forge [build] <-t,--target browser|node> [-e,--entry <in>[:<out>]] [-p,--production] [-c,--check] [-t,--typings]
+[-s,--storybook] [-b,--post-build <command>[:<cwd>]] [-w,--watch]`
+
+#### Options
+
+- `-t`, `--target` - defines which platform is target for build. Must be `browser` or `node`. This
+  option is required, if not defined in the configuration file.
+- `-e`, `--entry` - (default: **index**) defines an entry point. Can be used multiple times to define multiple entry
+  points.
+- `-p`, `--production` - (default: **true** for build and **false** for watch) enables bundling for production environment. Build for production mode doesn't enable minification
+  for debug purposes in the target user application.
+- `-c`, `--check` - (default: **true**) enables types checking through TypeScript compiler running. It stops build if any
+  type error has been found.
+- `-t`, `--typings` - (default: **true**) enables typings generation. It generates typings only if type checking is enabled.
+- `-s`, `--storybook` - (default: **false** for build and **true** for watch) enables emitting additional meta for Storybook. It uses `react-docgen` under the hood. This option
+  is useful only for the `browser` target.
+- `-b`, `--post-build` - defines post build hook. A hook is an external command, which executed in a shell. Can be used
+  multiple times to define multiple post build hooks.
+- `-w`, `--watch` - (default: **false**) enables watch mode.
+
+## Configuration file
+
+You can use configuration file. We're looking for:
+
+- a `forge` property in the `package.json`;
+- a JSON or YAML `.forgerc` file;
+- an `.forgerc` file with `.json`, `.yaml`, `.yml`, `.js`, `.mjs` or `.cjs`
+- any of the above two inside a .config subdirectory;
+- a `forge.config.js`, `forge.config.mjs`, or `forge.config.cjs` file.
+
+## Example
+
+```json
+{
+  "$schema": "https://github.com/ReTable/forge/blob/main/schemas/forgerc.json",
+
+  "target": "node",
+
+  "entry": "index",
+
+  "check": true,
+  "typings": true,
+
+  "postBuild": "touch lib/meta.js",
+
+  "build": {
+    "production": true
+  },
+
+  "watch": {
+    "production": false,
+    "storybook": true
+  }
+}
+```
+
+### Entry format
+
+You can use one of following entry formats:
+
+- ```json
+  "<input>"
+  ```
+- ```json
+  "<input>:<output>"
+  ```
+- ```json
+  {
+    "in": "<input>"
+  }
+  ```
+- ```json
+  {
+    "in": "<input>",
+    "out": "<output>"
+  }
+  ```
+
+### Entries
+
+You can define one or more entries:
+
+```json5
+{
+  "entry": // <entry>
+}
+```
+
+or
+
+```json5
+{
+  entries: [
+    // <entry>
+    // <entry>
+    // ...
+  ],
+}
+```
+
+### Hooks format
+
+You can use one of following hook formats:
+
+- ```json
+  "<command>"
+  ```
+- ```json
+  "<command>:<cwd>"
+  ```
+- ```json
+  {
+    "command": "<command>"
+  }
+  ```
+- ```json
+  {
+    "command": "<command>",
+    "cwd": "<cwd>"
+  }
+  ```
+
+### Options resolving
+
+We resolve option in following order:
+
+- an option provided through CLI;
+- command specific option from the config (`build` or `watch` properties);
+- option from the config file;
+- default value.
+
+### Schema
+
+You can look at the [JSON Schema](https://github.com/ReTable/forge/blob/main/schemas/forgerc.json) for configuration file.
 
 ## Entries
 
@@ -127,6 +256,19 @@ will be shared. But, extracted CSS from shared modules will be duplicated for ea
 
 All hashed class names will be the same between all modules which use them.
 
+## Hooks
+
+You can run scripts after each build.
+
+For example:
+
+```shell
+forge -b "touch lib/meta.js" -b "touch meta.d.ts":"typings"
+```
+
+The two commands will be executed after build. The first one will use `<packageRoot>` as working directory. And the
+second one will use `<packageRoot>/typings` as working directory.
+
 ## Node.js
 
 The only one moment which you should know about bundling for Node.js that we
@@ -177,7 +319,7 @@ You should use `*.pcss` extension for PostCSS and `*.scss` for the Sass.
 We support imports in format of `~<pkg>`. It's similar to the Webpack, but
 has own restrictions.
 
-The `forge` doesn't support paths inside the package. It does searce
+The `forge` doesn't support paths inside the package. It does search
 the `package.json` of the given package, and try to read `sass` field inside
 of it.
 

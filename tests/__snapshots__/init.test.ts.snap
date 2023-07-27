@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`init > generates initial config for browser 1`] = `
+"{
+  \\"$schema\\": \\"https://github.com/ReTable/forge/blob/main/schemas/forgerc.json\\",
+  \\"target\\": \\"browser\\",
+  \\"entry\\": \\"index\\",
+  \\"check\\": true,
+  \\"typings\\": true,
+  \\"build\\": {
+    \\"production\\": true
+  },
+  \\"watch\\": {
+    \\"production\\": false,
+    \\"storybook\\": true
+  }
+}"
+`;
+
+exports[`init > generates initial config for node 1`] = `
+"{
+  \\"$schema\\": \\"https://github.com/ReTable/forge/blob/main/schemas/forgerc.json\\",
+  \\"target\\": \\"node\\",
+  \\"entry\\": \\"index\\",
+  \\"check\\": true,
+  \\"typings\\": true,
+  \\"build\\": {
+    \\"production\\": true
+  },
+  \\"watch\\": {
+    \\"production\\": false
+  }
+}"
+`;

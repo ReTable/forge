@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "description": "Defines a configuration",
+
+  "type": "object",
+
+  "anyOf": [
+    {
+      "$ref": "#/$defs/singleEntryConfiguration"
+    },
+    {
+      "$ref": "#/$defs/multipleEntriesConfiguration"
+    }
+  ],
+
+  "$defs": {
+    "target": {
+      "description": "Target platform for build",
+      "type": "string",
+      "enum": ["browser", "node"]
+    },
+    "production": {
+      "description": "Enables bundling for production environment",
+      "type": "boolean"
+    },
+    "check": {
+      "description": "Enables type checking with TypeScript",
+      "type": "boolean"
+    },
+    "typings": {
+      "description": "Enables typings generation",
+      "type": "boolean"
+    },
+    "storybook": {
+      "description": "Enables emitting additional documentation for components to use it in the Storybook",
+      "type": "boolean"
+    },
+    "entry": {
+      "description": "Defines an entry point",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "in": {
+              "description": "input file or module",
+              "type": "string"
+            },
+            "out": {
+              "description": "output bundle",
+              "type": "string"
+            }
+          },
+          "required": ["in"]
+        }
+      ]
+    },
+    "entries": {
+      "description": "Defines entry points",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    },
+    "hook": {
+      "description": "Defines a hook which should be run",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "cwd": {
+              "type": "string"
+            }
+          },
+          "required": ["command"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "hooks": {
+      "description": "Defines hooks which should be run",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/hook"
+        },
+        {
+          "type": "array",
+          "item": {
+            "$ref": "#/$defs/hook"
+          }
+        }
+      ]
+    },
+    "perCommandConfiguration": {
+      "description": "Defines a configuration for build or watch command",
+      "type": "object",
+      "properties": {
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
+        "additionalProperties": false
+      }
+    },
+    "singleEntryConfiguration": {
+      "description": "Defines a configuration with single entry point",
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "entry": {
+          "$ref": "#/$defs/entry"
+        },
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
+        "build": {
+          "$ref": "#/$defs/perCommandConfiguration"
+        },
+        "watch": {
+          "$ref": "#/$defs/perCommandConfiguration"
+        },
+        "postBuild": {
+          "$ref": "#/$defs/hooks"
+        }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    },
+    "multipleEntriesConfiguration": {
+      "description": "Defines a configuration with single entry point",
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "entries": {
+          "$ref": "#/$defs/entries"
+        },
+        "production": {
+          "$ref": "#/$defs/production"
+        },
+        "check": {
+          "$ref": "#/$defs/check"
+        },
+        "typings": {
+          "$ref": "#/$defs/typings"
+        },
+        "storybook": {
+          "$ref": "#/$defs/storybook"
+        },
+        "build": {
+          "$ref": "#/$defs/perCommandConfiguration"
+        },
+        "watch": {
+          "$ref": "#/$defs/perCommandConfiguration"
+        },
+        "postBuild": {
+          "$ref": "#/$defs/hooks"
+        }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  }
+}

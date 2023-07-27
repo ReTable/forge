@@ -5,16 +5,17 @@ import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
 import { readPackageUp } from 'read-pkg-up';
 
-import { Platform } from '../types';
+import { Entry, Hook, Target } from '../types';
 
 import { createBuildOptions } from './createBuildOptions';
 
 type Options = {
   check: boolean;
-  entries: string[];
-  platform: Platform;
+  entries: Entry[];
+  postBuild: Hook[];
   production: boolean;
   storybook: boolean;
+  target: Target;
   typings: boolean;
   watch: boolean;
 };
@@ -22,9 +23,10 @@ type Options = {
 export async function bundle({
   check,
   entries,
-  platform,
+  postBuild,
   production,
   storybook,
+  target,
   typings,
   watch,
 }: Options): Promise<void> {
@@ -55,10 +57,11 @@ export async function bundle({
     entries,
     name,
     packageRoot,
-    platform,
+    postBuild,
     production,
     repositoryRoot,
     storybook,
+    target,
     typings,
   });
 
