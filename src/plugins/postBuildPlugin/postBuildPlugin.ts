@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 
 import { Plugin } from 'esbuild';
-import { $ } from 'execa';
+import { execa } from 'execa';
 
 import { Hook } from '../../types';
 
@@ -38,7 +38,7 @@ export function postBuildPlugin(initialHooks: Hook[]): Plugin {
         }
 
         for (const { command, cwd } of hooks) {
-          await $({ stdio: 'inherit', cwd })`${command}`;
+          await execa(command, { shell: 'sh', stdio: 'inherit', cwd });
         }
       });
     },
