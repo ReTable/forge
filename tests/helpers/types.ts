@@ -23,6 +23,7 @@ type BaseBuildFixtureOptions<CommandTarget extends Target> = BaseFixtureOptions<
     check?: boolean;
     dependencies?: string[];
     entries?: string[];
+    postBuild?: string[];
     production?: boolean;
     storybook?: CommandTarget extends 'browser' ? boolean : never;
     target: CommandTarget;

@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { cp, mkdir, readdir, rename, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -113,50 +114,46 @@ async function prepare(id: string, options: FixtureOptions): Promise<Fixture> {
 
 function createFixtureIdFor(options: FixtureOptions): string {
   const chunks: string[] = [
-    options.command,
-    options.name,
-    options.target === 'node' ? 'tg_n' : 'tg_b',
+    `command=${options.command}`,
+    `name=${options.name}`,
+    `target=${options.target}`,
   ];
 
   if (options.command === 'build') {
-    let production = 'pr_d';
-
     if (options.production != null) {
-      production = options.production ? 'pr_t' : 'pr_f';
+      chunks.push(`production=${options.production.toString()}`);
     }
-
-    let check = 'ch_d';
 
     if (options.check != null) {
-      check = options.check ? 'ch_t' : 'ch_f';
+      chunks.push(`check=${options.check.toString()}`);
     }
-
-    let typings = 'ts_d';
 
     if (options.typings != null) {
-      typings = options.typings ? 'ts_t' : 'ts_f';
+      chunks.push(`typings=${options.typings.toString()}`);
     }
-
-    let storybook = 'sb_d';
 
     if (options.storybook != null) {
-      storybook = options.storybook ? 'sb_t' : 'sb_f';
+      chunks.push(`storybook=${options.storybook.toString()}`);
     }
-
-    let entries = 'default';
 
     if (options.entries != null) {
-      entries = options.entries
-        .map((entry) =>
-          entry.replaceAll('.', '_dot_').replaceAll('/', '_slash_').replaceAll(':', '_colon_'),
-        )
-        .join('-dl-');
+      for (const entry of options.entries) {
+        chunks.push(`entry=${entry}`);
+      }
     }
 
-    chunks.push(entries, production, check, typings, storybook);
+    if (options.postBuild != null) {
+      for (const hook of options.postBuild) {
+        chunks.push(`postBuild=${hook}`);
+      }
+    }
   }
 
-  return chunks.join('-');
+  const hash = createHash('sha256');
+
+  hash.update(chunks.join(' '));
+
+  return hash.digest('hex');
 }
 
 // endregion
