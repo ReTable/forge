@@ -13,25 +13,25 @@ export class BuildCommand extends Command {
       This command will build source code for future distribution.
 
       The \`-t,--target\` option defines which platform is target for build. Must be \`browser\` or \`node\`.
-      This option is required.
+      This option is required, if not defined in the configuration file.
 
-      If the \`-e,--entry\` options is given, then they will be used as entry points.
+      The \`-e,--entry\` option defines an entry point. Can be used multiple times to define multiple entry points.
 
-      If the \`-p,--production\` flag is set the different optimizations will
-      be applied to the source code.
+      The \`-p,--production\` flag enables bundling for production environment. Build for production mode doesn't enable
+      minification for debug purposes in the target user application.
 
-      If the \`-c,--check\` flag is set the TypeScript will be run before
-      build to check types. It stops build if any type error is existed.
+      The \`-c,--check\` flag enables types checking through TypeScript compiler running. It stops build if any
+      type error has been found.
 
-      If the \`-t,--typings\` flag is set the typings will be generated. Typings
-      generated only if type checking is enabled.
+      The \`-t,--typings\` flag enables typings generation. It generates typings only if type checking is enabled.
 
-      If the \`-s,--storybook\` flag is set the additional documentation for Storybook will be emitted.
+      The \`-s,--storybook\` flag enables emitting additional meta for Storybook. It uses \`react-docgen\` under the hood.
+      This option is useful only for the \`browser\` target.
 
-      If the \`-b,--post-build\` options is given, then they will be used as post build hooks. A hook is an external
-      command, which executed in the shell.
+      The \`-b,--post-build\` option defines post build hook. A hook is an external command, which executed in a
+      shell. Can be used multiple times to define multiple post build hooks.
 
-      If the \`-w,--watch\` flag is set, then build run in watch mode.
+      The \`-w,--watch\` flag enables watch mode.
     `,
   });
 

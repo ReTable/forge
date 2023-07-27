@@ -7,10 +7,11 @@ export class InitCommand extends Command {
   public static override paths = [['init'], ['i']];
 
   public static override usage = Command.Usage({
-    description: 'Creates an initial file for the selected target.',
+    description: 'Create an initial file for the selected target.',
   });
 
   private readonly target = Option.String('-t,--target', {
+    description: 'Defines target for which a config will be generated.',
     required: true,
     validator: isOneOf([isLiteral('browser'), isLiteral('node')], { exclusive: true }),
   });
