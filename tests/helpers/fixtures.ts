@@ -35,7 +35,16 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
 
 async function prepareForBuild(
   workingDir: string,
-  { check, dependencies, entries, target, production, storybook, typings }: BuildFixtureOptions,
+  {
+    check,
+    dependencies,
+    entries,
+    target,
+    postBuild,
+    production,
+    storybook,
+    typings,
+  }: BuildFixtureOptions,
 ) {
   if (dependencies) {
     await run('/usr/bin/env', ['pnpm', 'install', '--no-lockfile', ...dependencies], workingDir);
@@ -65,6 +74,12 @@ async function prepareForBuild(
 
   if (storybook != null) {
     args.push(storybook ? '--storybook' : '--no-storybook');
+  }
+
+  if (postBuild) {
+    for (const hook of postBuild) {
+      args.push('--post-build', hook);
+    }
   }
 
   await run('/usr/bin/env', ['node', binPath, ...args], workingDir);
