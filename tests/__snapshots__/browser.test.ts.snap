@@ -1340,7 +1340,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
   \\"version\\": 3,
   \\"sources\\": [\\"../src/submoduleA/index.module.scss\\"],
   \\"sourcesContent\\": [\\".LnJYjm20BSg- {\\\\n  background-color: red;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleA/index.module.scss.map */\\"],
-  \\"mappings\\": \\";AAAA;AACE;AAAA;\\",
+  \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;\\",
   \\"names\\": []
 }
 "
@@ -1360,7 +1360,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
   \\"version\\": 3,
   \\"sources\\": [\\"../src/submoduleB/index.module.scss\\"],
   \\"sourcesContent\\": [\\".lJPd-3LyR-k- {\\\\n  background-color: blue;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleB/index.module.scss.map */\\"],
-  \\"mappings\\": \\";AAAA;AACE;AAAA;\\",
+  \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;\\",
   \\"names\\": []
 }
 "
@@ -1375,7 +1375,7 @@ import {
   scssRoot,
   vanillaRoot,
   wrap
-} from \\"./shared/UUGLIIJL.js\\";
+} from \\"./shared/7VPORT5B.js\\";
 
 // src/submoduleA/index.ts
 var entryPoint = wrap(\\"submoduleA\\");
@@ -1401,7 +1401,7 @@ import {
   scssRoot,
   vanillaRoot,
   wrap
-} from \\"./shared/UUGLIIJL.js\\";
+} from \\"./shared/7VPORT5B.js\\";
 
 // src/submoduleB/index.ts
 var entryPoint = wrap(\\"submoduleB\\");
@@ -1447,7 +1447,7 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
   \\"version\\": 3,
   \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
   \\"sourcesContent\\": [\\".Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".styles_root__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
-  \\"mappings\\": \\";AAAA;AACE;AAAA;;;ACDF;AACE;AAAA;;;ACDF;AACE;AAAA;;;ACDF;AACE;AAAA;\\",
+  \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,SAAO;AACT;\\",
   \\"names\\": []
 }
 "
@@ -1482,7 +1482,7 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
   \\"version\\": 3,
   \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
   \\"sourcesContent\\": [\\".Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".styles_root__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
-  \\"mappings\\": \\";AAAA;AACE;AAAA;;;ACDF;AACE;AAAA;;;ACDF;AACE;AAAA;;;ACDF;AACE;AAAA;\\",
+  \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,SAAO;AACT;\\",
   \\"names\\": []
 }
 "
@@ -1874,7 +1874,7 @@ Button.__docgenInfo = {
       \\"name\\": \\"children\\",
       \\"declarations\\": [
         {
-          \\"fileName\\": \\"node_modules/.pnpm/@types+react@18.2.15/node_modules/@types/react/index.d.ts\\",
+          \\"fileName\\": \\"node_modules/.pnpm/@types+react@18.2.17/node_modules/@types/react/index.d.ts\\",
           \\"name\\": \\"TypeLiteral\\"
         }
       ],
