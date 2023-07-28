@@ -16,7 +16,7 @@ const suiteFactory = (
   testFn: Suite,
   flag?: 'only' | 'skip',
 ) => {
-  let define: TestAPI | TestAPI['only'] | TestAPI['skip'] = test;
+  let define: TestAPI | TestAPI['only'] = test;
 
   if (flag === 'only') {
     define = test.only;
