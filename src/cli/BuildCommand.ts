@@ -69,6 +69,10 @@ export class BuildCommand extends Command {
       'Emit additional documentation for Storybook (default: true when target is browser)',
   });
 
+  private readonly watch = Option.Boolean('-w,--watch', false, {
+    description: 'Enables watch mode (default: false)',
+  });
+
   public override async execute(): Promise<void> {
     const config = await loadConfig({
       target: this.target,
@@ -82,7 +86,7 @@ export class BuildCommand extends Command {
 
       postBuild: this.postBuild,
 
-      watch: false,
+      watch: this.watch,
     });
 
     await bundle(config);
