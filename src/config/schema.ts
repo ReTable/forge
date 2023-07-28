@@ -78,13 +78,17 @@ const baseConfiguration = perCommandConfiguration.extend({
   postBuild: hooks.optional(),
 });
 
-const singleEntryConfiguration = baseConfiguration.extend({
-  entry: entry.optional(),
-});
+const singleEntryConfiguration = baseConfiguration
+  .extend({
+    entry: entry.optional(),
+  })
+  .strict();
 
-const multipleEntriesConfiguration = baseConfiguration.extend({
-  entries: entries.optional(),
-});
+const multipleEntriesConfiguration = baseConfiguration
+  .extend({
+    entries: entries.optional(),
+  })
+  .strict();
 
 export const schema = z.union([singleEntryConfiguration, multipleEntriesConfiguration], {
   description: 'Defines a configuration',
