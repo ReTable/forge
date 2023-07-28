@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.0.2
+
+### Patch Changes
+
+- [#18](https://github.com/ReTable/forge/pull/18) [`2b874d8`](https://github.com/ReTable/forge/commit/2b874d8dee1c5d66eba4e61ba3e51e9c9c117932) Thanks [@demiazz](https://github.com/demiazz)! - fix parsing of entries from config file
+
 ## 1.0.1
 
 ### Patch Changes
