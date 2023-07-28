@@ -4,7 +4,7 @@ export type Entry =
   | string
   | {
       in: string;
-      out?: string;
+      out: string;
     };
 
 export type Hook =

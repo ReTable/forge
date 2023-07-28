@@ -5,6 +5,8 @@ import { Entry, Hook, Target } from '../types';
 import { defaultBuildConfig, defaultWatchConfig } from './initialConfig';
 import { schema } from './schema';
 
+// region User config
+
 async function loadUserConfig() {
   const result = await cosmiconfig('forge').search();
 
@@ -18,6 +20,71 @@ async function loadUserConfig() {
 
   return userConfig;
 }
+
+// endregion
+
+// region Entries
+
+type RawEntry = string | { in: string; out?: string };
+
+function normalizeEntryOut(path: string) {
+  return path.endsWith('.js') ? path.slice(0, -3) : path;
+}
+
+function parseEntry(entry: RawEntry): Entry {
+  if (typeof entry === 'string') {
+    const [inPath, outPath] = entry.split(':') as [string, string | undefined];
+
+    if (outPath == null) {
+      return inPath;
+    }
+
+    return {
+      in: inPath,
+      out: normalizeEntryOut(outPath),
+    };
+  }
+
+  if (entry.out != null) {
+    return {
+      in: entry.in,
+      out: normalizeEntryOut(entry.out),
+    };
+  }
+
+  return entry.in;
+}
+
+function parseEntries(entries: RawEntry[]) {
+  return entries.map((entry) => parseEntry(entry));
+}
+
+// endregion
+
+// region Hooks
+
+function parseCliHooks(hooks: string[]) {
+  return hooks.map((hook) => {
+    const [command, cwd] = hook.split(':') as [string, string | undefined];
+
+    if (cwd == null) {
+      return command;
+    }
+
+    return {
+      command,
+      cwd,
+    };
+  });
+}
+
+function normalizeHooks(hooks: Hook | Hook[]) {
+  return Array.isArray(hooks) ? hooks : [hooks];
+}
+
+// endregion
+
+// region Load
 
 type Options = {
   target?: Target;
@@ -49,40 +116,6 @@ type Result = {
   watch: boolean;
 };
 
-function parseCliEntries(entries: string[]) {
-  return entries.map((entry) => {
-    const [inPath, outPath] = entry.split(':') as [string, string | undefined];
-
-    if (outPath == null) {
-      return inPath;
-    }
-
-    return {
-      in: inPath,
-      out: outPath.endsWith('.js') ? outPath.slice(0, -3) : outPath,
-    };
-  });
-}
-
-function parseCliHooks(hooks: string[]) {
-  return hooks.map((hook) => {
-    const [command, cwd] = hook.split(':') as [string, string | undefined];
-
-    if (cwd == null) {
-      return command;
-    }
-
-    return {
-      command,
-      cwd,
-    };
-  });
-}
-
-function normalizeHooks(hooks: Hook | Hook[]) {
-  return Array.isArray(hooks) ? hooks : [hooks];
-}
-
 export async function loadConfig(options: Options): Promise<Result> {
   const defaults = options.watch ? defaultWatchConfig : defaultBuildConfig;
 
@@ -96,10 +129,10 @@ export async function loadConfig(options: Options): Promise<Result> {
 
   const commandConfig = options.watch ? userConfig?.watch : userConfig?.build;
 
-  let entries: Entry[] = defaults.entries;
+  let entries: RawEntry[] = defaults.entries;
 
   if (options.entries != null) {
-    entries = parseCliEntries(options.entries);
+    entries = options.entries;
   } else if (userConfig != null) {
     if ('entry' in userConfig && userConfig.entry != null) {
       entries = [userConfig.entry];
@@ -135,7 +168,7 @@ export async function loadConfig(options: Options): Promise<Result> {
   return {
     target,
 
-    entries,
+    entries: parseEntries(entries),
 
     production,
     check,
@@ -147,3 +180,5 @@ export async function loadConfig(options: Options): Promise<Result> {
     watch: options.watch,
   };
 }
+
+// endregion
