@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.0.1
+
+### Patch Changes
+
+- [#16](https://github.com/ReTable/forge/pull/16) [`b6bc79c`](https://github.com/ReTable/forge/commit/b6bc79caa7adb7cd64a5cc6176b43542b3a1235d) Thanks [@demiazz](https://github.com/demiazz)! - return a broken watch mode
+
 ## 1.0.0
 
 ### Major Changes
