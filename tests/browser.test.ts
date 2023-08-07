@@ -689,6 +689,78 @@ describe('browser', () => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
+
+    describe('.svgrrc', () => {
+      it(
+        'supports configuration files',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'ignores "exportType" option',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'ignores "namedExport" option',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'ignores "svgo" option in development mode',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'ignores "svgo" in production mode',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config-svgo',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+    });
   });
 
   describe('vanilla-extract support', () => {
