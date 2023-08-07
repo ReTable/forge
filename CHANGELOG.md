@@ -1,5 +1,14 @@
 # @tabula/forge
 
+## 1.1.0
+
+### Minor Changes
+
+- [#23](https://github.com/ReTable/forge/pull/23) [`d81e5d4`](https://github.com/ReTable/forge/commit/d81e5d40c3b18d2eb7d42b23980740acfc4725d0) Thanks [@demiazz](https://github.com/demiazz)! - don't wrap SVG components with `React.memo` by default
+
+  If you need to change this behaviour, you can use `.svgrrc` files, which supported out of the box,
+  instead of `exportType`, `namedExport` and `svgo` options. They are set up by the `forge` itself.
+
 ## 1.0.3
 
 ### Patch Changes
