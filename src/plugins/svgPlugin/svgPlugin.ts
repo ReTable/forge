@@ -63,7 +63,6 @@ export function svgPlugin(): Plugin {
             {
               exportType: 'named',
               namedExport: 'ReactComponent',
-              memo: true,
               plugins: ['@svgr/plugin-jsx'],
               svgo: minify,
             },
