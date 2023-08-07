@@ -874,5 +874,19 @@ describe('browser', () => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
+
+    it(
+      'skip HTML attributes',
+      {
+        command: 'build',
+        name: 'browser-storybook-html-attributes',
+        target: 'browser',
+        production: false,
+        storybook: true,
+      },
+      async (c) => {
+        expect(await c.read('lib/index.js')).toMatchSnapshot();
+      },
+    );
   });
 });
