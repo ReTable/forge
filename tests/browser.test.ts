@@ -690,7 +690,7 @@ describe('browser', () => {
       },
     );
 
-    describe.only('.svgrrc', () => {
+    describe('.svgrrc', () => {
       it(
         'supports configuration files',
         {
