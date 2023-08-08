@@ -10,6 +10,7 @@ type Options = {
 const parserOptions: ParserOptions = {
   propFilter: {
     skipPropsWithName: ['key'],
+    skipPropsWithoutDoc: true,
   },
   shouldExtractLiteralValuesFromEnum: true,
   shouldExtractValuesFromUnion: true,
