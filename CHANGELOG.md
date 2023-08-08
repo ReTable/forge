@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.1.1
+
+### Patch Changes
+
+- [#25](https://github.com/ReTable/forge/pull/25) [`4e5e4cf`](https://github.com/ReTable/forge/commit/4e5e4cf266c606b31c607db126cb7b4f4caedcc7) Thanks [@demiazz](https://github.com/demiazz)! - skip undocumented props when generate metadata for Storybook
+
 ## 1.1.0
 
 ### Minor Changes
