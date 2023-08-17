@@ -2,7 +2,8 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
-import { transform } from '@svgr/core';
+import { Config, transform } from '@svgr/core';
+import { cosmiconfig } from 'cosmiconfig';
 import { Plugin } from 'esbuild';
 import { optimize } from 'svgo';
 
@@ -18,8 +19,21 @@ export function svgPlugin(): Plugin {
   return {
     name: 'svg-plugin',
 
-    setup({ initialOptions, onLoad, onResolve }) {
+    async setup({ initialOptions, onLoad, onResolve }) {
       const minify = Boolean(initialOptions.minify);
+
+      // NOTE: The `svgr` uses runtime config over CLI config. We avoid this behaviour.
+      const userConfig = await cosmiconfig('svgr').search();
+
+      const config: Config = {
+        ...(userConfig?.config as Config | null),
+
+        exportType: 'named',
+        namedExport: 'ReactComponent',
+        plugins: ['@svgr/plugin-jsx'],
+        runtimeConfig: false,
+        svgo: minify,
+      };
 
       onResolve(
         {
@@ -58,18 +72,9 @@ export function svgPlugin(): Plugin {
             };
           }
 
-          const component = await transform(
-            svg,
-            {
-              exportType: 'named',
-              namedExport: 'ReactComponent',
-              plugins: ['@svgr/plugin-jsx'],
-              svgo: minify,
-            },
-            {
-              filePath: path,
-            },
-          );
+          const component = await transform(svg, config, {
+            filePath: path,
+          });
 
           const base64 = createHash('sha256').update(component).digest('base64url');
           const url = `ni:svgr;${base64}`;
