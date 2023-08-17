@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.1.2
+
+### Patch Changes
+
+- [#27](https://github.com/ReTable/forge/pull/27) [`fccb287`](https://github.com/ReTable/forge/commit/fccb287e130361d693bd40e4d49ec2b046fa9714) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 1.1.1
 
 ### Patch Changes
