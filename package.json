@@ -50,23 +50,23 @@
     "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@tabula/eslint-config": "^0.0.3",
-    "@tabula/prettier-config": "^0.1.1",
+    "@tabula/eslint-config": "^0.0.5",
+    "@tabula/prettier-config": "^0.1.2",
     "@tabula/typescript-config": "^0.0.0",
-    "@tabula/vitest-config": "^0.0.2",
+    "@tabula/vitest-config": "^0.0.4",
     "@types/convert-source-map": "^2.0.0",
-    "@types/node": "^20.5.0",
-    "@types/react": "^18.2.20",
-    "eslint": "^8.47.0",
+    "@types/node": "^20.5.7",
+    "@types/react": "^18.2.21",
+    "eslint": "^8.48.0",
     "lefthook": "^1.4.9",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "tempy": "^3.1.0",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
-    "vitest": "^0.34.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.3"
   },
   "dependencies": {
-    "@babel/core": "^7.22.10",
+    "@babel/core": "^7.22.11",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@vanilla-extract/esbuild-plugin": "^2.2.2",
@@ -76,21 +76,21 @@
     "convert-source-map": "^2.0.0",
     "cosmiconfig": "^8.2.0",
     "esbuild": "^0.19.2",
-    "execa": "^7.2.0",
+    "execa": "^8.0.1",
     "find-up": "^6.3.0",
     "postcss": "^8.4.28",
     "postcss-load-config": "^4.0.1",
     "postcss-modules": "^6.0.0",
     "react-docgen": "^6.0.3",
     "react-docgen-typescript": "^2.2.2",
-    "read-pkg-up": "^10.0.0",
-    "sass": "^1.65.1",
+    "read-pkg-up": "^10.1.0",
+    "sass": "^1.66.1",
     "source-map": "^0.7.4",
     "svgo": "^3.0.2",
     "typanion": "^3.14.0",
-    "zod": "^3.22.1"
+    "zod": "^3.22.2"
   },
   "peerDependencies": {
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
