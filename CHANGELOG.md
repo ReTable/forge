@@ -1,5 +1,13 @@
 # @tabula/forge
 
+## 1.1.3
+
+### Patch Changes
+
+- [#29](https://github.com/ReTable/forge/pull/29) [`a31820d`](https://github.com/ReTable/forge/commit/a31820d661e4e206a9a43284ca2ee1fda2892ed2) Thanks [@demiazz](https://github.com/demiazz)! - skip doc generation for external types
+
+- [#29](https://github.com/ReTable/forge/pull/29) [`a31820d`](https://github.com/ReTable/forge/commit/a31820d661e4e206a9a43284ca2ee1fda2892ed2) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 1.1.2
 
 ### Patch Changes
