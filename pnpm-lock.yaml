@@ -15,8 +15,8 @@ dependencies:
     specifier: ^8.1.0
     version: 8.1.0(@svgr/core@8.1.0)
   '@vanilla-extract/esbuild-plugin':
-    specifier: ^2.2.2
-    version: 2.2.2(@types/node@20.5.7)(sass@1.66.1)
+    specifier: ^2.3.0
+    version: 2.3.0(@types/node@20.5.7)(sass@1.66.1)
   autoprefixer:
     specifier: ^10.4.15
     version: 10.4.15(postcss@8.4.28)
@@ -2117,8 +2117,8 @@ packages:
       outdent: 0.8.0
     dev: false
 
-  /@vanilla-extract/esbuild-plugin@2.2.2(@types/node@20.5.7)(sass@1.66.1):
-    resolution: {integrity: sha512-P2tlhBpAnoA4fx0xaYm8mcKBzorcyLC0O/c7ZpJL3aIKh6kdxdjDhOoWEXC2NuGJepEFsv0dXGJ99l424NvTKA==}
+  /@vanilla-extract/esbuild-plugin@2.3.0(@types/node@20.5.7)(sass@1.66.1):
+    resolution: {integrity: sha512-YsBLRDWvbqj/Zep0UdbgI1FfHfXJhf4tHYbVr5oPbVIf53p736hx+V3Wggo9ScK8Eu0aWVavxg6OvPOUITxdqg==}
     dependencies:
       '@vanilla-extract/integration': 6.2.1(@types/node@20.5.7)(sass@1.66.1)
     transitivePeerDependencies:
