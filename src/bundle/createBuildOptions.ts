@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 
+import { snakeCase } from 'change-case';
 import { BuildOptions } from 'esbuild';
 
 import {
@@ -69,10 +70,14 @@ async function applyBrowserOptions(
   buildOptions: BuildOptions,
   { name, production, repositoryRoot, storybook }: BrowserOptions,
 ) {
+  const classNamePrefix = snakeCase(name);
+
   const processCss = await createCssProcessor({
     cssModules: {
       exportGlobals: true,
-      generateScopedName: production ? '[hash:base64]' : `${name}//[path][name]__[local]`,
+      generateScopedName: production
+        ? `${classNamePrefix}__[hash:base64]`
+        : `${classNamePrefix}__[path][name]__[local]`,
       hashPrefix: name,
       localsConvention: 'camelCaseOnly',
     },
