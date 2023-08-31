@@ -1,5 +1,39 @@
 # @tabula/forge
 
+## 1.2.0
+
+### Minor Changes
+
+- [#32](https://github.com/ReTable/forge/pull/32) [`a92544c`](https://github.com/ReTable/forge/commit/a92544c7d8e556344cb503ec8aa6a59f1d1364a3) Thanks [@demiazz](https://github.com/demiazz)! - added `cssClassPrefix` option
+
+  The option can be boolean or string.
+
+  If string option is used, then it will be used as simple template with following placeholders:
+
+  - `[full-name]` - full package name (with scope if it presented);
+  - `[scope]` - package scope if presented or an empty string;
+  - `[name]` - package name without scope.
+
+  The prefix has format `[full-name]__` by default or when option is `true`.
+
+  When package name is `awesome-ui`, then:
+
+  - when the option is `[full-name]__`, then the prefix is `awesome_ui__`;
+  - when the option is `[scope]__`, then the prefix is `__`;
+  - when the option is `[scope]__[name]__`, then the prefix is `__awesome_ui__`.
+
+  When package name is `@awesome-ui/theme`, then:
+
+  - when the option is `[full-name]__`, then the prefix is `awesome_ui_theme_`;
+  - when the option is `[scope]__`, then the prefix is `awesome_ui__`;
+  - when the option is `[scope]__[name]__`, then the prefix is `awesome_ui__theme__`.
+
+### Patch Changes
+
+- [#32](https://github.com/ReTable/forge/pull/32) [`a92544c`](https://github.com/ReTable/forge/commit/a92544c7d8e556344cb503ec8aa6a59f1d1364a3) Thanks [@demiazz](https://github.com/demiazz)! - uses short CSS classes format for CSS Modules and `vanilla-extract` in production mode
+
+- [#32](https://github.com/ReTable/forge/pull/32) [`a92544c`](https://github.com/ReTable/forge/commit/a92544c7d8e556344cb503ec8aa6a59f1d1364a3) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 1.1.3
 
 ### Patch Changes
