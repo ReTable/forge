@@ -5,8 +5,8 @@ import { vanillaExtractPlugin as officialPlugin } from '@vanilla-extract/esbuild
 import { Plugin } from 'esbuild';
 
 type Options = {
-  classNamePrefix: string;
   isProduction: boolean;
+  prefix: string;
 };
 
 type PluginData = {
@@ -17,18 +17,24 @@ const staticOptions = {
   filter: /\.(css|bmp|gif|ico|jpeg|jpg|png|svg|webp|eot|otf|ttf|woff|woff2)$/,
 };
 
-function createIdentifierBuilder(classNamePrefix: string) {
-  return ({ hash }: { hash: string }) => `${classNamePrefix}__${hash}`;
+function getIdentifiersBuilder({ isProduction, prefix }: Options) {
+  if (!isProduction) {
+    return 'debug';
+  }
+
+  if (prefix.length === 0) {
+    return 'short';
+  }
+
+  return ({ hash }: { hash: string }) => `${prefix}${hash}`;
 }
 
 // NOTE: The old `esbuild` has a little different `entries` format, but it's not a critical for our bundler.
-export function vanillaExtractPlugin({ classNamePrefix, isProduction }: Options): Plugin {
-  const identifiers = isProduction ? createIdentifierBuilder(classNamePrefix) : 'debug';
-
+export function vanillaExtractPlugin(options: Options): Plugin {
   return officialPlugin({
     // NOTE: The `@vanilla-extract/esbuild-plugin` has wrong typings for `identifiers` option. The documentations says
     //       it can be a function, but typings allow to use only `short` and `debug` string literals.
-    identifiers: identifiers as never,
+    identifiers: getIdentifiersBuilder(options) as never,
     esbuildOptions: {
       plugins: [
         {

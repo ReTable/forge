@@ -95,6 +95,7 @@ type Options = {
   check?: boolean;
   typings?: boolean;
   storybook?: boolean;
+  cssClassPrefix?: boolean | string;
 
   postBuild?: string[];
 
@@ -110,6 +111,7 @@ type Result = {
   check: boolean;
   typings: boolean;
   storybook: boolean;
+  cssClassPrefix: boolean | string;
 
   postBuild: Hook[];
 
@@ -155,6 +157,9 @@ export async function loadConfig(options: Options): Promise<Result> {
   const storybook =
     options.storybook ?? commandConfig?.storybook ?? userConfig?.storybook ?? defaults.storybook;
 
+  const cssClassPrefix =
+    options.cssClassPrefix ?? userConfig?.cssClassPrefix ?? defaults.cssClassPrefix;
+
   let postBuild: Hook | Hook[] = [];
 
   if (options.postBuild != null) {
@@ -174,6 +179,7 @@ export async function loadConfig(options: Options): Promise<Result> {
     check,
     typings: check && typings,
     storybook: target === 'browser' && storybook,
+    cssClassPrefix,
 
     postBuild,
 

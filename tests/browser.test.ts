@@ -904,4 +904,136 @@ describe('browser', () => {
       },
     );
   });
+
+  describe('cssClassPrefix', () => {
+    describe('when package name have no scope', () => {
+      it(
+        'uses full package name as prefix by default',
+        {
+          command: 'build',
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'uses full package name as prefix when given option is enabled',
+        {
+          command: 'build',
+          cssClassPrefix: true,
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        "doesn't use prefix at all when given option is disabled",
+        {
+          command: 'build',
+          cssClassPrefix: false,
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'uses prefix template as prefix when given option is string',
+        {
+          command: 'build',
+          cssClassPrefix: '[full-name]__[scope]__[name]__',
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+    });
+
+    describe('when package name have scope', () => {
+      it(
+        'uses full package name as prefix by default',
+        {
+          command: 'build',
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix-scoped',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'uses full package name as prefix when given option is enabled',
+        {
+          command: 'build',
+          cssClassPrefix: true,
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix-scoped',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        "doesn't use prefix at all when given option is disabled",
+        {
+          command: 'build',
+          cssClassPrefix: false,
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix-scoped',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'uses prefix template as prefix when given option is string',
+        {
+          command: 'build',
+          cssClassPrefix: '[full-name]__[scope]__[name]__',
+          dependencies: ['@vanilla-extract/css'],
+          name: 'browser-css-class-prefix-scoped',
+          target: 'browser',
+          production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+          expect(await c.read('lib/index.css')).toMatchSnapshot();
+        },
+      );
+    });
+  });
 });

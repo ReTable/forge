@@ -933,6 +933,294 @@ exports[`browser > SVG support > supports sharing the same SVG between CSS and J
 "
 `;
 
+exports[`browser > cssClassPrefix > when package name have no scope > doesn't use prefix at all when given option is disabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"_4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > doesn't use prefix at all when given option is disabled 2`] = `
+"/* src/index.module.css?css-module */
+.jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Ll80Z3dtNzYwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
+._4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix by default 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix by default 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 3`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 4`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix____browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix____browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix____browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fX19icm93c2VyX2Nzc19jbGFzc19wcmVmaXhfXzRnd203NjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.browser_css_class_prefix____browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > doesn't use prefix at all when given option is disabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"_1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > doesn't use prefix at all when given option is disabled 2`] = `
+"/* src/index.module.css?css-module */
+.Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Ll8xdWV1MXF2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+._1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix by default 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix by default 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix when given option is enabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix when given option is enabled 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses prefix template as prefix when given option is string 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses prefix template as prefix when given option is string 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fbXlfc2NvcGVfX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
 exports[`browser > default flags > generates typings by default 1`] = `
 "export { fetchJson } from './fetchJson';
 "

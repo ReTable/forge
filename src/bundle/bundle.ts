@@ -15,6 +15,7 @@ type Options = {
   postBuild: Hook[];
   production: boolean;
   storybook: boolean;
+  cssClassPrefix: boolean | string;
   target: Target;
   typings: boolean;
   watch: boolean;
@@ -22,6 +23,7 @@ type Options = {
 
 export async function bundle({
   check,
+  cssClassPrefix,
   entries,
   postBuild,
   production,
@@ -54,6 +56,7 @@ export async function bundle({
 
   const buildOptions = await createBuildOptions({
     check,
+    cssClassPrefix,
     entries,
     name,
     packageRoot,

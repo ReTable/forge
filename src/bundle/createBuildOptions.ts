@@ -16,6 +16,7 @@ import { createCssProcessor } from '../postcss';
 import { Entry, Hook, Target } from '../types';
 
 type BrowserOptions = {
+  cssClassPrefix: boolean | string;
   name: string;
   production: boolean;
   repositoryRoot: string;
@@ -66,18 +67,33 @@ function parseEntries(entries: Entry[]) {
 
 /* eslint-disable no-param-reassign */
 
+function getPrefixFrom(cssClassPrefix: boolean | string, packageName: string) {
+  if (cssClassPrefix === true) {
+    return `${snakeCase(packageName)}__`;
+  } else if (cssClassPrefix === false) {
+    return '';
+  }
+
+  const [scope, name] = packageName.startsWith('@')
+    ? packageName.slice(1).split('/')
+    : ['', packageName];
+
+  return cssClassPrefix
+    .replaceAll('[scope]', snakeCase(scope))
+    .replaceAll('[name]', snakeCase(name))
+    .replaceAll('[full-name]', snakeCase(packageName));
+}
+
 async function applyBrowserOptions(
   buildOptions: BuildOptions,
-  { name, production, repositoryRoot, storybook }: BrowserOptions,
+  { cssClassPrefix, name, production, repositoryRoot, storybook }: BrowserOptions,
 ) {
-  const classNamePrefix = snakeCase(name);
+  const prefix = getPrefixFrom(cssClassPrefix, name);
 
   const processCss = await createCssProcessor({
     cssModules: {
       exportGlobals: true,
-      generateScopedName: production
-        ? `${classNamePrefix}__[hash:base64]`
-        : `${classNamePrefix}__[path][name]__[local]`,
+      generateScopedName: production ? `${prefix}[hash:base64]` : `${prefix}[path][name]__[local]`,
       hashPrefix: name,
       localsConvention: 'camelCaseOnly',
     },
@@ -101,7 +117,7 @@ async function applyBrowserOptions(
     cssAutoImportPlugin(),
     stylesPlugin({ processCss }),
     svgPlugin(),
-    vanillaExtractPlugin({ classNamePrefix, isProduction: production }),
+    vanillaExtractPlugin({ isProduction: production, prefix }),
   ];
 
   if (storybook) {
@@ -116,6 +132,7 @@ function applyNodeOptions(buildOptions: BuildOptions) {
 
 type Options = {
   check: boolean;
+  cssClassPrefix: boolean | string;
   entries: Entry[];
   name: string;
   packageRoot: string;
@@ -129,6 +146,7 @@ type Options = {
 
 export async function createBuildOptions({
   check,
+  cssClassPrefix,
   entries,
   name,
   packageRoot,
@@ -162,7 +180,13 @@ export async function createBuildOptions({
 
   switch (target) {
     case 'browser': {
-      await applyBrowserOptions(options, { name, production, repositoryRoot, storybook });
+      await applyBrowserOptions(options, {
+        cssClassPrefix,
+        name,
+        production,
+        repositoryRoot,
+        storybook,
+      });
 
       break;
     }
