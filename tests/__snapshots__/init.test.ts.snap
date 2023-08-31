@@ -7,6 +7,7 @@ exports[`init > generates initial config for browser 1`] = `
   \\"entry\\": \\"index\\",
   \\"check\\": true,
   \\"typings\\": true,
+  \\"cssClassPrefix\\": true,
   \\"build\\": {
     \\"production\\": true
   },

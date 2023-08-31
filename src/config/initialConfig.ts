@@ -3,6 +3,7 @@ export const initialConfig = {
 
   check: true,
   typings: true,
+  cssClassPrefix: true,
 
   build: {
     production: true,
@@ -21,6 +22,7 @@ const defaultConfig = {
   check: true,
   typings: true,
   storybook: false,
+  cssClassPrefix: true,
 };
 
 export const defaultBuildConfig = {

@@ -2,19 +2,19 @@
 
 exports[`browser > CSS Modules > supports CSS modules 1`] = `
 "/* src/index.module.css?css-module */
-.browser-css-modules--src-index-module__root {
+.browser_css_modules__src-index-module__root {
   background: red;
 }
-.browser-css-modules--src-index-module__camelCase {
+.browser_css_modules__src-index-module__camelCase {
   background: green;
 }
-.browser-css-modules--src-index-module__snake_case {
+.browser_css_modules__src-index-module__snake_case {
   background: blue;
 }
-.browser-css-modules--src-index-module__PascalCase {
+.browser_css_modules__src-index-module__PascalCase {
   background: yellow;
 }
-.browser-css-modules--src-index-module__param-case {
+.browser_css_modules__src-index-module__param-case {
   background: magenta;
 }
 /*# sourceMappingURL=index.css.map */
@@ -23,19 +23,19 @@ exports[`browser > CSS Modules > supports CSS modules 1`] = `
 
 exports[`browser > CSS Modules > uses short ids for CSS modules when the production mode is on 1`] = `
 "/* src/index.module.css?css-module */
-.IasYNS-vhLI- {
+.browser_css_modules__IasYNS-vhLI- {
   background: red;
 }
-.k3Lf-rhQhs8- {
+.browser_css_modules__k3Lf-rhQhs8- {
   background: green;
 }
-.DvZjTHNCx5o- {
+.browser_css_modules__DvZjTHNCx5o- {
   background: blue;
 }
-.gYK1WXlMY48- {
+.browser_css_modules__gYK1WXlMY48- {
   background: yellow;
 }
-.qCr-CEvodCg- {
+.browser_css_modules__qCr-CEvodCg- {
   background: magenta;
 }
 /*# sourceMappingURL=index.css.map */
@@ -73,8 +73,8 @@ exports[`browser > SVG support > .svgrrc > ignores "exportType" option 1`] = `
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svgr-config--src-Button-module__root\\",
-  \\"label\\": \\"browser-svgr-config--src-Button-module__label\\"
+  \\"root\\": \\"browser_svgr_config__src-Button-module__root\\",
+  \\"label\\": \\"browser_svgr_config__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -167,8 +167,8 @@ exports[`browser > SVG support > .svgrrc > ignores "namedExport" option 1`] = `
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svgr-config--src-Button-module__root\\",
-  \\"label\\": \\"browser-svgr-config--src-Button-module__label\\"
+  \\"root\\": \\"browser_svgr_config__src-Button-module__root\\",
+  \\"label\\": \\"browser_svgr_config__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -261,8 +261,8 @@ exports[`browser > SVG support > .svgrrc > ignores "svgo" in production mode 1`]
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"M2vT7yEXmb8-\\",
-  \\"label\\": \\"Si74dY-0mwk-\\"
+  \\"root\\": \\"browser_svgr_config_svgo__M2vT7yEXmb8-\\",
+  \\"label\\": \\"browser_svgr_config_svgo__Si74dY-0mwk-\\"
 };
 
 // src/assets/js.svg
@@ -307,8 +307,8 @@ exports[`browser > SVG support > .svgrrc > ignores "svgo" option in development 
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svgr-config--src-Button-module__root\\",
-  \\"label\\": \\"browser-svgr-config--src-Button-module__label\\"
+  \\"root\\": \\"browser_svgr_config__src-Button-module__root\\",
+  \\"label\\": \\"browser_svgr_config__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -401,8 +401,8 @@ exports[`browser > SVG support > .svgrrc > supports configuration files 1`] = `
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svgr-config--src-Button-module__root\\",
-  \\"label\\": \\"browser-svgr-config--src-Button-module__label\\"
+  \\"root\\": \\"browser_svgr_config__src-Button-module__root\\",
+  \\"label\\": \\"browser_svgr_config__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -534,8 +534,8 @@ exports[`browser > SVG support > minify SVG when production mode is on 4`] = `
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"JAcadsb3Um4-\\",
-  \\"label\\": \\"jpTsOh6EC0M-\\"
+  \\"root\\": \\"browser_svg__JAcadsb3Um4-\\",
+  \\"label\\": \\"browser_svg__jpTsOh6EC0M-\\"
 };
 
 // src/assets/js.svg
@@ -577,10 +577,10 @@ export {
 
 exports[`browser > SVG support > minify SVG when production mode is on 5`] = `
 "/* src/Button.module.css?css-module */
-.JAcadsb3Um4- {
+.browser_svg__JAcadsb3Um4- {
   background-image: url(./assets/css.svg);
 }
-.jpTsOh6EC0M- {
+.browser_svg__jpTsOh6EC0M- {
   background-image: url(./assets/shared.svg);
 }
 /*# sourceMappingURL=index.css.map */
@@ -602,10 +602,10 @@ exports[`browser > SVG support > supports SVG in CSS 1`] = `
 
 exports[`browser > SVG support > supports SVG in CSS 2`] = `
 "/* src/Button.module.css?css-module */
-.browser-svg--src-Button-module__root {
+.browser_svg__src-Button-module__root {
   background-image: url(./assets/css.svg);
 }
-.browser-svg--src-Button-module__label {
+.browser_svg__src-Button-module__label {
   background-image: url(./assets/shared.svg);
 }
 /*# sourceMappingURL=index.css.map */
@@ -630,8 +630,8 @@ exports[`browser > SVG support > supports import of SVG as React Component in JS
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svg--src-Button-module__root\\",
-  \\"label\\": \\"browser-svg--src-Button-module__label\\"
+  \\"root\\": \\"browser_svg__src-Button-module__root\\",
+  \\"label\\": \\"browser_svg__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -733,8 +733,8 @@ exports[`browser > SVG support > supports import of SVG as URL in JS 2`] = `
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svg--src-Button-module__root\\",
-  \\"label\\": \\"browser-svg--src-Button-module__label\\"
+  \\"root\\": \\"browser_svg__src-Button-module__root\\",
+  \\"label\\": \\"browser_svg__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -836,8 +836,8 @@ exports[`browser > SVG support > supports sharing the same SVG between CSS and J
 
 // src/Button.module.css
 var Button_default = {
-  \\"root\\": \\"browser-svg--src-Button-module__root\\",
-  \\"label\\": \\"browser-svg--src-Button-module__label\\"
+  \\"root\\": \\"browser_svg__src-Button-module__root\\",
+  \\"label\\": \\"browser_svg__src-Button-module__label\\"
 };
 
 // src/assets/js.svg
@@ -923,11 +923,299 @@ export {
 
 exports[`browser > SVG support > supports sharing the same SVG between CSS and JS 3`] = `
 "/* src/Button.module.css?css-module */
-.browser-svg--src-Button-module__root {
+.browser_svg__src-Button-module__root {
   background-image: url(./assets/css.svg);
 }
-.browser-svg--src-Button-module__label {
+.browser_svg__src-Button-module__label {
   background-image: url(./assets/shared.svg);
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > doesn't use prefix at all when given option is disabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"_4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > doesn't use prefix at all when given option is disabled 2`] = `
+"/* src/index.module.css?css-module */
+.jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Ll80Z3dtNzYwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
+._4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix by default 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix by default 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 3`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 4`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+.browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"browser_css_class_prefix____browser_css_class_prefix__jBap2EKbG98-\\"
+};
+
+// src/index.css.ts
+var root = \\"browser_css_class_prefix____browser_css_class_prefix__4gwm760\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 2`] = `
+"/* src/index.module.css?css-module */
+.browser_css_class_prefix____browser_css_class_prefix__jBap2EKbG98- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fX19icm93c2VyX2Nzc19jbGFzc19wcmVmaXhfXzRnd203NjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.browser_css_class_prefix____browser_css_class_prefix__4gwm760 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > doesn't use prefix at all when given option is disabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"_1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > doesn't use prefix at all when given option is disabled 2`] = `
+"/* src/index.module.css?css-module */
+.Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Ll8xdWV1MXF2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
+._1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix by default 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix by default 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix when given option is enabled 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix when given option is enabled 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses prefix template as prefix when given option is string 1`] = `
+"import \\"./index.css\\";
+
+// src/index.module.css
+var src_default = {
+  \\"root\\": \\"my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__Kk-Oj1GvaU8-\\"
+};
+
+// src/index.css.ts
+var root = \\"my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__1ueu1qv0\\";
+
+// src/index.ts
+document.body.classList.add(root);
+document.body.classList.add(src_default.root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > cssClassPrefix > when package name have scope > uses prefix template as prefix when given option is string 2`] = `
+"/* src/index.module.css?css-module */
+.my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__Kk-Oj1GvaU8- {
+  background: red;
+}
+
+/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=Lm15X3Njb3BlX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fbXlfc2NvcGVfX2Jyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fMXVldTFxdjAgewogIGJhY2tncm91bmQtY29sb3I6IHJlZDsKfQ== */
+.my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__1ueu1qv0 {
+  background-color: red;
 }
 /*# sourceMappingURL=index.css.map */
 "
@@ -1653,7 +1941,7 @@ exports[`browser > entries > multiple entries > allows to handle multiple entrie
 
 // src/submoduleA/index.module.scss
 var index_module_default = {
-  \\"root\\": \\"LnJYjm20BSg-\\"
+  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"
 };
 
 // src/submoduleA/index.ts
@@ -1667,14 +1955,14 @@ export {
 "
 `;
 
-exports[`browser > entries > multiple entries > allows to handle multiple entries 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleA/index.module.scss\\",\\"../src/submoduleA/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;pD5i75Mi43lubKs7gdwflmrd-3py8Y3D77mkV7R3MuQ\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"LnJYjm20BSg-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleA';\\\\n\\"]}"`;
+exports[`browser > entries > multiple entries > allows to handle multiple entries 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleA/index.module.scss\\",\\"../src/submoduleA/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"browser_multiple_entries__LnJYjm20BSg-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleA';\\\\n\\"]}"`;
 
 exports[`browser > entries > multiple entries > allows to handle multiple entries 3`] = `
 "import \\"./submoduleB.css\\";
 
 // src/submoduleB/index.module.scss
 var index_module_default = {
-  \\"root\\": \\"lJPd-3LyR-k-\\"
+  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"
 };
 
 // src/submoduleB/index.ts
@@ -1688,14 +1976,14 @@ export {
 "
 `;
 
-exports[`browser > entries > multiple entries > allows to handle multiple entries 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleB/index.module.scss\\",\\"../src/submoduleB/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;Z3k0hFhzAYlDrXjy_nX6UKXzIlTC7SZXLYiXcSFOuVI\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"lJPd-3LyR-k-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleB';\\\\n\\"]}"`;
+exports[`browser > entries > multiple entries > allows to handle multiple entries 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleB/index.module.scss\\",\\"../src/submoduleB/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"browser_multiple_entries__lJPd-3LyR-k-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleB';\\\\n\\"]}"`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 1`] = `
 "import \\"./submoduleA.css\\";
 
 // src/submoduleA/index.module.scss
 var index_module_default = {
-  \\"root\\": \\"LnJYjm20BSg-\\"
+  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"
 };
 
 // src/submoduleA/index.ts
@@ -1709,14 +1997,14 @@ export {
 "
 `;
 
-exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleA/index.module.scss\\",\\"../src/submoduleA/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;pD5i75Mi43lubKs7gdwflmrd-3py8Y3D77mkV7R3MuQ\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"LnJYjm20BSg-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleA';\\\\n\\"]}"`;
+exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleA/index.module.scss\\",\\"../src/submoduleA/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"browser_multiple_entries__LnJYjm20BSg-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleA';\\\\n\\"]}"`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 3`] = `
 "import \\"./submoduleB.css\\";
 
 // src/submoduleB/index.module.scss
 var index_module_default = {
-  \\"root\\": \\"lJPd-3LyR-k-\\"
+  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"
 };
 
 // src/submoduleB/index.ts
@@ -1730,11 +2018,11 @@ export {
 "
 `;
 
-exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleB/index.module.scss\\",\\"../src/submoduleB/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;Z3k0hFhzAYlDrXjy_nX6UKXzIlTC7SZXLYiXcSFOuVI\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"lJPd-3LyR-k-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleB';\\\\n\\"]}"`;
+exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../src/submoduleB/index.module.scss\\",\\"../src/submoduleB/index.ts\\"],\\"names\\":[],\\"mappings\\":\\";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa\\",\\"sourcesContent\\":[\\"import \\\\\\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\\\\\";\\\\nexport default {\\\\n  \\\\\\"root\\\\\\": \\\\\\"browser_multiple_entries__lJPd-3LyR-k-\\\\\\"\\\\n};\\",\\"import styles from './index.module.scss';\\\\n\\\\nexport const className = styles.root;\\\\n\\\\nexport const entryPoint = 'submoduleB';\\\\n\\"]}"`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 5`] = `
 "/* src/submoduleA/index.module.scss?css-module */
-.LnJYjm20BSg- {
+.browser_multiple_entries__LnJYjm20BSg- {
   background-color: red;
 }
 /*# sourceMappingURL=submoduleA.css.map */
@@ -1745,7 +2033,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
 "{
   \\"version\\": 3,
   \\"sources\\": [\\"../src/submoduleA/index.module.scss\\"],
-  \\"sourcesContent\\": [\\".LnJYjm20BSg- {\\\\n  background-color: red;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleA/index.module.scss.map */\\"],
+  \\"sourcesContent\\": [\\".browser_multiple_entries__LnJYjm20BSg- {\\\\n  background-color: red;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleA/index.module.scss.map */\\"],
   \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;\\",
   \\"names\\": []
 }
@@ -1754,7 +2042,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 7`] = `
 "/* src/submoduleB/index.module.scss?css-module */
-.lJPd-3LyR-k- {
+.browser_multiple_entries__lJPd-3LyR-k- {
   background-color: blue;
 }
 /*# sourceMappingURL=submoduleB.css.map */
@@ -1765,7 +2053,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
 "{
   \\"version\\": 3,
   \\"sources\\": [\\"../src/submoduleB/index.module.scss\\"],
-  \\"sourcesContent\\": [\\".lJPd-3LyR-k- {\\\\n  background-color: blue;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleB/index.module.scss.map */\\"],
+  \\"sourcesContent\\": [\\".browser_multiple_entries__lJPd-3LyR-k- {\\\\n  background-color: blue;\\\\n}\\\\n/*# sourceMappingURL=src/submoduleB/index.module.scss.map */\\"],
   \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;\\",
   \\"names\\": []
 }
@@ -1781,7 +2069,7 @@ import {
   scssRoot,
   vanillaRoot,
   wrap
-} from \\"./shared/JJILR5DF.js\\";
+} from \\"./shared/PFYEE4YN.js\\";
 
 // src/submoduleA/index.ts
 var entryPoint = wrap(\\"submoduleA\\");
@@ -1807,7 +2095,7 @@ import {
   scssRoot,
   vanillaRoot,
   wrap
-} from \\"./shared/JJILR5DF.js\\";
+} from \\"./shared/PFYEE4YN.js\\";
 
 // src/submoduleB/index.ts
 var entryPoint = wrap(\\"submoduleB\\");
@@ -1826,22 +2114,22 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
 
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 5`] = `
 "/* src/styles/styles.module.css?css-module */
-.Hxr38pm2m8I- {
+.browser_multiple_entries_splitting_css__Hxr38pm2m8I- {
   background-color: blue;
 }
 
 /* src/styles/styles.module.pcss?css-module */
-.o4rj8FzUrtg- {
+.browser_multiple_entries_splitting_css__o4rj8FzUrtg- {
   background-color: green;
 }
 
 /* src/styles/styles.module.scss?css-module */
-.PL9fG9RopvU- {
+.browser_multiple_entries_splitting_css__PL9fG9RopvU- {
   background-color: orange;
 }
 
-/* vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ== */
-.styles_root__1ycunbl0 {
+/* vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LmJyb3dzZXJfbXVsdGlwbGVfZW50cmllc19zcGxpdHRpbmdfY3NzX18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ== */
+.browser_multiple_entries_splitting_css__1ycunbl0 {
   color: purple;
 }
 /*# sourceMappingURL=submoduleA.css.map */
@@ -1851,8 +2139,8 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 6`] = `
 "{
   \\"version\\": 3,
-  \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
-  \\"sourcesContent\\": [\\".Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".styles_root__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
+  \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LmJyb3dzZXJfbXVsdGlwbGVfZW50cmllc19zcGxpdHRpbmdfY3NzX18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
+  \\"sourcesContent\\": [\\".browser_multiple_entries_splitting_css__Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".browser_multiple_entries_splitting_css__o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".browser_multiple_entries_splitting_css__PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".browser_multiple_entries_splitting_css__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
   \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,SAAO;AACT;\\",
   \\"names\\": []
 }
@@ -1861,22 +2149,22 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
 
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 7`] = `
 "/* src/styles/styles.module.css?css-module */
-.Hxr38pm2m8I- {
+.browser_multiple_entries_splitting_css__Hxr38pm2m8I- {
   background-color: blue;
 }
 
 /* src/styles/styles.module.pcss?css-module */
-.o4rj8FzUrtg- {
+.browser_multiple_entries_splitting_css__o4rj8FzUrtg- {
   background-color: green;
 }
 
 /* src/styles/styles.module.scss?css-module */
-.PL9fG9RopvU- {
+.browser_multiple_entries_splitting_css__PL9fG9RopvU- {
   background-color: orange;
 }
 
-/* vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ== */
-.styles_root__1ycunbl0 {
+/* vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LmJyb3dzZXJfbXVsdGlwbGVfZW50cmllc19zcGxpdHRpbmdfY3NzX18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ== */
+.browser_multiple_entries_splitting_css__1ycunbl0 {
   color: purple;
 }
 /*# sourceMappingURL=submoduleB.css.map */
@@ -1886,8 +2174,8 @@ exports[`browser > entries > multiple entries > create non shared CSS bundle for
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 8`] = `
 "{
   \\"version\\": 3,
-  \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LnN0eWxlc19yb290X18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
-  \\"sourcesContent\\": [\\".Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".styles_root__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
+  \\"sources\\": [\\"../src/styles/styles.module.css\\", \\"../src/styles/styles.module.pcss\\", \\"../src/styles/styles.module.scss\\", \\"vanilla-extract-css-ns:src/styles/styles.css.ts.vanilla.css?source=LmJyb3dzZXJfbXVsdGlwbGVfZW50cmllc19zcGxpdHRpbmdfY3NzX18xeWN1bmJsMCB7CiAgY29sb3I6IHB1cnBsZTsKfQ==\\"],
+  \\"sourcesContent\\": [\\".browser_multiple_entries_splitting_css__Hxr38pm2m8I- {\\\\n  background-color: blue;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.css.map */\\", \\".browser_multiple_entries_splitting_css__o4rj8FzUrtg- {\\\\n  background-color: green;\\\\n}\\\\n\\\\n/*# sourceMappingURL=src/styles/styles.module.pcss.map */\\", \\".browser_multiple_entries_splitting_css__PL9fG9RopvU- {\\\\n  background-color: orange;\\\\n}\\\\n/*# sourceMappingURL=src/styles/styles.module.scss.map */\\", \\".browser_multiple_entries_splitting_css__1ycunbl0 {\\\\n  color: purple;\\\\n}\\"],
   \\"mappings\\": \\";AAAA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,oBAAkB;AACpB;;;ACFA,CAAC;AACC,SAAO;AACT;\\",
   \\"names\\": []
 }
@@ -2068,7 +2356,7 @@ export {
 
 exports[`browser > preprocessors support > resolves paths in SCSS 1`] = `
 "/* src/index.module.scss?css-module */
-.browser-scss-node-modules--src-index-module__scssModule ul {
+.browser_scss_node_modules__src-index-module__scssModule ul {
   background-color: red;
 }
 
@@ -2082,7 +2370,7 @@ exports[`browser > preprocessors support > resolves paths in SCSS 1`] = `
 
 exports[`browser > preprocessors support > resolves paths in SCSS with conditional exports 1`] = `
 "/* src/index.module.scss?css-module */
-.browser-scss-node-modules-conditionals--src-index-module__scssModule ul {
+.browser_scss_node_modules_conditionals__src-index-module__scssModule ul {
   background-color: red;
 }
 
@@ -2096,10 +2384,10 @@ exports[`browser > preprocessors support > resolves paths in SCSS with condition
 
 exports[`browser > preprocessors support > supports PostCSS preprocessor 1`] = `
 "/* src/index.module.pcss?css-module */
-.browser-postcss--src-index-module__pcss-module {
+.browser_postcss__src-index-module__pcss-module {
   background: green;
 }
-.browser-postcss--src-index-module__pcss-module.browser-postcss--src-index-module__withTransition {
+.browser_postcss__src-index-module__pcss-module.browser_postcss__src-index-module__withTransition {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -2118,12 +2406,12 @@ exports[`browser > preprocessors support > supports PostCSS preprocessor 1`] = `
 
 exports[`browser > preprocessors support > supports SCSS postprocessor 1`] = `
 "/* src/index.module.scss?css-module */
-.browser-scss--src-index-module__scssModule ul {
+.browser_scss__src-index-module__scssModule ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.browser-scss--src-index-module__scssModule ul li {
+.browser_scss__src-index-module__scssModule ul li {
   display: inline-block;
   margin-left: -2px;
   margin-right: 2em;
@@ -2370,6 +2658,27 @@ exports[`browser > vanilla-extract support > supports \`vanilla-extract\` packag
 exports[`browser > vanilla-extract support > supports static files in the \`vanilla-extract\` styles 1`] = `
 "/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LnNyY19yb290X19rajdyczQwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
 .src_root__kj7rs40 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > vanilla-extract support > uses short ids when the production mode is on 1`] = `
+"import \\"./index.css\\";
+
+// src/index.css.ts
+var root = \\"browser_vanilla_extract__kj7rs40\\";
+
+// src/index.ts
+document.body.classList.add(root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > vanilla-extract support > uses short ids when the production mode is on 2`] = `
+"/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfdmFuaWxsYV9leHRyYWN0X19rajdyczQwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
+.browser_vanilla_extract__kj7rs40 {
   background-color: red;
 }
 /*# sourceMappingURL=index.css.map */

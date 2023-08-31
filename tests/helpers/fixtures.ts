@@ -37,6 +37,7 @@ async function prepareForBuild(
   workingDir: string,
   {
     check,
+    cssClassPrefix,
     dependencies,
     entries,
     target,
@@ -76,6 +77,16 @@ async function prepareForBuild(
 
   if (storybook != null) {
     args.push(storybook ? '--storybook' : '--no-storybook');
+  }
+
+  if (cssClassPrefix != null) {
+    if (cssClassPrefix === true) {
+      args.push(`--css-class-prefix`);
+    } else if (cssClassPrefix === false) {
+      args.push(`--no-css-class-prefix`);
+    } else {
+      args.push(`--css-class-prefix=${cssClassPrefix}`);
+    }
   }
 
   if (postBuild) {
@@ -151,6 +162,10 @@ function createFixtureIdFor(options: FixtureOptions): string {
 
     if (options.storybook != null) {
       chunks.push(`storybook=${options.storybook.toString()}`);
+    }
+
+    if (options.cssClassPrefix != null) {
+      chunks.push(`css-class-prefix=${options.cssClassPrefix.toString()}`);
     }
 
     if (options.entries != null) {
