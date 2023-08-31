@@ -834,6 +834,21 @@ describe('browser', () => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
+
+    it(
+      'uses short ids when the production mode is on',
+      {
+        command: 'build',
+        dependencies: ['@vanilla-extract/css'],
+        name: 'browser-vanilla-extract',
+        target: 'browser',
+        production: true,
+      },
+      async (c) => {
+        expect(await c.read('lib/index.js')).toMatchSnapshot();
+        expect(await c.read('lib/index.css')).toMatchSnapshot();
+      },
+    );
   });
 
   describe('storybook', () => {

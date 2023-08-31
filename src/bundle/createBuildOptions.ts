@@ -101,7 +101,7 @@ async function applyBrowserOptions(
     cssAutoImportPlugin(),
     stylesPlugin({ processCss }),
     svgPlugin(),
-    vanillaExtractPlugin(),
+    vanillaExtractPlugin({ classNamePrefix, isProduction: production }),
   ];
 
   if (storybook) {

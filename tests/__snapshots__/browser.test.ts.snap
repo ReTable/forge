@@ -20,3 +20,24 @@ exports[`browser > CSS Modules > uses short ids for CSS modules when the product
 /*# sourceMappingURL=index.css.map */
 "
 `;
+
+exports[`browser > vanilla-extract support > uses short ids when the production mode is on 1`] = `
+"import \\"./index.css\\";
+
+// src/index.css.ts
+var root = \\"browser_vanilla_extract__kj7rs40\\";
+
+// src/index.ts
+document.body.classList.add(root);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > vanilla-extract support > uses short ids when the production mode is on 2`] = `
+"/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfdmFuaWxsYV9leHRyYWN0X19rajdyczQwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
+.browser_vanilla_extract__kj7rs40 {
+  background-color: red;
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
