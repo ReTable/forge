@@ -903,6 +903,20 @@ describe('browser', () => {
         expect(await c.read('lib/index.js')).toMatchSnapshot();
       },
     );
+
+    it.only(
+      'handles custom display name',
+      {
+        command: 'build',
+        name: 'browser-storybook-display-name',
+        target: 'browser',
+        production: false,
+        storybook: true,
+      },
+      async (c) => {
+        expect(await c.read('lib/index.js')).toMatchSnapshot();
+      },
+    );
   });
 
   describe('cssClassPrefix', () => {

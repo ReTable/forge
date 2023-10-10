@@ -23,6 +23,7 @@ const parserOptions: ParserOptions = {
   shouldExtractValuesFromUnion: true,
   shouldRemoveUndefinedFromOptional: false,
   skipChildrenPropWithoutDoc: false,
+  shouldIncludeExpression: true,
 };
 
 function createResolver({ packageRoot, repositoryRoot }: Options) {
