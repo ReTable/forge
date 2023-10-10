@@ -1029,38 +1029,6 @@ exports[`browser > cssClassPrefix > when package name have no scope > uses full 
 "
 `;
 
-exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 3`] = `
-"import \\"./index.css\\";
-
-// src/index.module.css
-var src_default = {
-  \\"root\\": \\"browser_css_class_prefix__jBap2EKbG98-\\"
-};
-
-// src/index.css.ts
-var root = \\"browser_css_class_prefix__4gwm760\\";
-
-// src/index.ts
-document.body.classList.add(root);
-document.body.classList.add(src_default.root);
-//# sourceMappingURL=index.js.map
-"
-`;
-
-exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 4`] = `
-"/* src/index.module.css?css-module */
-.browser_css_class_prefix__jBap2EKbG98- {
-  background: red;
-}
-
-/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfY3NzX2NsYXNzX3ByZWZpeF9fNGd3bTc2MCB7CiAgYmFja2dyb3VuZC1jb2xvcjogcmVkOwp9 */
-.browser_css_class_prefix__4gwm760 {
-  background-color: red;
-}
-/*# sourceMappingURL=index.css.map */
-"
-`;
-
 exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 1`] = `
 "import \\"./index.css\\";
 
@@ -2597,6 +2565,126 @@ Button.__docgenInfo = {
 };
 export {
   Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > storybook > handles custom display name 1`] = `
+"// src/Class.tsx
+import { Component } from \\"react\\";
+import { jsxDEV } from \\"react/jsx-dev-runtime\\";
+var Button = class extends Component {
+  static {
+    this.displayName = \\"UiKit(Button)\\";
+  }
+  render() {
+    const { children, onClick, prefix } = this.props;
+    return /* @__PURE__ */ jsxDEV(\\"button\\", { onClick, type: \\"button\\", children: [
+      prefix,
+      \\" \\",
+      children
+    ] }, void 0, true, {
+      fileName: \\"src/Class.tsx\\",
+      lineNumber: 21,
+      columnNumber: 7
+    }, this);
+  }
+};
+Button.__docgenInfo = {
+  \\"tags\\": {},
+  \\"filePath\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Class.tsx\\",
+  \\"description\\": \\"This is awesome component.\\",
+  \\"displayName\\": \\"UiKit(Button)\\",
+  \\"methods\\": [],
+  \\"props\\": {
+    \\"onClick\\": {
+      \\"defaultValue\\": null,
+      \\"description\\": \\"This is click handler.\\",
+      \\"name\\": \\"onClick\\",
+      \\"declarations\\": [
+        {
+          \\"fileName\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Class.tsx\\",
+          \\"name\\": \\"TypeLiteral\\"
+        }
+      ],
+      \\"required\\": true,
+      \\"type\\": {
+        \\"name\\": \\"MouseEventHandler\\"
+      }
+    },
+    \\"prefix\\": {
+      \\"defaultValue\\": null,
+      \\"description\\": \\"\\",
+      \\"name\\": \\"prefix\\",
+      \\"declarations\\": [
+        {
+          \\"fileName\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Class.tsx\\",
+          \\"name\\": \\"TypeLiteral\\"
+        }
+      ],
+      \\"required\\": false,
+      \\"type\\": {
+        \\"name\\": \\"string\\"
+      }
+    }
+  }
+};
+
+// src/Function.tsx
+import { jsxDEV as jsxDEV2 } from \\"react/jsx-dev-runtime\\";
+var Button2 = ({ children, onClick, prefix }) => /* @__PURE__ */ jsxDEV2(\\"button\\", { onClick, type: \\"button\\", children: [
+  prefix,
+  \\" \\",
+  children
+] }, void 0, true, {
+  fileName: \\"src/Function.tsx\\",
+  lineNumber: 15,
+  columnNumber: 3
+}, this);
+Button2.displayName = \\"UiKit(Button)\\";
+Button2.__docgenInfo = {
+  \\"tags\\": {},
+  \\"filePath\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Function.tsx\\",
+  \\"description\\": \\"This is awesome component.\\",
+  \\"displayName\\": \\"UiKit(Button)\\",
+  \\"methods\\": [],
+  \\"props\\": {
+    \\"onClick\\": {
+      \\"defaultValue\\": null,
+      \\"description\\": \\"This is click handler.\\",
+      \\"name\\": \\"onClick\\",
+      \\"declarations\\": [
+        {
+          \\"fileName\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Function.tsx\\",
+          \\"name\\": \\"TypeLiteral\\"
+        }
+      ],
+      \\"required\\": true,
+      \\"type\\": {
+        \\"name\\": \\"MouseEventHandler\\"
+      }
+    },
+    \\"prefix\\": {
+      \\"defaultValue\\": null,
+      \\"description\\": \\"\\",
+      \\"name\\": \\"prefix\\",
+      \\"declarations\\": [
+        {
+          \\"fileName\\": \\"tests/tmp/750f0bf0c24015f6c1ea89e09da160758c29070f434cc76a65d01d7378ddd135/src/Function.tsx\\",
+          \\"name\\": \\"TypeLiteral\\"
+        }
+      ],
+      \\"required\\": false,
+      \\"type\\": {
+        \\"name\\": \\"string\\"
+      }
+    }
+  }
+};
+export {
+  Button as ClassButton,
+  Button2 as FunctionButton
 };
 //# sourceMappingURL=index.js.map
 "

@@ -6,6 +6,15 @@ export function renderDocs(docs: ComponentDoc[]): string {
   }
 
   return docs
-    .map((doc) => `${doc.displayName}.__docgenInfo = ${JSON.stringify(doc, null, 2)};`)
+    .map((doc) => {
+      const { expression, ...storybook } = doc;
+
+      // NOTE: We must use name from expression, instead of the `displayName` property, because it can be (and it will
+      //       be in most cases) invalid JS expression.
+      //       We should assign docs to the JS variables, not string value from the `displayName`.
+      const instance = expression?.getName() ?? doc.displayName;
+
+      return `${instance}.__docgenInfo = ${JSON.stringify(storybook, null, 2)};`;
+    })
     .join('\n');
 }
