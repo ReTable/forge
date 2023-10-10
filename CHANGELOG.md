@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.3.0
+
+### Minor Changes
+
+- [#36](https://github.com/ReTable/forge/pull/36) [`8bb0af7`](https://github.com/ReTable/forge/commit/8bb0af71b8fdd2b44d4b1988d978f1308e1a1110) Thanks [@demiazz](https://github.com/demiazz)! - add correct handling of user defined `displayName` property when Storybook docs are generated
+
 ## 1.2.0
 
 ### Minor Changes
