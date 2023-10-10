@@ -904,7 +904,7 @@ describe('browser', () => {
       },
     );
 
-    it.only(
+    it(
       'handles custom display name',
       {
         command: 'build',
