@@ -480,11 +480,11 @@ describe('browser', () => {
         const content = await c.read('lib/index.css');
 
         for (const ext of images) {
-          expect(content.includes(`url(./assets/css/image.${ext})`)).toBe(true);
+          expect(content.includes(`url("./assets/css/image.${ext}")`)).toBe(true);
         }
 
         for (const ext of fonts) {
-          expect(content.includes(`url(./assets/css/font.${ext})`)).toBe(true);
+          expect(content.includes(`url("./assets/css/font.${ext}")`)).toBe(true);
         }
       },
     );

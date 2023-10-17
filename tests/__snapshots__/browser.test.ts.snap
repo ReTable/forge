@@ -578,10 +578,10 @@ export {
 exports[`browser > SVG support > minify SVG when production mode is on 5`] = `
 "/* src/Button.module.css?css-module */
 .browser_svg__JAcadsb3Um4- {
-  background-image: url(./assets/css.svg);
+  background-image: url(\\"./assets/css.svg\\");
 }
 .browser_svg__jpTsOh6EC0M- {
-  background-image: url(./assets/shared.svg);
+  background-image: url(\\"./assets/shared.svg\\");
 }
 /*# sourceMappingURL=index.css.map */
 "
@@ -603,10 +603,10 @@ exports[`browser > SVG support > supports SVG in CSS 1`] = `
 exports[`browser > SVG support > supports SVG in CSS 2`] = `
 "/* src/Button.module.css?css-module */
 .browser_svg__src-Button-module__root {
-  background-image: url(./assets/css.svg);
+  background-image: url(\\"./assets/css.svg\\");
 }
 .browser_svg__src-Button-module__label {
-  background-image: url(./assets/shared.svg);
+  background-image: url(\\"./assets/shared.svg\\");
 }
 /*# sourceMappingURL=index.css.map */
 "
@@ -924,10 +924,10 @@ export {
 exports[`browser > SVG support > supports sharing the same SVG between CSS and JS 3`] = `
 "/* src/Button.module.css?css-module */
 .browser_svg__src-Button-module__root {
-  background-image: url(./assets/css.svg);
+  background-image: url(\\"./assets/css.svg\\");
 }
 .browser_svg__src-Button-module__label {
-  background-image: url(./assets/shared.svg);
+  background-image: url(\\"./assets/shared.svg\\");
 }
 /*# sourceMappingURL=index.css.map */
 "
