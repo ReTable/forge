@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.3.1
+
+### Patch Changes
+
+- [#38](https://github.com/ReTable/forge/pull/38) [`fc41ac8`](https://github.com/ReTable/forge/commit/fc41ac89e9d3e5eef52bb5d626d8afdfc452f7f3) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 1.3.0
 
 ### Minor Changes
