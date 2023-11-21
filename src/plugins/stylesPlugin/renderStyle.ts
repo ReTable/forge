@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import * as sass from 'sass';
 import { fromObject } from 'convert-source-map';
-import { readPackageUpSync } from 'read-pkg-up';
+import { readPackageUpSync } from 'read-package-up';
 
 type Options = {
   path: string;

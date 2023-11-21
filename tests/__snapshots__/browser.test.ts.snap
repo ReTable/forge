@@ -60,7 +60,7 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV(\\"button\\", { o
   fileName: \\"src/Button.tsx\\",
   lineNumber: 8,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -90,17 +90,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 24
-}, this);
+});
 var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
@@ -112,17 +112,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 28
-}, this);
+});
 var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
@@ -132,29 +132,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -184,17 +184,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 24
-}, this);
+});
 var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
@@ -206,17 +206,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 28
-}, this);
+});
 var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
@@ -226,29 +226,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -324,17 +324,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 24
-}, this);
+});
 var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
@@ -346,17 +346,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 28
-}, this);
+});
 var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
@@ -366,29 +366,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -418,17 +418,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 24
-}, this);
+});
 var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
@@ -440,17 +440,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 5,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 5,
   columnNumber: 28
-}, this);
+});
 var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
@@ -460,29 +460,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -646,17 +646,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 24
-}, this);
+});
 
 // src/assets/shared.svg?svgr
 import * as React2 from \\"react\\";
@@ -666,17 +666,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 28
-}, this);
+});
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from \\"react/jsx-dev-runtime\\";
@@ -685,29 +685,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -749,17 +749,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 24
-}, this);
+});
 
 // src/assets/shared.svg?svgr
 import * as React2 from \\"react\\";
@@ -769,17 +769,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 28
-}, this);
+});
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from \\"react/jsx-dev-runtime\\";
@@ -788,29 +788,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -852,17 +852,17 @@ var SvgJs = (props) => /* @__PURE__ */ jsxDEV(\\"svg\\", { id: \\"Layer_1\\", xm
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 252
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV(\\"text\\", { children: \\"\\\\n		JS\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/js.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 293
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/js.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 24
-}, this);
+});
 
 // src/assets/shared.svg?svgr
 import * as React2 from \\"react\\";
@@ -872,17 +872,17 @@ var SvgShared = (props) => /* @__PURE__ */ jsxDEV2(\\"svg\\", { id: \\"Layer_1\\
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 256
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV2(\\"text\\", { children: \\"\\\\n		Shared\\\\n	\\" }, void 0, false, {
     fileName: \\"src/assets/shared.svg?svgr\\",
     lineNumber: 4,
     columnNumber: 297
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/assets/shared.svg?svgr\\",
   lineNumber: 4,
   columnNumber: 28
-}, this);
+});
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from \\"react/jsx-dev-runtime\\";
@@ -891,29 +891,29 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3(\\"button\\", { 
     fileName: \\"src/Button.tsx\\",
     lineNumber: 14,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 15,
     columnNumber: 5
-  }, this),
+  }),
   /* @__PURE__ */ jsxDEV3(\\"span\\", { className: Button_default.label, children: [
     /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
       fileName: \\"src/Button.tsx\\",
       lineNumber: 17,
       columnNumber: 7
-    }, this),
+    }),
     children
   ] }, void 0, true, {
     fileName: \\"src/Button.tsx\\",
     lineNumber: 16,
     columnNumber: 5
-  }, this)
+  })
 ] }, void 0, true, {
   fileName: \\"src/Button.tsx\\",
   lineNumber: 13,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -2489,7 +2489,7 @@ var Button = ({ children, onClick, prefix }) => /* @__PURE__ */ jsxDEV(\\"button
   fileName: \\"src/Button.tsx\\",
   lineNumber: 15,
   columnNumber: 3
-}, this);
+});
 export {
   Button
 };
@@ -2523,7 +2523,7 @@ var Button = ({ children, onClick, prefix }) => /* @__PURE__ */ jsxDEV(\\"button
   fileName: \\"src/Button.tsx\\",
   lineNumber: 15,
   columnNumber: 3
-}, this);
+});
 Button.__docgenInfo = {
   \\"tags\\": {},
   \\"filePath\\": \\"tests/tmp/7d9a493ea3a39b55e638074c4b791f1d2be77c54f118ae305a4879e9488c2994/src/Button.tsx\\",
@@ -2641,7 +2641,7 @@ var Button2 = ({ children, onClick, prefix }) => /* @__PURE__ */ jsxDEV2(\\"butt
   fileName: \\"src/Function.tsx\\",
   lineNumber: 15,
   columnNumber: 3
-}, this);
+});
 Button2.displayName = \\"UiKit(Button)\\";
 Button2.__docgenInfo = {
   \\"tags\\": {},
@@ -2697,7 +2697,7 @@ var Button = ({ children, ...props }) => /* @__PURE__ */ jsxDEV(\\"div\\", { ...
   fileName: \\"src/Button.tsx\\",
   lineNumber: 9,
   columnNumber: 3
-}, this);
+});
 Button.__docgenInfo = {
   \\"tags\\": {},
   \\"filePath\\": \\"tests/tmp/bdb9826cb46d0639dd28bbb30928f45d4d061faed185312870c77618d6f37f01/src/Button.tsx\\",

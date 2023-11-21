@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 
 import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
-import { readPackageUp } from 'read-pkg-up';
+import { readPackageUp } from 'read-package-up';
 
 import { Entry, Hook, Target } from '../types';
 
