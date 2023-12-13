@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.3.4
+
+### Patch Changes
+
+- [#45](https://github.com/ReTable/forge/pull/45) [`9e9f585`](https://github.com/ReTable/forge/commit/9e9f58544c0c918b67c4db2e2408c7445f94e697) Thanks [@demiazz](https://github.com/demiazz)! - fix node version restrictions
+
 ## 1.3.3
 
 ### Patch Changes
