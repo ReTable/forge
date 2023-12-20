@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 1.3.5
+
+### Patch Changes
+
+- [#47](https://github.com/ReTable/forge/pull/47) [`dd9e428`](https://github.com/ReTable/forge/commit/dd9e42892f608000b614f01ce3c77e5d2cf5eb6d) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 1.3.4
 
 ### Patch Changes
@@ -308,7 +314,7 @@
   Example:
 
   ```scss
-  @use '~@tabula/ui-theme' as theme;
+  @use "~@tabula/ui-theme" as theme;
 
   .root {
     background-color: theme.$color--primary;
