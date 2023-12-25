@@ -6,6 +6,13 @@
   "bin": {
     "forge": "lib/index.js"
   },
+  "typings": "./typings/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./typings/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "tabula.io",
     "tomat.ai",
