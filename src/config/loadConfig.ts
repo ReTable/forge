@@ -112,6 +112,7 @@ type Result = {
   typings: boolean;
   storybook: boolean;
   cssClassPrefix: boolean | string;
+  svgrComponentName?: (componentName: string) => string;
 
   postBuild: Hook[];
 
@@ -160,6 +161,8 @@ export async function loadConfig(options: Options): Promise<Result> {
   const cssClassPrefix =
     options.cssClassPrefix ?? userConfig?.cssClassPrefix ?? defaults.cssClassPrefix;
 
+  const svgrComponentName = userConfig?.svgrComponentName;
+
   let postBuild: Hook | Hook[] = [];
 
   if (options.postBuild != null) {
@@ -180,6 +183,7 @@ export async function loadConfig(options: Options): Promise<Result> {
     typings: check && typings,
     storybook: target === 'browser' && storybook,
     cssClassPrefix,
+    svgrComponentName,
 
     postBuild,
 

@@ -9,13 +9,19 @@ import { optimize } from 'svgo';
 
 import { getOriginalPath, isVanillaCss } from '../vanillaExtractPlugin';
 
+import { applyComponentName } from './applyComponentName';
+
 type PluginData = {
   path: string;
 };
 
 const svgrSuffix = '?svgr';
 
-export function svgPlugin(): Plugin {
+type Options = {
+  svgrComponentName?: (componentName: string) => string;
+};
+
+export function svgPlugin({ svgrComponentName }: Options): Plugin {
   return {
     name: 'svg-plugin',
 
@@ -25,17 +31,33 @@ export function svgPlugin(): Plugin {
       // NOTE: The `svgr` uses runtime config over CLI config. We avoid this behaviour.
       const userConfig: { config: Config } | null = await cosmiconfig('svgr').search();
 
+      const memo = userConfig?.config.memo ?? true;
+
       const config: Config = {
         ...userConfig?.config,
 
         exportType: 'named',
+        memo,
         namedExport: 'ReactComponent',
         plugins: ['@svgr/plugin-jsx'],
         runtimeConfig: false,
+        template(variables, { tpl }) {
+          applyComponentName(variables, { memo, transformName: svgrComponentName });
+
+          return tpl`
+            ${variables.imports};
+
+            ${variables.interfaces};
+
+            const ${variables.componentName} = (${variables.props}) => (
+              ${variables.jsx}
+            );
+
+            ${variables.exports};
+          `;
+        },
         svgo: minify,
       };
-
-      config.memo = userConfig?.config.memo ?? true;
 
       onResolve(
         {
