@@ -23,10 +23,10 @@ export function svgPlugin(): Plugin {
       const minify = Boolean(initialOptions.minify);
 
       // NOTE: The `svgr` uses runtime config over CLI config. We avoid this behaviour.
-      const userConfig = await cosmiconfig('svgr').search();
+      const userConfig: { config: Config } | null = await cosmiconfig('svgr').search();
 
       const config: Config = {
-        ...(userConfig?.config as Config | null),
+        ...userConfig?.config,
 
         exportType: 'named',
         namedExport: 'ReactComponent',
@@ -34,6 +34,8 @@ export function svgPlugin(): Plugin {
         runtimeConfig: false,
         svgo: minify,
       };
+
+      config.memo = userConfig?.config.memo ?? true;
 
       onResolve(
         {

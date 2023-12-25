@@ -760,6 +760,20 @@ describe('browser', () => {
           expect(await c.read('lib/index.js')).toMatchSnapshot();
         },
       );
+
+      it(
+        'use `memo` option from config if provided',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config-memo',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
     });
   });
 
