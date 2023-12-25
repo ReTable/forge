@@ -366,7 +366,7 @@ An SVG file already exports React component as `ReactComponent`.
 #### SVGR Component Name
 
 By default, SVGR uses `Svg<CamelCaseFileName>` name for components. You can override this behaviour through
-`svgrComponentName` options, which should be function of format `(svgrName: string) => string`.
+`svgrComponentName` option, which should be function of format `(svgrName: string) => string`.
 
 Example:
 
@@ -398,6 +398,42 @@ export { Memo as ReactComponent };
 ```
 
 This option doesn't affect named exports.
+
+#### SVGR Display Name
+
+By default, SVGR doesn't append `displayName` for exported components. You can add this behaviour through `svgrDisplayName`
+option, which should be function of format `(componentName: string) => string | { displayName: string; isDebugOnly?: boolean }`.
+
+When function is returns string, then `isDebugOnly` equals to `false`.
+
+The `componentName` is name of component itself (before memoization if enabled). If you provide `svgrComponentName` option,
+then result of applying this function is `componentName`.
+
+The `isDebugOnly` enables wrapping the assignment in Vite compatible condition.
+
+```js
+// `isDebugOnly` = false
+
+Component.displayName = 'scope(ComponentDisplayName)';
+
+// `isDebugOnly` = true
+
+if (import.meta.env.DEV) {
+  Component.displayName = `scope(ComponentDisplayName)`;
+}
+```
+
+If memoization is enabled, then the `displayName` will be assigned to the memoized component:
+
+```js
+const Component = (props) => {
+  // ...
+};
+
+const Memo = memo(Component);
+
+Memo.displayName = `scope(ComponentDisplayName)`;
+```
 
 ### React
 
