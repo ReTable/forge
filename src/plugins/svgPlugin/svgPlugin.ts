@@ -12,6 +12,7 @@ import { SVGRComponentNameFn, SVGRDisplayNameFn } from '../../types';
 import { getOriginalPath, isVanillaCss } from '../vanillaExtractPlugin';
 
 import { applyComponentName } from './applyComponentName';
+import { buildDisplayName } from './buildDisplayName';
 
 type PluginData = {
   path: string;
@@ -24,7 +25,7 @@ type Options = {
   svgrDisplayName?: SVGRDisplayNameFn;
 };
 
-export function svgPlugin({ svgrComponentName }: Options): Plugin {
+export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plugin {
   return {
     name: 'svg-plugin',
 
@@ -47,6 +48,11 @@ export function svgPlugin({ svgrComponentName }: Options): Plugin {
         template(variables, { tpl }) {
           applyComponentName(variables, { memo, transformName: svgrComponentName });
 
+          const displayName = buildDisplayName(variables.componentName, {
+            memo,
+            transformDisplayName: svgrDisplayName,
+          });
+
           return tpl`
             ${variables.imports};
 
@@ -57,6 +63,8 @@ export function svgPlugin({ svgrComponentName }: Options): Plugin {
             );
 
             ${variables.exports};
+
+            ${displayName}
           `;
         },
         svgo: minify,
