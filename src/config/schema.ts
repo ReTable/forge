@@ -25,7 +25,21 @@ const svgrComponentName = z
   .function()
   .args(z.string())
   .returns(z.string())
-  .describe('Transforms SVG component name');
+  .describe('Transforms SVGR component name');
+
+const svgrDisplayName = z
+  .function()
+  .args(z.string())
+  .returns(
+    z.union([
+      z.object({
+        isDebugOnly: z.boolean().optional(),
+        displayName: z.string(),
+      }),
+      z.string(),
+    ]),
+  )
+  .describe('Append the `displayName` property to exported SVGR component');
 
 const cssClassPrefix = z.union([z.boolean(), z.string()], {
   description:
@@ -84,6 +98,7 @@ const baseConfiguration = perCommandConfiguration.extend({
   target,
   cssClassPrefix: cssClassPrefix.optional(),
   svgrComponentName: svgrComponentName.optional(),
+  svgrDisplayName: svgrDisplayName.optional(),
 
   build: perCommandConfiguration.optional(),
   watch: perCommandConfiguration.optional(),

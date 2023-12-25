@@ -7,6 +7,8 @@ import { cosmiconfig } from 'cosmiconfig';
 import { Plugin } from 'esbuild';
 import { optimize } from 'svgo';
 
+import { SVGRComponentNameFn, SVGRDisplayNameFn } from '../../types';
+
 import { getOriginalPath, isVanillaCss } from '../vanillaExtractPlugin';
 
 import { applyComponentName } from './applyComponentName';
@@ -18,7 +20,8 @@ type PluginData = {
 const svgrSuffix = '?svgr';
 
 type Options = {
-  svgrComponentName?: (componentName: string) => string;
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
 };
 
 export function svgPlugin({ svgrComponentName }: Options): Plugin {

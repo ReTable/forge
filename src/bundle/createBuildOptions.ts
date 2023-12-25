@@ -13,7 +13,7 @@ import {
   vanillaExtractPlugin,
 } from '../plugins';
 import { createCssProcessor } from '../postcss';
-import { Entry, Hook, Target } from '../types';
+import { Entry, Hook, SVGRComponentNameFn, SVGRDisplayNameFn, Target } from '../types';
 
 type BrowserOptions = {
   cssClassPrefix: boolean | string;
@@ -21,7 +21,8 @@ type BrowserOptions = {
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
-  svgrComponentName?: (componentName: string) => string;
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
 };
 
 const extensions = [
@@ -94,6 +95,7 @@ async function applyBrowserOptions(
     repositoryRoot,
     storybook,
     svgrComponentName,
+    svgrDisplayName,
   }: BrowserOptions,
 ) {
   const prefix = getPrefixFrom(cssClassPrefix, name);
@@ -124,7 +126,7 @@ async function applyBrowserOptions(
   buildOptions.plugins = [
     cssAutoImportPlugin(),
     stylesPlugin({ processCss }),
-    svgPlugin({ svgrComponentName }),
+    svgPlugin({ svgrComponentName, svgrDisplayName }),
     vanillaExtractPlugin({ isProduction: production, prefix }),
   ];
 
@@ -148,7 +150,8 @@ type Options = {
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
-  svgrComponentName?: (componentName: string) => string;
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
   target: Target;
   typings: boolean;
 };
@@ -164,6 +167,7 @@ export async function createBuildOptions({
   repositoryRoot,
   storybook,
   svgrComponentName,
+  svgrDisplayName,
   target,
   typings,
 }: Options): Promise<BuildOptions> {
@@ -197,6 +201,7 @@ export async function createBuildOptions({
         repositoryRoot,
         storybook,
         svgrComponentName,
+        svgrDisplayName,
       });
 
       break;

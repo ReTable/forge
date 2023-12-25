@@ -1,10 +1,12 @@
 import { Template } from '@svgr/babel-plugin-transform-svg-component';
 
+import { SVGRComponentNameFn } from '../../types';
+
 type Variables = Template extends (variables: infer V, ...args: never[]) => unknown ? V : never;
 
 type Options = {
   memo: boolean;
-  transformName?: (name: string) => string;
+  transformName?: SVGRComponentNameFn;
 };
 
 function applyComponentNameNotMemoized(variables: Variables, name: string) {
