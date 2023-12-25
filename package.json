@@ -50,6 +50,7 @@
     "@changesets/cli": "^2.27.1",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@svgr/babel-plugin-transform-svg-component": "^8.0.0",
     "@tabula/eslint-config": "^0.1.1",
     "@tabula/prettier-config": "^0.1.4",
     "@tabula/typescript-config": "^0.2.1",
