@@ -52,7 +52,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@tabula/eslint-config": "^0.1.1",
     "@tabula/prettier-config": "^0.1.4",
-    "@tabula/typescript-config": "^0.2.0",
+    "@tabula/typescript-config": "^0.2.1",
     "@tabula/vitest-config": "^0.2.0",
     "@types/convert-source-map": "^2.0.3",
     "@types/node": "^20.10.5",

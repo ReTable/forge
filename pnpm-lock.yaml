@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^0.1.4
     version: 0.1.4(prettier@3.1.1)
   '@tabula/typescript-config':
-    specifier: ^0.2.0
-    version: 0.2.0(typescript@5.3.3)
+    specifier: ^0.2.1
+    version: 0.2.1(typescript@5.3.3)
   '@tabula/vitest-config':
     specifier: ^0.2.0
     version: 0.2.0(react-dom@18.2.0)(react@18.2.0)(vitest@1.1.0)
@@ -1739,10 +1739,10 @@ packages:
       - supports-color
     dev: true
 
-  /@tabula/typescript-config@0.2.0(typescript@5.3.3):
-    resolution: {integrity: sha512-cZXCvI0Mwch71TAyJDvQsaWB2Vp/Z6vKaPsy8Gj0hvYEUhqh9BgRWnZ7X0Cq1u+DavHmON9Ins3iub9a6BABuA==}
+  /@tabula/typescript-config@0.2.1(typescript@5.3.3):
+    resolution: {integrity: sha512-PQL9B+BtGPb6kf/zrqvH6NBt/k+I/oM723u57qqL0SjtCyQCMI5ximwvW15j06hlJKFNxYVN4ytqKt97lhqSEg==}
     peerDependencies:
-      typescript: ^5.3.2
+      typescript: ^5.3.3
     dependencies:
       typescript: 5.3.3
     optionalDependencies:
