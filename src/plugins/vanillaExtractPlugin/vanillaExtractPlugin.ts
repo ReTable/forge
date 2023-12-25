@@ -36,6 +36,12 @@ export function vanillaExtractPlugin(options: Options): Plugin {
     //       it can be a function, but typings allow to use only `short` and `debug` string literals.
     identifiers: getIdentifiersBuilder(options) as never,
     esbuildOptions: {
+      define: {
+        'import.meta.env.DEV': JSON.stringify(!options.isProduction),
+        'import.meta.env.PROD': JSON.stringify(options.isProduction),
+        'import.meta.env.MODE': JSON.stringify(options.isProduction ? 'production' : 'development'),
+      },
+
       plugins: [
         {
           name: 'vanilla-extract-plugin/static',
