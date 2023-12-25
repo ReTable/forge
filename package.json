@@ -39,7 +39,8 @@
   "author": "Retable Inc.",
   "license": "ISC",
   "files": [
-    "lib"
+    "lib",
+    "typings"
   ],
   "scripts": {
     "build": "NODE_OPTIONS='--no-warnings' tsx src/index.ts",
