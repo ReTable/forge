@@ -8,6 +8,9 @@ dependencies:
   '@babel/core':
     specifier: ^7.23.6
     version: 7.23.6
+  '@babel/types':
+    specifier: ^7.23.6
+    version: 7.23.6
   '@svgr/core':
     specifier: ^8.1.0
     version: 8.1.0(typescript@5.3.3)
@@ -193,7 +196,7 @@ packages:
     resolution: {integrity: sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.23.6
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
