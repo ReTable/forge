@@ -4,5 +4,12 @@
   "initialVersions": {
     "@tabula/forge": "1.3.5"
   },
-  "changesets": []
+  "changesets": [
+    "long-cows-give",
+    "purple-terms-know",
+    "red-days-scream",
+    "tasty-socks-join",
+    "twenty-items-rescue",
+    "wet-students-sing"
+  ]
 }
