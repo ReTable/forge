@@ -1,5 +1,91 @@
 # @tabula/forge
 
+## 2.0.0-next.0
+
+### Major Changes
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - enable `memo` by default for SVGR transformations
+
+### Minor Changes
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - added support of transformation of SVG component name with `svgrComponentName` option.
+
+  By default, SVGR uses `Svg<CamelCaseFileName>` name for components. You can override this behaviour through
+  `svgrComponentName` options, which should be function of format `(svgrName: string) => string`.
+
+  Example:
+
+  ```js
+  export default {
+    // ...
+    svgrComponentName(name) {
+      return `Ui${name.slice(3)}Icon`;
+    },
+    // ...
+  };
+  ```
+
+  If you have a file `column.svg` then component name is `SvgColumn` by default. But with config from about the name
+  will be `UiColumnIcon`.
+
+  If you use memoization it looks like:
+
+  ```js
+  import { memo } from "react";
+
+  const UiColumnIcon = (props) => {
+    // ...
+  };
+
+  const Memo = memo(UiColumnIcon);
+
+  export { Memo as ReactComponent };
+  ```
+
+  This option doesn't affect named exports.
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - allow to append `displayName` for SVGR components.
+
+  By default, SVGR doesn't append `displayName` for exported components. You can add this behaviour through `svgrDisplayName`
+  option, which should be function of format `(componentName: string) => string | { displayName: string; isDebugOnly?: boolean }`.
+
+  When function is returns string, then `isDebugOnly` equals to `false`.
+
+  The `componentName` is name of component itself (before memoization if enabled). If you provide `svgrComponentName` option,
+  then result of applying this function is `componentName`.
+
+  The `isDebugOnly` enables wrapping the assignment in Vite compatible condition.
+
+  ```js
+  // `isDebugOnly` = false
+
+  Component.displayName = "scope(ComponentDisplayName)";
+
+  // `isDebugOnly` = true
+
+  if (import.meta.env.DEV) {
+    Component.displayName = `scope(ComponentDisplayName)`;
+  }
+  ```
+
+  If memoization is enabled, then the `displayName` will be assigned to the memoized component:
+
+  ```js
+  const Component = (props) => {
+    // ...
+  };
+
+  const Memo = memo(Component);
+
+  Memo.displayName = `scope(ComponentDisplayName)`;
+  ```
+
+### Patch Changes
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - add typings and exports config type
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - add `@babel/types` dependency
+
 ## 1.3.5
 
 ### Patch Changes
