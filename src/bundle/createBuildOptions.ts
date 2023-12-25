@@ -137,7 +137,7 @@ async function applyBrowserOptions(
 
 function applyNodeOptions(buildOptions: BuildOptions) {
   buildOptions.platform = 'node';
-  buildOptions.target = 'node18';
+  buildOptions.target = 'node20';
 }
 
 type Options = {
