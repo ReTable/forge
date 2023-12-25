@@ -4181,6 +4181,68 @@ exports[`browser > vanilla-extract support > supports \`vanilla-extract\` packag
 "
 `;
 
+exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is development > sets flags to development mode 1`] = `
+"import "./index.css";
+
+// src/index.css.ts
+var dev = "src_dev__fj0g6q0";
+var mode = "src_mode__fj0g6q2";
+var prod = "src_prod__fj0g6q1";
+
+// src/index.ts
+document.body.classList.add(dev);
+document.body.classList.add(prod);
+document.body.classList.add(mode);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is development > sets flags to development mode 2`] = `
+"/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LnNyY19kZXZfX2ZqMGc2cTA6OmJlZm9yZSB7CiAgY29udGVudDogInRydWUiOwp9Ci5zcmNfcHJvZF9fZmowZzZxMTo6YmVmb3JlIHsKICBjb250ZW50OiAiZmFsc2UiOwp9Ci5zcmNfbW9kZV9fZmowZzZxMjo6YmVmb3JlIHsKICBjb250ZW50OiAiZGV2ZWxvcG1lbnQiOwp9 */
+.src_dev__fj0g6q0::before {
+  content: "true";
+}
+.src_prod__fj0g6q1::before {
+  content: "false";
+}
+.src_mode__fj0g6q2::before {
+  content: "development";
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is production > sets flags to production mode 1`] = `
+"import "./index.css";
+
+// src/index.css.ts
+var dev = "browser_vanilla_extract_vite__fj0g6q0";
+var mode = "browser_vanilla_extract_vite__fj0g6q2";
+var prod = "browser_vanilla_extract_vite__fj0g6q1";
+
+// src/index.ts
+document.body.classList.add(dev);
+document.body.classList.add(prod);
+document.body.classList.add(mode);
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is production > sets flags to production mode 2`] = `
+"/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LmJyb3dzZXJfdmFuaWxsYV9leHRyYWN0X3ZpdGVfX2ZqMGc2cTA6OmJlZm9yZSB7CiAgY29udGVudDogImZhbHNlIjsKfQouYnJvd3Nlcl92YW5pbGxhX2V4dHJhY3Rfdml0ZV9fZmowZzZxMTo6YmVmb3JlIHsKICBjb250ZW50OiAidHJ1ZSI7Cn0KLmJyb3dzZXJfdmFuaWxsYV9leHRyYWN0X3ZpdGVfX2ZqMGc2cTI6OmJlZm9yZSB7CiAgY29udGVudDogInByb2R1Y3Rpb24iOwp9 */
+.browser_vanilla_extract_vite__fj0g6q0::before {
+  content: "false";
+}
+.browser_vanilla_extract_vite__fj0g6q1::before {
+  content: "true";
+}
+.browser_vanilla_extract_vite__fj0g6q2::before {
+  content: "production";
+}
+/*# sourceMappingURL=index.css.map */
+"
+`;
+
 exports[`browser > vanilla-extract support > supports static files in the \`vanilla-extract\` styles 1`] = `
 "/* vanilla-extract-css-ns:src/index.css.ts.vanilla.css?source=LnNyY19yb290X19rajdyczQwIHsKICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7Cn0= */
 .src_root__kj7rs40 {

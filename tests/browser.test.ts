@@ -1075,6 +1075,42 @@ describe('browser', () => {
         expect(await c.read('lib/index.css')).toMatchSnapshot();
       },
     );
+
+    describe('supports Vite `import.meta.env.*` flags', () => {
+      describe('when mode is production', () => {
+        it(
+          'sets flags to production mode',
+          {
+            command: 'build',
+            dependencies: ['@vanilla-extract/css'],
+            name: 'browser-vanilla-extract-vite',
+            target: 'browser',
+            production: true,
+          },
+          async (c) => {
+            expect(await c.read('lib/index.js')).toMatchSnapshot();
+            expect(await c.read('lib/index.css')).toMatchSnapshot();
+          },
+        );
+      });
+
+      describe('when mode is development', () => {
+        it(
+          'sets flags to development mode',
+          {
+            command: 'build',
+            dependencies: ['@vanilla-extract/css'],
+            name: 'browser-vanilla-extract-vite',
+            target: 'browser',
+            production: false,
+          },
+          async (c) => {
+            expect(await c.read('lib/index.js')).toMatchSnapshot();
+            expect(await c.read('lib/index.css')).toMatchSnapshot();
+          },
+        );
+      });
+    });
   });
 
   describe('storybook', () => {
