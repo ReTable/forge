@@ -1,6 +1,5 @@
 {
   "exportType": "default",
-  "memo": true,
   "namedExport": "SVGComponent",
   "svgo": true
 }
