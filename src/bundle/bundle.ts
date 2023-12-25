@@ -5,7 +5,7 @@ import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
 import { readPackageUp } from 'read-package-up';
 
-import { Entry, Hook, Target } from '../types';
+import { Entry, Hook, SVGRComponentNameFn, SVGRDisplayNameFn, Target } from '../types';
 
 import { createBuildOptions } from './createBuildOptions';
 
@@ -16,6 +16,8 @@ type Options = {
   production: boolean;
   storybook: boolean;
   cssClassPrefix: boolean | string;
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
   target: Target;
   typings: boolean;
   watch: boolean;
@@ -28,6 +30,8 @@ export async function bundle({
   postBuild,
   production,
   storybook,
+  svgrComponentName,
+  svgrDisplayName,
   target,
   typings,
   watch,
@@ -64,6 +68,8 @@ export async function bundle({
     production,
     repositoryRoot,
     storybook,
+    svgrComponentName,
+    svgrDisplayName,
     target,
     typings,
   });

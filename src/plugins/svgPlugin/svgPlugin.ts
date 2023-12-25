@@ -7,7 +7,12 @@ import { cosmiconfig } from 'cosmiconfig';
 import { Plugin } from 'esbuild';
 import { optimize } from 'svgo';
 
+import { SVGRComponentNameFn, SVGRDisplayNameFn } from '../../types';
+
 import { getOriginalPath, isVanillaCss } from '../vanillaExtractPlugin';
+
+import { applyComponentName } from './applyComponentName';
+import { buildDisplayName } from './buildDisplayName';
 
 type PluginData = {
   path: string;
@@ -15,7 +20,12 @@ type PluginData = {
 
 const svgrSuffix = '?svgr';
 
-export function svgPlugin(): Plugin {
+type Options = {
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
+};
+
+export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plugin {
   return {
     name: 'svg-plugin',
 
@@ -23,15 +33,40 @@ export function svgPlugin(): Plugin {
       const minify = Boolean(initialOptions.minify);
 
       // NOTE: The `svgr` uses runtime config over CLI config. We avoid this behaviour.
-      const userConfig = await cosmiconfig('svgr').search();
+      const userConfig: { config: Config } | null = await cosmiconfig('svgr').search();
+
+      const memo = userConfig?.config.memo ?? true;
 
       const config: Config = {
-        ...(userConfig?.config as Config | null),
+        ...userConfig?.config,
 
         exportType: 'named',
+        memo,
         namedExport: 'ReactComponent',
         plugins: ['@svgr/plugin-jsx'],
         runtimeConfig: false,
+        template(variables, { tpl }) {
+          applyComponentName(variables, { memo, transformName: svgrComponentName });
+
+          const displayName = buildDisplayName(variables.componentName, {
+            memo,
+            transformDisplayName: svgrDisplayName,
+          });
+
+          return tpl`
+            ${variables.imports};
+
+            ${variables.interfaces};
+
+            const ${variables.componentName} = (${variables.props}) => (
+              ${variables.jsx}
+            );
+
+            ${variables.exports};
+
+            ${displayName}
+          `;
+        },
         svgo: minify,
       };
 

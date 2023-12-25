@@ -1,6 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
 
-import { Entry, Hook, Target } from '../types';
+import { Entry, Hook, SVGRComponentNameFn, SVGRDisplayNameFn, Target } from '../types';
 
 import { defaultBuildConfig, defaultWatchConfig } from './initialConfig';
 import { schema } from './schema';
@@ -112,6 +112,8 @@ type Result = {
   typings: boolean;
   storybook: boolean;
   cssClassPrefix: boolean | string;
+  svgrComponentName?: SVGRComponentNameFn;
+  svgrDisplayName?: SVGRDisplayNameFn;
 
   postBuild: Hook[];
 
@@ -160,6 +162,10 @@ export async function loadConfig(options: Options): Promise<Result> {
   const cssClassPrefix =
     options.cssClassPrefix ?? userConfig?.cssClassPrefix ?? defaults.cssClassPrefix;
 
+  const svgrComponentName = userConfig?.svgrComponentName;
+
+  const svgrDisplayName = userConfig?.svgrDisplayName;
+
   let postBuild: Hook | Hook[] = [];
 
   if (options.postBuild != null) {
@@ -180,6 +186,8 @@ export async function loadConfig(options: Options): Promise<Result> {
     typings: check && typings,
     storybook: target === 'browser' && storybook,
     cssClassPrefix,
+    svgrComponentName,
+    svgrDisplayName,
 
     postBuild,
 

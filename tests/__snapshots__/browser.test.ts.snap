@@ -270,28 +270,32 @@ var js_default = "./assets/js.svg";
 
 // src/assets/js.svg?svgr
 import * as React from "react";
+import { memo } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 var js_default2 = js_default;
 var SvgJs = (props) => /* @__PURE__ */ jsxs("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsx("circle", { cx: 60, cy: 60.583, r: 14.409 }),
   /* @__PURE__ */ jsx("text", { children: "\\n		JS\\n	" })
 ] });
+var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
 import * as React2 from "react";
+import { memo as memo2 } from "react";
 import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var SvgShared = (props) => /* @__PURE__ */ jsxs2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsx2("circle", { cx: 60, cy: 60.583, r: 14.409 }),
   /* @__PURE__ */ jsx2("text", { children: "\\n		Shared\\n	" })
 ] });
+var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
 import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var Button = ({ children, onClick }) => /* @__PURE__ */ jsxs3("button", { className: Button_default.root, onClick, type: "button", children: [
   /* @__PURE__ */ jsx3("img", { src: js_default2 }),
-  /* @__PURE__ */ jsx3(SvgJs, {}),
+  /* @__PURE__ */ jsx3(Memo, {}),
   /* @__PURE__ */ jsxs3("span", { className: Button_default.label, children: [
-    /* @__PURE__ */ jsx3(SvgShared, {}),
+    /* @__PURE__ */ jsx3(Memo2, {}),
     children
   ] })
 ] });
@@ -490,6 +494,1240 @@ export {
 "
 `;
 
+exports[`browser > SVG support > .svgrrc > use \`memo\` option from config if provided 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_config_memo__src-Button-module__root",
+  "label": "browser_svgr_config_memo__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 24
+});
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 28
+});
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_debug_true__src-Button-module__root",
+  "label": "browser_svgr_display_name_debug_true__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 24
+});
+if (import.meta.env.DEV) {
+  SvgJs.displayName = "forge(SvgJsDisplayName)";
+}
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 28
+});
+if (import.meta.env.DEV) {
+  SvgShared.displayName = "forge(SvgSharedDisplayName)";
+}
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_debug_false__src-Button-module__root",
+  "label": "browser_svgr_display_name_debug_false__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 24
+});
+SvgJs.displayName = "forge(SvgJsDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 28
+});
+SvgShared.displayName = "forge(SvgSharedDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name without condition when plain string is returned 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_string__src-Button-module__root",
+  "label": "browser_svgr_display_name_string__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 24
+});
+SvgJs.displayName = "forge(SvgJsDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 28
+});
+SvgShared.displayName = "forge(SvgSharedDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_user_name_debug_true__src-Button-module__root",
+  "label": "browser_svgr_display_name_user_name_debug_true__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 27
+});
+if (import.meta.env.DEV) {
+  UiJsIcon.displayName = "forge(UiJsIconDisplayName)";
+}
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 31
+});
+if (import.meta.env.DEV) {
+  UiSharedIcon.displayName = "forge(UiSharedIconDisplayName)";
+}
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(UiJsIcon, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(UiSharedIcon, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_user_name_debug_false__src-Button-module__root",
+  "label": "browser_svgr_display_name_user_name_debug_false__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 27
+});
+UiJsIcon.displayName = "forge(UiJsIconDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 31
+});
+UiSharedIcon.displayName = "forge(UiSharedIconDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(UiJsIcon, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(UiSharedIcon, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name without condition when plain string is returned 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_user_name_string__src-Button-module__root",
+  "label": "browser_svgr_display_name_user_name_string__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 27
+});
+UiJsIcon.displayName = "forge(UiJsIconDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 31
+});
+UiSharedIcon.displayName = "forge(UiSharedIconDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(UiJsIcon, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(UiSharedIcon, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_debug_true__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_debug_true__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 24
+});
+var Memo = memo(SvgJs);
+if (import.meta.env.DEV) {
+  Memo.displayName = "forge(SvgJsDisplayName)";
+}
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 28
+});
+var Memo2 = memo2(SvgShared);
+if (import.meta.env.DEV) {
+  Memo2.displayName = "forge(SvgSharedDisplayName)";
+}
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_debug_false__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_debug_false__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 24
+});
+var Memo = memo(SvgJs);
+Memo.displayName = "forge(SvgJsDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 28
+});
+var Memo2 = memo2(SvgShared);
+Memo2.displayName = "forge(SvgSharedDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name without condition when plain string is returned 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_string__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_string__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 252
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 293
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 24
+});
+var Memo = memo(SvgJs);
+Memo.displayName = "forge(SvgJsDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 256
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 297
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 28
+});
+var Memo2 = memo2(SvgShared);
+Memo2.displayName = "forge(SvgSharedDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_user_name_debug_true__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_user_name_debug_true__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 27
+});
+var Memo = memo(UiJsIcon);
+if (import.meta.env.DEV) {
+  Memo.displayName = "forge(UiJsIconDisplayName)";
+}
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 31
+});
+var Memo2 = memo2(UiSharedIcon);
+if (import.meta.env.DEV) {
+  Memo2.displayName = "forge(UiSharedIconDisplayName)";
+}
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_user_name_debug_false__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_user_name_debug_false__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 27
+});
+var Memo = memo(UiJsIcon);
+Memo.displayName = "forge(UiJsIconDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 31
+});
+var Memo2 = memo2(UiSharedIcon);
+Memo2.displayName = "forge(UiSharedIconDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name without condition when plain string is returned 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_display_name_memo_user_name_string__src-Button-module__root",
+  "label": "browser_svgr_display_name_memo_user_name_string__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 27
+});
+var Memo = memo(UiJsIcon);
+Memo.displayName = "forge(UiJsIconDisplayName)";
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 31
+});
+var Memo2 = memo2(UiSharedIcon);
+Memo2.displayName = "forge(UiSharedIconDisplayName)";
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
 exports[`browser > SVG support > minify SVG when production mode is on 1`] = `
 "<?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) -->
@@ -543,28 +1781,32 @@ var js_default = "./assets/js.svg";
 
 // src/assets/js.svg?svgr
 import * as React from "react";
+import { memo } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 var js_default2 = js_default;
 var SvgJs = (props) => /* @__PURE__ */ jsxs("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsx("circle", { cx: 60, cy: 60.583, r: 14.409 }),
   /* @__PURE__ */ jsx("text", { children: "\\n		JS\\n	" })
 ] });
+var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
 import * as React2 from "react";
+import { memo as memo2 } from "react";
 import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var SvgShared = (props) => /* @__PURE__ */ jsxs2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsx2("circle", { cx: 60, cy: 60.583, r: 14.409 }),
   /* @__PURE__ */ jsx2("text", { children: "\\n		Shared\\n	" })
 ] });
+var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
 import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var Button = ({ children, onClick }) => /* @__PURE__ */ jsxs3("button", { className: Button_default.root, onClick, type: "button", children: [
   /* @__PURE__ */ jsx3("img", { src: js_default2 }),
-  /* @__PURE__ */ jsx3(SvgJs, {}),
+  /* @__PURE__ */ jsx3(Memo, {}),
   /* @__PURE__ */ jsxs3("span", { className: Button_default.label, children: [
-    /* @__PURE__ */ jsx3(SvgShared, {}),
+    /* @__PURE__ */ jsx3(Memo2, {}),
     children
   ] })
 ] });
@@ -639,44 +1881,48 @@ var js_default = "./assets/js.svg";
 
 // src/assets/js.svg?svgr
 import * as React from "react";
+import { memo } from "react";
 import { jsxDEV } from "react/jsx-dev-runtime";
 var js_default2 = js_default;
 var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 252
   }),
   /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 293
   })
 ] }, void 0, true, {
   fileName: "src/assets/js.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 24
 });
+var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
 import * as React2 from "react";
+import { memo as memo2 } from "react";
 import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
 var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 256
   }),
   /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 297
   })
 ] }, void 0, true, {
   fileName: "src/assets/shared.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 28
 });
+var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
@@ -686,13 +1932,13 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
     lineNumber: 14,
     columnNumber: 5
   }),
-  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: "src/Button.tsx",
     lineNumber: 15,
     columnNumber: 5
   }),
   /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
-    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: "src/Button.tsx",
       lineNumber: 17,
       columnNumber: 7
@@ -742,44 +1988,48 @@ var js_default = "./assets/js.svg";
 
 // src/assets/js.svg?svgr
 import * as React from "react";
+import { memo } from "react";
 import { jsxDEV } from "react/jsx-dev-runtime";
 var js_default2 = js_default;
 var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 252
   }),
   /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 293
   })
 ] }, void 0, true, {
   fileName: "src/assets/js.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 24
 });
+var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
 import * as React2 from "react";
+import { memo as memo2 } from "react";
 import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
 var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 256
   }),
   /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 297
   })
 ] }, void 0, true, {
   fileName: "src/assets/shared.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 28
 });
+var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
@@ -789,13 +2039,13 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
     lineNumber: 14,
     columnNumber: 5
   }),
-  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: "src/Button.tsx",
     lineNumber: 15,
     columnNumber: 5
   }),
   /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
-    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: "src/Button.tsx",
       lineNumber: 17,
       columnNumber: 7
@@ -845,44 +2095,48 @@ var js_default = "./assets/js.svg";
 
 // src/assets/js.svg?svgr
 import * as React from "react";
+import { memo } from "react";
 import { jsxDEV } from "react/jsx-dev-runtime";
 var js_default2 = js_default;
 var SvgJs = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 252
   }),
   /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
     fileName: "src/assets/js.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 293
   })
 ] }, void 0, true, {
   fileName: "src/assets/js.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 24
 });
+var Memo = memo(SvgJs);
 
 // src/assets/shared.svg?svgr
 import * as React2 from "react";
+import { memo as memo2 } from "react";
 import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
 var SvgShared = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
   /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 256
   }),
   /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
     fileName: "src/assets/shared.svg?svgr",
-    lineNumber: 4,
+    lineNumber: 5,
     columnNumber: 297
   })
 ] }, void 0, true, {
   fileName: "src/assets/shared.svg?svgr",
-  lineNumber: 4,
+  lineNumber: 5,
   columnNumber: 28
 });
+var Memo2 = memo2(SvgShared);
 
 // src/Button.tsx
 import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
@@ -892,13 +2146,13 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
     lineNumber: 14,
     columnNumber: 5
   }),
-  /* @__PURE__ */ jsxDEV3(SvgJs, {}, void 0, false, {
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
     fileName: "src/Button.tsx",
     lineNumber: 15,
     columnNumber: 5
   }),
   /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
-    /* @__PURE__ */ jsxDEV3(SvgShared, {}, void 0, false, {
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
       fileName: "src/Button.tsx",
       lineNumber: 17,
       columnNumber: 7
@@ -930,6 +2184,190 @@ exports[`browser > SVG support > supports sharing the same SVG between CSS and J
   background-image: url("./assets/shared.svg");
 }
 /*# sourceMappingURL=index.css.map */
+"
+`;
+
+exports[`browser > SVG support > svgrComponentName > allows to transform component name with memoization 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_component_name_memo__src-Button-module__root",
+  "label": "browser_svgr_component_name_memo__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { memo } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 27
+});
+var Memo = memo(UiJsIcon);
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { memo as memo2 } from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 5,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 5,
+  columnNumber: 31
+});
+var Memo2 = memo2(UiSharedIcon);
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(Memo, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(Memo2, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
+exports[`browser > SVG support > svgrComponentName > allows to transform component name without memoization 1`] = `
+"import "./index.css";
+
+// src/Button.module.css
+var Button_default = {
+  "root": "browser_svgr_component_name_no_memo__src-Button-module__root",
+  "label": "browser_svgr_component_name_no_memo__src-Button-module__label"
+};
+
+// src/assets/js.svg
+var js_default = "./assets/js.svg";
+
+// src/assets/js.svg?svgr
+import * as React from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var js_default2 = js_default;
+var UiJsIcon = (props) => /* @__PURE__ */ jsxDEV("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 255
+  }),
+  /* @__PURE__ */ jsxDEV("text", { children: "\\n		JS\\n	" }, void 0, false, {
+    fileName: "src/assets/js.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 296
+  })
+] }, void 0, true, {
+  fileName: "src/assets/js.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 27
+});
+
+// src/assets/shared.svg?svgr
+import * as React2 from "react";
+import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
+var UiSharedIcon = (props) => /* @__PURE__ */ jsxDEV2("svg", { id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", x: "0px", y: "0px", width: "120px", height: "120px", viewBox: "0 0 120 120", enableBackground: "new 0 0 120 120", xmlSpace: "preserve", ...props, children: [
+  /* @__PURE__ */ jsxDEV2("circle", { cx: 60, cy: 60.583, r: 14.409 }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 259
+  }),
+  /* @__PURE__ */ jsxDEV2("text", { children: "\\n		Shared\\n	" }, void 0, false, {
+    fileName: "src/assets/shared.svg?svgr",
+    lineNumber: 4,
+    columnNumber: 300
+  })
+] }, void 0, true, {
+  fileName: "src/assets/shared.svg?svgr",
+  lineNumber: 4,
+  columnNumber: 31
+});
+
+// src/Button.tsx
+import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { className: Button_default.root, onClick, type: "button", children: [
+  /* @__PURE__ */ jsxDEV3("img", { src: js_default2 }, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 14,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3(UiJsIcon, {}, void 0, false, {
+    fileName: "src/Button.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }),
+  /* @__PURE__ */ jsxDEV3("span", { className: Button_default.label, children: [
+    /* @__PURE__ */ jsxDEV3(UiSharedIcon, {}, void 0, false, {
+      fileName: "src/Button.tsx",
+      lineNumber: 17,
+      columnNumber: 7
+    }),
+    children
+  ] }, void 0, true, {
+    fileName: "src/Button.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  })
+] }, void 0, true, {
+  fileName: "src/Button.tsx",
+  lineNumber: 13,
+  columnNumber: 3
+});
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
 "
 `;
 

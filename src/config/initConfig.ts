@@ -31,6 +31,8 @@ export async function initConfig(target: Target): Promise<void> {
   if (target === 'node') {
     delete config.storybook;
     delete config.cssClassPrefix;
+    delete config.svgrComponentName;
+    delete config.svgrDisplayName;
     delete config.build?.storybook;
     delete config.watch?.storybook;
   }

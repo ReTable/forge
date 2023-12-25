@@ -188,6 +188,8 @@ We resolve option in following order:
 
 You can look at the [JSON Schema](https://github.com/ReTable/forge/blob/main/schemas/forgerc.json) for configuration file.
 
+Not all options are available through static files. For example, `svgrComponentName` is available only in JS/TS files.
+
 ## Entries
 
 By default, the `forge` looking for `<packageRoot>/src/index.tsx` or `<packageRoot/src/index.ts` file, and bundles it
@@ -360,6 +362,78 @@ import iconUrl, { ReactComponent as IconUrl } from './icon.svg';
 ```
 
 An SVG file already exports React component as `ReactComponent`.
+
+#### SVGR Component Name
+
+By default, SVGR uses `Svg<CamelCaseFileName>` name for components. You can override this behaviour through
+`svgrComponentName` option, which should be function of format `(svgrName: string) => string`.
+
+Example:
+
+```js
+export default {
+  // ...
+  svgrComponentName(name) {
+    return `Ui${name.slice(3)}Icon`;
+  },
+  // ...
+};
+```
+
+If you have a file `column.svg` then component name is `SvgColumn` by default. But with config from about the name
+will be `UiColumnIcon`.
+
+If you use memoization it looks like:
+
+```js
+import { memo } from 'react';
+
+const UiColumnIcon = (props) => {
+  // ...
+};
+
+const Memo = memo(UiColumnIcon);
+
+export { Memo as ReactComponent };
+```
+
+This option doesn't affect named exports.
+
+#### SVGR Display Name
+
+By default, SVGR doesn't append `displayName` for exported components. You can add this behaviour through `svgrDisplayName`
+option, which should be function of format `(componentName: string) => string | { displayName: string; isDebugOnly?: boolean }`.
+
+When function is returns string, then `isDebugOnly` equals to `false`.
+
+The `componentName` is name of component itself (before memoization if enabled). If you provide `svgrComponentName` option,
+then result of applying this function is `componentName`.
+
+The `isDebugOnly` enables wrapping the assignment in Vite compatible condition.
+
+```js
+// `isDebugOnly` = false
+
+Component.displayName = 'scope(ComponentDisplayName)';
+
+// `isDebugOnly` = true
+
+if (import.meta.env.DEV) {
+  Component.displayName = `scope(ComponentDisplayName)`;
+}
+```
+
+If memoization is enabled, then the `displayName` will be assigned to the memoized component:
+
+```js
+const Component = (props) => {
+  // ...
+};
+
+const Memo = memo(Component);
+
+Memo.displayName = `scope(ComponentDisplayName)`;
+```
 
 ### React
 

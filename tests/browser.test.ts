@@ -690,6 +690,218 @@ describe('browser', () => {
       },
     );
 
+    describe('svgrComponentName', () => {
+      it(
+        'allows to transform component name without memoization',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-component-name-no-memo',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'allows to transform component name with memoization',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-component-name-memo',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+    });
+
+    describe('displayName', () => {
+      describe('when memoization is enabled', () => {
+        describe('when SVGR defined component name is used', () => {
+          it(
+            'append display name without condition when `isDebugOnly` flag is false',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-debug-false',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name with condition when `isDebugOnly` flag is true',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-debug-true',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name without condition when plain string is returned',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-string',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+        });
+
+        describe('when user defined component name is used', () => {
+          it(
+            'append display name without condition when `isDebugOnly` flag is false',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-user-name-debug-false',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name with condition when `isDebugOnly` flag is true',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-user-name-debug-true',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name without condition when plain string is returned',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-memo-user-name-string',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+        });
+      });
+
+      describe('when memoization is disabled', () => {
+        describe('when SVGR defined component name is used', () => {
+          it(
+            'append display name without condition when `isDebugOnly` flag is false',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-debug-false',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name with condition when `isDebugOnly` flag is true',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-debug-true',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name without condition when plain string is returned',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-string',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+        });
+
+        describe('when user defined component name is used', () => {
+          it(
+            'append display name without condition when `isDebugOnly` flag is false',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-user-name-debug-false',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name with condition when `isDebugOnly` flag is true',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-user-name-debug-true',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+
+          it(
+            'append display name without condition when plain string is returned',
+            {
+              command: 'build',
+              dependencies: ['@types/react'],
+              name: 'browser-svgr-display-name-user-name-string',
+              target: 'browser',
+              production: false,
+            },
+            async (c) => {
+              expect(await c.read('lib/index.js')).toMatchSnapshot();
+            },
+          );
+        });
+      });
+    });
+
     describe('.svgrrc', () => {
       it(
         'supports configuration files',
@@ -755,6 +967,20 @@ describe('browser', () => {
           name: 'browser-svgr-config-svgo',
           target: 'browser',
           production: true,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'use `memo` option from config if provided',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-config-memo',
+          target: 'browser',
+          production: false,
         },
         async (c) => {
           expect(await c.read('lib/index.js')).toMatchSnapshot();
