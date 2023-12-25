@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 2.0.0-next.1
+
+### Major Changes
+
+- [#60](https://github.com/ReTable/forge/pull/60) [`5611ead`](https://github.com/ReTable/forge/commit/5611ead5c205c95501692f0edd36a3381225e876) Thanks [@demiazz](https://github.com/demiazz)! - update target node up to 20.x
+
 ## 2.0.0-next.0
 
 ### Major Changes
