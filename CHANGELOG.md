@@ -1,5 +1,22 @@
 # @tabula/forge
 
+## 2.0.0-next.2
+
+### Minor Changes
+
+- [#62](https://github.com/ReTable/forge/pull/62) [`bcd685a`](https://github.com/ReTable/forge/commit/bcd685a8974a601fa64d64e456315ab48e09c460) Thanks [@demiazz](https://github.com/demiazz)! - emulate Vite's environment variables
+
+  The `vanilla-extract` uses `esbuild` under the hood with CJS format. In that case, if you import any code with usage of
+  `import`.
+
+  We assume usage only `import.meta.env.DEV`, `import.meta.env.PROD` and `import.meta.env.MODE` variables in bundler
+  user's code and emulate only it with defining constants.
+
+  But this constants working only in compile time when CSS is generated and based on mode in which the `forge` is running
+  at compilation moment.
+
+  Be careful when use code which based on that variables in your `vanilla-extract` styles.
+
 ## 2.0.0-next.1
 
 ### Major Changes

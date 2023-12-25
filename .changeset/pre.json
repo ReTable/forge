@@ -5,6 +5,7 @@
     "@tabula/forge": "1.3.5"
   },
   "changesets": [
+    "dirty-impalas-whisper",
     "long-cows-give",
     "purple-terms-know",
     "red-days-scream",
