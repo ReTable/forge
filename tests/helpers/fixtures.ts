@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { cp, mkdir, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { binPath, fixturesDir, tmpDir } from './paths';
@@ -53,7 +53,12 @@ async function prepareForBuild(
 
   await prepareMockedModules(workingDir);
 
-  await writeFile(join(workingDir, '.forgerc'), JSON.stringify({ target }), 'utf8');
+  // NOTE: Workaround for fixtures which already has `.forgerc.hs` config file.
+  try {
+    await stat(join(workingDir, '.forgerc.js'));
+  } catch {
+    await writeFile(join(workingDir, '.forgerc'), JSON.stringify({ target }), 'utf8');
+  }
 
   const args = [];
 
