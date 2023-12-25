@@ -16,6 +16,7 @@ type Options = {
   production: boolean;
   storybook: boolean;
   cssClassPrefix: boolean | string;
+  svgrComponentName?: (componentName: string) => string;
   target: Target;
   typings: boolean;
   watch: boolean;
@@ -28,6 +29,7 @@ export async function bundle({
   postBuild,
   production,
   storybook,
+  svgrComponentName,
   target,
   typings,
   watch,
@@ -64,6 +66,7 @@ export async function bundle({
     production,
     repositoryRoot,
     storybook,
+    svgrComponentName,
     target,
     typings,
   });

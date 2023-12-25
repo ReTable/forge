@@ -21,6 +21,7 @@ type BrowserOptions = {
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
+  svgrComponentName?: (componentName: string) => string;
 };
 
 const extensions = [
@@ -86,7 +87,14 @@ function getPrefixFrom(cssClassPrefix: boolean | string, packageName: string) {
 
 async function applyBrowserOptions(
   buildOptions: BuildOptions,
-  { cssClassPrefix, name, production, repositoryRoot, storybook }: BrowserOptions,
+  {
+    cssClassPrefix,
+    name,
+    production,
+    repositoryRoot,
+    storybook,
+    svgrComponentName,
+  }: BrowserOptions,
 ) {
   const prefix = getPrefixFrom(cssClassPrefix, name);
 
@@ -116,7 +124,7 @@ async function applyBrowserOptions(
   buildOptions.plugins = [
     cssAutoImportPlugin(),
     stylesPlugin({ processCss }),
-    svgPlugin(),
+    svgPlugin({ svgrComponentName }),
     vanillaExtractPlugin({ isProduction: production, prefix }),
   ];
 
@@ -140,6 +148,7 @@ type Options = {
   production: boolean;
   repositoryRoot: string;
   storybook: boolean;
+  svgrComponentName?: (componentName: string) => string;
   target: Target;
   typings: boolean;
 };
@@ -154,6 +163,7 @@ export async function createBuildOptions({
   production,
   repositoryRoot,
   storybook,
+  svgrComponentName,
   target,
   typings,
 }: Options): Promise<BuildOptions> {
@@ -186,6 +196,7 @@ export async function createBuildOptions({
         production,
         repositoryRoot,
         storybook,
+        svgrComponentName,
       });
 
       break;

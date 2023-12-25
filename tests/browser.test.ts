@@ -690,6 +690,36 @@ describe('browser', () => {
       },
     );
 
+    describe('svgrComponentName', () => {
+      it(
+        'allows to transform component name without memoization',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-component-name-no-memo',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+
+      it(
+        'allows to transform component name with memoization',
+        {
+          command: 'build',
+          dependencies: ['@types/react'],
+          name: 'browser-svgr-component-name-memo',
+          target: 'browser',
+          production: false,
+        },
+        async (c) => {
+          expect(await c.read('lib/index.js')).toMatchSnapshot();
+        },
+      );
+    });
+
     describe('.svgrrc', () => {
       it(
         'supports configuration files',
