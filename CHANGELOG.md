@@ -1,5 +1,106 @@
 # @tabula/forge
 
+## 2.0.0
+
+### Major Changes
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - enable `memo` by default for SVGR transformations
+
+- [#60](https://github.com/ReTable/forge/pull/60) [`5611ead`](https://github.com/ReTable/forge/commit/5611ead5c205c95501692f0edd36a3381225e876) Thanks [@demiazz](https://github.com/demiazz)! - update target node up to 20.x
+
+### Minor Changes
+
+- [#62](https://github.com/ReTable/forge/pull/62) [`bcd685a`](https://github.com/ReTable/forge/commit/bcd685a8974a601fa64d64e456315ab48e09c460) Thanks [@demiazz](https://github.com/demiazz)! - emulate Vite's environment variables
+
+  The `vanilla-extract` uses `esbuild` under the hood with CJS format. In that case, if you import any code with usage of
+  `import`.
+
+  We assume usage only `import.meta.env.DEV`, `import.meta.env.PROD` and `import.meta.env.MODE` variables in bundler
+  user's code and emulate only it with defining constants.
+
+  But this constants working only in compile time when CSS is generated and based on mode in which the `forge` is running
+  at compilation moment.
+
+  Be careful when use code which based on that variables in your `vanilla-extract` styles.
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - added support of transformation of SVG component name with `svgrComponentName` option.
+
+  By default, SVGR uses `Svg<CamelCaseFileName>` name for components. You can override this behaviour through
+  `svgrComponentName` options, which should be function of format `(svgrName: string) => string`.
+
+  Example:
+
+  ```js
+  export default {
+    // ...
+    svgrComponentName(name) {
+      return `Ui${name.slice(3)}Icon`;
+    },
+    // ...
+  };
+  ```
+
+  If you have a file `column.svg` then component name is `SvgColumn` by default. But with config from about the name
+  will be `UiColumnIcon`.
+
+  If you use memoization it looks like:
+
+  ```js
+  import { memo } from "react";
+
+  const UiColumnIcon = (props) => {
+    // ...
+  };
+
+  const Memo = memo(UiColumnIcon);
+
+  export { Memo as ReactComponent };
+  ```
+
+  This option doesn't affect named exports.
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - allow to append `displayName` for SVGR components.
+
+  By default, SVGR doesn't append `displayName` for exported components. You can add this behaviour through `svgrDisplayName`
+  option, which should be function of format `(componentName: string) => string | { displayName: string; isDebugOnly?: boolean }`.
+
+  When function is returns string, then `isDebugOnly` equals to `false`.
+
+  The `componentName` is name of component itself (before memoization if enabled). If you provide `svgrComponentName` option,
+  then result of applying this function is `componentName`.
+
+  The `isDebugOnly` enables wrapping the assignment in Vite compatible condition.
+
+  ```js
+  // `isDebugOnly` = false
+
+  Component.displayName = "scope(ComponentDisplayName)";
+
+  // `isDebugOnly` = true
+
+  if (import.meta.env.DEV) {
+    Component.displayName = `scope(ComponentDisplayName)`;
+  }
+  ```
+
+  If memoization is enabled, then the `displayName` will be assigned to the memoized component:
+
+  ```js
+  const Component = (props) => {
+    // ...
+  };
+
+  const Memo = memo(Component);
+
+  Memo.displayName = `scope(ComponentDisplayName)`;
+  ```
+
+### Patch Changes
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - add typings and exports config type
+
+- [#57](https://github.com/ReTable/forge/pull/57) [`d3c40d7`](https://github.com/ReTable/forge/commit/d3c40d7aad9615965415a3be9e9364000c43c833) Thanks [@demiazz](https://github.com/demiazz)! - add `@babel/types` dependency
+
 ## 2.0.0-next.2
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@tabula/forge",
-  "version": "2.0.0-next.2",
+  "version": "2.0.0",
   "description": "The bundler for packages for Node.js and browser with support of various tools",
   "type": "module",
   "bin": {
