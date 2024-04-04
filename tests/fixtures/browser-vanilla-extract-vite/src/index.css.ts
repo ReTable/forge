@@ -1,15 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-declare global {
-  interface ImportMeta {
-    env: {
-      DEV: boolean;
-      PROD: boolean;
-      MODE: string;
-    };
-  }
-}
-
 export const dev = style({
   selectors: {
     '&::before': {
