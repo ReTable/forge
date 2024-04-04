@@ -1,5 +1,13 @@
 # @tabula/forge
 
+## 2.0.2
+
+### Patch Changes
+
+- [#70](https://github.com/ReTable/forge/pull/70) [`c7760dd`](https://github.com/ReTable/forge/commit/c7760dd4aec82cbe3daf5fd3b76be1b75b2c5fd2) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies tree
+
+- [#68](https://github.com/ReTable/forge/pull/68) [`eb1414c`](https://github.com/ReTable/forge/commit/eb1414c8c3707f3571d3df918321367cd0ac5866) Thanks [@dependabot](https://github.com/apps/dependabot)! - update `vite` to fix vulnerabilities
+
 ## 2.0.1
 
 ### Patch Changes
