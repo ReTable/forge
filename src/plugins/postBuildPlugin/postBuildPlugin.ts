@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import path from 'node:path';
 
 import { Plugin } from 'esbuild';
 import { execa } from 'execa';
@@ -16,7 +16,7 @@ function prepareHooks(hooks: Hook[], workingDir: string) {
 
     return {
       command: hook.command,
-      cwd: hook.cwd == null ? workingDir : join(workingDir, hook.cwd),
+      cwd: hook.cwd == null ? workingDir : path.join(workingDir, hook.cwd),
     };
   });
 }

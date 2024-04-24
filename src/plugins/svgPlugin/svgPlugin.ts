@@ -1,6 +1,6 @@
-import { createHash } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import crypto from 'node:crypto';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { Config, transform } from '@svgr/core';
 import { cosmiconfig } from 'cosmiconfig';
@@ -81,10 +81,10 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
         {
           filter: /\.svg$/,
         },
-        ({ importer, kind, path }) => {
+        ({ importer, kind, path: importedPath }) => {
           const importerPath = isVanillaCss(importer) ? getOriginalPath(importer) : importer;
 
-          const absPath = resolve(dirname(importerPath), path);
+          const absPath = path.resolve(path.dirname(importerPath), importedPath);
 
           const isCSSImport = kind === 'import-rule' || kind === 'url-token';
 
@@ -96,22 +96,22 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
         {
           filter: /\.svg(\?svgr)?$/,
         },
-        async ({ path, suffix }) => {
-          const svg = await readFile(path, 'utf8');
+        async ({ path: loadedPath, suffix }) => {
+          const svg = await fs.readFile(loadedPath, 'utf8');
 
           if (suffix !== svgrSuffix) {
             return {
               contents: minify ? optimize(svg).data : svg,
               loader: 'file',
-              resolveDir: dirname(path),
+              resolveDir: path.dirname(loadedPath),
             };
           }
 
           const component = await transform(svg, config, {
-            filePath: path,
+            filePath: loadedPath,
           });
 
-          const base64 = createHash('sha256').update(component).digest('base64url');
+          const base64 = crypto.createHash('sha256').update(component).digest('base64url');
           const url = `ni:svgr;${base64}`;
 
           const contents = [
@@ -124,9 +124,9 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
             contents,
             loader: 'jsx',
             pluginData: {
-              path,
+              path: loadedPath,
             },
-            resolveDir: dirname(path),
+            resolveDir: path.dirname(loadedPath),
           };
         },
       );

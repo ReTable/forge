@@ -1,6 +1,6 @@
-import { createHash } from 'node:crypto';
-import { cp, mkdir, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import crypto from 'node:crypto';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { binPath, fixturesDir, tmpDir } from './paths';
 import { run } from './run';
@@ -14,7 +14,7 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
   let entries: string[] = [];
 
   try {
-    entries = await readdir(join(workingDir, '__node_modules__'));
+    entries = await fs.readdir(path.join(workingDir, '__node_modules__'));
   } catch (error) {
     if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
       return;
@@ -23,12 +23,12 @@ async function prepareMockedModules(workingDir: string): Promise<void> {
     throw error;
   }
 
-  await mkdir(join(workingDir, 'node_modules'), { recursive: true });
+  await fs.mkdir(path.join(workingDir, 'node_modules'), { recursive: true });
 
   for (const entry of entries) {
-    await rename(
-      join(workingDir, '__node_modules__', entry),
-      join(workingDir, 'node_modules', entry),
+    await fs.rename(
+      path.join(workingDir, '__node_modules__', entry),
+      path.join(workingDir, 'node_modules', entry),
     );
   }
 }
@@ -55,9 +55,9 @@ async function prepareForBuild(
 
   // NOTE: Workaround for fixtures which already has `.forgerc.hs` config file.
   try {
-    await stat(join(workingDir, '.forgerc.js'));
+    await fs.stat(path.join(workingDir, '.forgerc.js'));
   } catch {
-    await writeFile(join(workingDir, '.forgerc'), JSON.stringify({ target }), 'utf8');
+    await fs.writeFile(path.join(workingDir, '.forgerc'), JSON.stringify({ target }), 'utf8');
   }
 
   const args = [];
@@ -118,11 +118,11 @@ async function prepareForInit(workingDir: string, { target }: InitFixtureOptions
 // region Fixture Preparation
 
 async function prepareWorkingDir(id: string, name: string): Promise<string> {
-  await mkdir(tmpDir, { recursive: true });
+  await fs.mkdir(tmpDir, { recursive: true });
 
-  const workingDir = join(tmpDir, id);
+  const workingDir = path.join(tmpDir, id);
 
-  await cp(join(fixturesDir, name), workingDir, { recursive: true });
+  await fs.cp(path.join(fixturesDir, name), workingDir, { recursive: true });
 
   return workingDir;
 }
@@ -186,7 +186,7 @@ function createFixtureIdFor(options: FixtureOptions): string {
     }
   }
 
-  const hash = createHash('sha256');
+  const hash = crypto.createHash('sha256');
 
   hash.update(chunks.join(' '));
 
@@ -211,6 +211,6 @@ export async function clearFixtures(): Promise<void> {
   const fixtures = await Promise.all(fixturesCache.values());
 
   await Promise.all(
-    fixtures.map(async (fixture) => rm(fixture.workingDir, { force: true, recursive: true })),
+    fixtures.map(async (fixture) => fs.rm(fixture.workingDir, { force: true, recursive: true })),
   );
 }

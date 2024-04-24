@@ -1,4 +1,4 @@
-import { dirname } from 'node:path';
+import path from 'node:path';
 
 import { Plugin } from 'esbuild';
 
@@ -35,8 +35,8 @@ export function stylesPlugin({ processCss }: Options): Plugin {
         {
           filter: /^~.*\.css$/,
         },
-        async ({ path, importer, resolveDir, kind }) =>
-          resolve(path.slice(1), {
+        async ({ path: importedPath, importer, resolveDir, kind }) =>
+          resolve(importedPath.slice(1), {
             importer,
             kind,
             resolveDir,
@@ -62,7 +62,7 @@ export function stylesPlugin({ processCss }: Options): Plugin {
           filter: /\.(css|pcss|scss)(\?css-module)?$/,
           namespace: 'file',
         },
-        async ({ path, pluginData, suffix }) => {
+        async ({ path: loadedPath, pluginData, suffix }) => {
           // Step 1: If file has a suffix of the CSS Module, then just load CSS
           //         as is.
 
@@ -77,7 +77,7 @@ export function stylesPlugin({ processCss }: Options): Plugin {
           // Step 2: Render a styles.
 
           const { css: renderedCss, watchFiles } = await renderStyle({
-            path,
+            path: loadedPath,
             sourcemap,
             sourcesContent,
           });
@@ -86,8 +86,8 @@ export function stylesPlugin({ processCss }: Options): Plugin {
 
           const { classNames, css } = await processCss({
             css: renderedCss,
-            from: path,
-            modules: /\.module\.\w{3,4}$/.test(path),
+            from: loadedPath,
+            modules: /\.module\.\w{3,4}$/.test(loadedPath),
           });
 
           // Step 4: If it's a not a CSS module, then load processed CSS as is.
@@ -107,9 +107,9 @@ export function stylesPlugin({ processCss }: Options): Plugin {
             loader: 'js',
             pluginData: {
               css,
-              path,
+              path: loadedPath,
             },
-            resolveDir: dirname(path),
+            resolveDir: path.dirname(loadedPath),
             watchFiles,
           };
         },

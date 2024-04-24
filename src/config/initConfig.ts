@@ -1,5 +1,5 @@
-import { writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import chalk from 'chalk';
 import { findUp } from 'find-up';
@@ -18,7 +18,7 @@ export async function initConfig(target: Target): Promise<void> {
     throw new Error("Couldn't find a `package.json`");
   }
 
-  const configFilePath = join(dirname(packageJsonPath), '.forgerc');
+  const configFilePath = path.join(path.dirname(packageJsonPath), '.forgerc');
 
   const config: Config = {
     $schema: SCHEMA_URL,
@@ -37,7 +37,7 @@ export async function initConfig(target: Target): Promise<void> {
     delete config.watch?.storybook;
   }
 
-  await writeFile(configFilePath, JSON.stringify(config, null, 2), 'utf8');
+  await fs.writeFile(configFilePath, JSON.stringify(config, null, 2), 'utf8');
 
   console.log(chalk.green(`Created configuration file: ${configFilePath}`));
 }

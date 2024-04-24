@@ -1,10 +1,10 @@
-import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import url from 'node:url';
 
-const rootDir = join(dirname(fileURLToPath(import.meta.url)), '../');
+const rootDir = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../');
 
-export const fixturesDir = join(rootDir, 'fixtures');
+export const fixturesDir = path.join(rootDir, 'fixtures');
 
-export const tmpDir = join(rootDir, 'tmp');
+export const tmpDir = path.join(rootDir, 'tmp');
 
-export const binPath = resolve(rootDir, '../lib/index.js');
+export const binPath = path.resolve(rootDir, '../lib/index.js');

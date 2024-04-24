@@ -1,5 +1,5 @@
-import { stat } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { vanillaExtractPlugin as officialPlugin } from '@vanilla-extract/esbuild-plugin';
 import { Plugin } from 'esbuild';
@@ -47,20 +47,20 @@ export function vanillaExtractPlugin(options: Options): Plugin {
           name: 'vanilla-extract-plugin/static',
 
           setup({ onLoad, onResolve }) {
-            onResolve(staticOptions, async ({ importer, path }) => {
-              const resolvedPath = resolve(dirname(importer), path);
+            onResolve(staticOptions, async ({ importer, path: importedPath }) => {
+              const resolvedPath = path.resolve(path.dirname(importer), importedPath);
 
               // NOTE: Ignores imports of `vanilla-extract` files itself.
               try {
-                await stat(resolvedPath);
+                await fs.stat(resolvedPath);
               } catch {
                 return null;
               }
 
               return {
-                path: resolve(dirname(importer), path),
+                path: path.resolve(path.dirname(importer), importedPath),
                 pluginData: {
-                  importPath: path,
+                  importPath: importedPath,
                 },
               };
             });

@@ -1,9 +1,9 @@
-import { createRequire } from 'node:module';
-import { dirname, resolve } from 'node:path';
+import module from 'node:module';
+import path from 'node:path';
 
 export function findTscPath(): string {
-  const resolver = createRequire(import.meta.url);
+  const resolver = module.createRequire(import.meta.url);
   const typescript = resolver.resolve('typescript');
 
-  return resolve(dirname(typescript), 'tsc.js');
+  return path.resolve(path.dirname(typescript), 'tsc.js');
 }

@@ -1,7 +1,7 @@
-import { readFile } from 'node:fs/promises';
-import { createRequire } from 'node:module';
-import { dirname, extname, join } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import fs from 'node:fs/promises';
+import module from 'node:module';
+import path from 'node:path';
+import url from 'node:url';
 
 import * as sass from 'sass';
 import { fromObject } from 'convert-source-map';
@@ -18,29 +18,29 @@ type Result = {
   watchFiles?: string[];
 };
 
-async function renderCss({ path }: Options): Promise<Result> {
-  const css = await readFile(path, 'utf8');
+async function renderCss({ path: cssPath }: Options): Promise<Result> {
+  const css = await fs.readFile(cssPath, 'utf8');
 
   return { css };
 }
 
-function isValidURL(url: string) {
-  const parts = url.split('/');
+function isValidURL(urlToCheck: string) {
+  const parts = urlToCheck.split('/');
 
   return parts[0].startsWith('@') ? parts.length === 2 : parts.length === 1;
 }
 
 function findImportDirectly(name: string, localRequire: NodeJS.Require) {
   try {
-    const path = localRequire.resolve(`${name}/package.json`);
-    const dir = dirname(path);
-    const json = localRequire(path) as { sass?: string };
+    const pkgJsonPath = localRequire.resolve(`${name}/package.json`);
+    const dir = path.dirname(pkgJsonPath);
+    const json = localRequire(pkgJsonPath) as { sass?: string };
 
     if (json.sass == null) {
       return null;
     }
 
-    return join(dir, json.sass);
+    return path.join(dir, json.sass);
   } catch {
     return null;
   }
@@ -50,19 +50,22 @@ function findImportConditionally(name: string, localRequire: NodeJS.Require) {
   try {
     const entry = localRequire.resolve(name);
 
-    const result = readPackageUpSync({ cwd: dirname(entry) });
+    const result = readPackageUpSync({ cwd: path.dirname(entry) });
 
     if (result == null) {
       return null;
     }
 
-    const { packageJson, path } = result as { packageJson: { sass?: string }; path: string };
+    const { packageJson, path: pkgJsonPath } = result as {
+      packageJson: { sass?: string };
+      path: string;
+    };
 
     if (packageJson.sass == null) {
       return null;
     }
 
-    return join(dirname(path), packageJson.sass);
+    return path.join(path.dirname(pkgJsonPath), packageJson.sass);
   } catch {
     return null;
   }
@@ -78,36 +81,36 @@ function findImport(name: string, localRequire: NodeJS.Require) {
   return findImportConditionally(name, localRequire);
 }
 
-function createImporter(path: string): sass.FileImporter<'sync'> {
+function createImporter(importerPath: string): sass.FileImporter<'sync'> {
   return {
     findFileUrl(pkgUrl: string) {
       if (!pkgUrl.startsWith('~')) {
         return null;
       }
 
-      const url = pkgUrl.slice(1);
+      const importUrl = pkgUrl.slice(1);
 
-      if (!isValidURL(url)) {
-        throw new Error(`Wrong package name: "${url}"`);
+      if (!isValidURL(importUrl)) {
+        throw new Error(`Wrong package name: "${importUrl}"`);
       }
 
-      const localRequire = createRequire(path);
+      const localRequire = module.createRequire(importerPath);
 
-      const importPath = findImport(url, localRequire);
+      const importPath = findImport(importUrl, localRequire);
 
       if (importPath != null) {
-        return pathToFileURL(importPath);
+        return url.pathToFileURL(importPath);
       }
 
-      throw new Error(`Package "${url}" has no "sass" field`);
+      throw new Error(`Package "${importUrl}" has no "sass" field`);
     },
   };
 }
 
-function renderScss({ path, sourcemap, sourcesContent }: Options): Result {
-  const importer = createImporter(path);
+function renderScss({ path: importerPath, sourcemap, sourcesContent }: Options): Result {
+  const importer = createImporter(importerPath);
 
-  const result = sass.compile(path, {
+  const result = sass.compile(importerPath, {
     importers: [importer],
     sourceMap: sourcemap,
     sourceMapIncludeSources: sourcesContent,
@@ -121,13 +124,13 @@ function renderScss({ path, sourcemap, sourcesContent }: Options): Result {
     css += fromObject(sourceMap).toComment({ multiline: true });
   }
 
-  const dependencies = loadedUrls.map((url) => fileURLToPath(url));
+  const dependencies = loadedUrls.map((loadedUrl) => url.fileURLToPath(loadedUrl));
 
   return { css, watchFiles: dependencies };
 }
 
 export async function renderStyle(options: Options): Promise<Result> {
-  switch (extname(options.path)) {
+  switch (path.extname(options.path)) {
     case '.css':
     case '.pcss': {
       return renderCss(options);

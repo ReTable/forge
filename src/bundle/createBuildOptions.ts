@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import path from 'node:path';
 
 import { snakeCase } from 'change-case';
 import { BuildOptions } from 'esbuild';
@@ -47,7 +47,7 @@ for (const extension of extensions) {
 }
 
 function prependEntry(entry: string) {
-  return `./${join('src', entry)}`;
+  return `./${path.join('src', entry)}`;
 }
 
 function parseEntries(entries: Entry[]) {
