@@ -1,5 +1,5 @@
-import { readFile, stat } from 'node:fs/promises';
-import { join } from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { Fixture } from './types';
 
@@ -23,7 +23,7 @@ export class Context {
 
   public async isExists(relativePath: string): Promise<boolean> {
     try {
-      await stat(this.resolve(relativePath));
+      await fs.stat(this.resolve(relativePath));
 
       return true;
     } catch (error) {
@@ -36,7 +36,7 @@ export class Context {
   }
 
   public async read(relativePath: string): Promise<string> {
-    return readFile(this.resolve(relativePath), 'utf8');
+    return fs.readFile(this.resolve(relativePath), 'utf8');
   }
 
   public async readSourceMap(relativePath: string): Promise<SourceMap> {
@@ -46,6 +46,6 @@ export class Context {
   }
 
   private resolve(relativePath: string): string {
-    return join(this.workingDir, relativePath);
+    return path.join(this.workingDir, relativePath);
   }
 }

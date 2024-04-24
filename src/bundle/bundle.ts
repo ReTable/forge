@@ -1,5 +1,5 @@
-import { rm } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { build, context } from 'esbuild';
 import { findUp } from 'find-up';
@@ -48,7 +48,7 @@ export async function bundle({
     throw new Error('Package must have a name');
   }
 
-  const packageRoot = dirname(pkg.path);
+  const packageRoot = path.dirname(pkg.path);
 
   const repositoryPath = await findUp('.git', { cwd: packageRoot, type: 'directory' });
 
@@ -56,7 +56,7 @@ export async function bundle({
     throw new Error("Couldn't find a repository root");
   }
 
-  const repositoryRoot = dirname(repositoryPath);
+  const repositoryRoot = path.dirname(repositoryPath);
 
   const buildOptions = await createBuildOptions({
     check,
@@ -76,8 +76,8 @@ export async function bundle({
 
   if (production) {
     await Promise.all([
-      rm(join(packageRoot, 'lib'), { force: true, recursive: true }),
-      rm(join(packageRoot, 'typings'), { force: true, recursive: true }),
+      fs.rm(path.join(packageRoot, 'lib'), { force: true, recursive: true }),
+      fs.rm(path.join(packageRoot, 'typings'), { force: true, recursive: true }),
     ]);
   }
 

@@ -1,4 +1,4 @@
-import { basename, isAbsolute, relative, resolve, sep } from 'node:path';
+import path from 'node:path';
 
 import { ComponentDoc, ParserOptions, parse } from 'react-docgen-typescript';
 
@@ -27,20 +27,20 @@ const parserOptions: ParserOptions = {
 };
 
 function createResolver({ packageRoot, repositoryRoot }: Options) {
-  const packageName = basename(packageRoot);
-  const repositoryName = basename(repositoryRoot);
+  const packageName = path.basename(packageRoot);
+  const repositoryName = path.basename(repositoryRoot);
 
   return (fileName: string) => {
-    if (isAbsolute(fileName)) {
-      return relative(repositoryRoot, fileName);
+    if (path.isAbsolute(fileName)) {
+      return path.relative(repositoryRoot, fileName);
     }
 
-    if (fileName.startsWith(`${repositoryName}${sep}`)) {
-      return relative(repositoryName, fileName);
+    if (fileName.startsWith(`${repositoryName}${path.sep}`)) {
+      return path.relative(repositoryName, fileName);
     }
 
-    if (fileName.startsWith(`${packageName}${sep}`)) {
-      return relative(repositoryRoot, resolve(packageRoot, '..', fileName));
+    if (fileName.startsWith(`${packageName}${path.sep}`)) {
+      return path.relative(repositoryRoot, path.resolve(packageRoot, '..', fileName));
     }
 
     return fileName;
