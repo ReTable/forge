@@ -1,5 +1,15 @@
 # @tabula/forge
 
+## 3.0.0
+
+### Major Changes
+
+- [#76](https://github.com/ReTable/forge/pull/76) [`52ee60f`](https://github.com/ReTable/forge/commit/52ee60f421005d0b97a4aeaf365d18768f65cee9) Thanks [@demiazz](https://github.com/demiazz)! - dropped support of Node.js versions lower 20.4.0
+
+### Minor Changes
+
+- [#76](https://github.com/ReTable/forge/pull/76) [`52ee60f`](https://github.com/ReTable/forge/commit/52ee60f421005d0b97a4aeaf365d18768f65cee9) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 2.0.3
 
 ### Patch Changes
@@ -66,7 +76,7 @@
   If you use memoization it looks like:
 
   ```js
-  import { memo } from "react";
+  import { memo } from 'react';
 
   const UiColumnIcon = (props) => {
     // ...
@@ -94,7 +104,7 @@
   ```js
   // `isDebugOnly` = false
 
-  Component.displayName = "scope(ComponentDisplayName)";
+  Component.displayName = 'scope(ComponentDisplayName)';
 
   // `isDebugOnly` = true
 
@@ -175,7 +185,7 @@
   If you use memoization it looks like:
 
   ```js
-  import { memo } from "react";
+  import { memo } from 'react';
 
   const UiColumnIcon = (props) => {
     // ...
@@ -203,7 +213,7 @@
   ```js
   // `isDebugOnly` = false
 
-  Component.displayName = "scope(ComponentDisplayName)";
+  Component.displayName = 'scope(ComponentDisplayName)';
 
   // `isDebugOnly` = true
 
@@ -544,7 +554,7 @@
   Example:
 
   ```scss
-  @use "~@tabula/ui-theme" as theme;
+  @use '~@tabula/ui-theme' as theme;
 
   .root {
     background-color: theme.$color--primary;
