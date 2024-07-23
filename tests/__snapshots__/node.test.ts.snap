@@ -6,8 +6,7 @@ exports[`node > default flags > generates typings by default 1`] = `
 `;
 
 exports[`node > default flags > generates typings by default 2`] = `
-"/// <reference path="../types/vendor.d.ts" />
-export declare function readJson(filePath: string, use?: 'dev' | 'optional' | 'peer'): Promise<unknown>;
+"export declare function readJson(filePath: string, use?: 'dev' | 'optional' | 'peer'): Promise<unknown>;
 "
 `;
 
@@ -80,8 +79,7 @@ exports[`node > dependencies > uses dependencies as external 3`] = `
 `;
 
 exports[`node > dependencies > uses dependencies as external 4`] = `
-"/// <reference path="../types/vendor.d.ts" />
-export declare function readJson(filePath: string, use?: 'dev' | 'optional' | 'peer'): Promise<unknown>;
+"export declare function readJson(filePath: string, use?: 'dev' | 'optional' | 'peer'): Promise<unknown>;
 "
 `;
 
