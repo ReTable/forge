@@ -296,7 +296,7 @@ bundled for serving later.
 The CSS supported out of the box.
 
 If your package uses CSS then a line `import "./index.css";` automatically
-will be added to the beginning of a `lib/index.js` file.
+will be added to the end of a `lib/index.js` file.
 
 Also, all CSS are processed by the [Autoprefixer](https://github.com/postcss/autoprefixer).
 
