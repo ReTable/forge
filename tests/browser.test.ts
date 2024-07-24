@@ -507,7 +507,7 @@ describe('browser', () => {
       async (c) => {
         const content = await c.read('lib/index.js');
 
-        expect(content.startsWith('import "./index.css";')).toBe(true);
+        expect(content).includes('\nimport "./index.css";\n');
       },
     );
   });

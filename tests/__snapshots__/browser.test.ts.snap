@@ -69,9 +69,7 @@ export {
 `;
 
 exports[`browser > SVG support > .svgrrc > ignores "exportType" option 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config__src-Button-module__root",
   "label": "browser_svgr_config__src-Button-module__label"
@@ -158,14 +156,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > .svgrrc > ignores "namedExport" option 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config__src-Button-module__root",
   "label": "browser_svgr_config__src-Button-module__label"
@@ -252,14 +252,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > .svgrrc > ignores "svgo" in production mode 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config_svgo__M2vT7yEXmb8-",
   "label": "browser_svgr_config_svgo__Si74dY-0mwk-"
@@ -302,14 +304,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxs3("button", { classN
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > .svgrrc > ignores "svgo" option in development mode 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config__src-Button-module__root",
   "label": "browser_svgr_config__src-Button-module__label"
@@ -396,14 +400,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > .svgrrc > supports configuration files 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config__src-Button-module__root",
   "label": "browser_svgr_config__src-Button-module__label"
@@ -490,14 +496,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > .svgrrc > use \`memo\` option from config if provided 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_config_memo__src-Button-module__root",
   "label": "browser_svgr_config_memo__src-Button-module__label"
@@ -580,14 +588,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_debug_true__src-Button-module__root",
   "label": "browser_svgr_display_name_debug_true__src-Button-module__label"
@@ -676,14 +686,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_debug_false__src-Button-module__root",
   "label": "browser_svgr_display_name_debug_false__src-Button-module__label"
@@ -768,14 +780,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when SVGR defined component name is used > append display name without condition when plain string is returned 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_string__src-Button-module__root",
   "label": "browser_svgr_display_name_string__src-Button-module__label"
@@ -860,14 +874,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_user_name_debug_true__src-Button-module__root",
   "label": "browser_svgr_display_name_user_name_debug_true__src-Button-module__label"
@@ -956,14 +972,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_user_name_debug_false__src-Button-module__root",
   "label": "browser_svgr_display_name_user_name_debug_false__src-Button-module__label"
@@ -1048,14 +1066,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is disabled > when user defined component name is used > append display name without condition when plain string is returned 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_user_name_string__src-Button-module__root",
   "label": "browser_svgr_display_name_user_name_string__src-Button-module__label"
@@ -1140,14 +1160,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_debug_true__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_debug_true__src-Button-module__label"
@@ -1240,14 +1262,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_debug_false__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_debug_false__src-Button-module__label"
@@ -1336,14 +1360,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when SVGR defined component name is used > append display name without condition when plain string is returned 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_string__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_string__src-Button-module__label"
@@ -1432,14 +1458,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name with condition when \`isDebugOnly\` flag is true 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_user_name_debug_true__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_user_name_debug_true__src-Button-module__label"
@@ -1532,14 +1560,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name without condition when \`isDebugOnly\` flag is false 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_user_name_debug_false__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_user_name_debug_false__src-Button-module__label"
@@ -1628,14 +1658,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > displayName > when memoization is enabled > when user defined component name is used > append display name without condition when plain string is returned 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_display_name_memo_user_name_string__src-Button-module__root",
   "label": "browser_svgr_display_name_memo_user_name_string__src-Button-module__label"
@@ -1724,6 +1756,10 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -1768,9 +1804,7 @@ exports[`browser > SVG support > minify SVG when production mode is on 3`] = `
 `;
 
 exports[`browser > SVG support > minify SVG when production mode is on 4`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svg__JAcadsb3Um4-",
   "label": "browser_svg__jpTsOh6EC0M-"
@@ -1813,6 +1847,10 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxs3("button", { classN
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -1868,9 +1906,7 @@ exports[`browser > SVG support > supports import of SVG as React Component in JS
 `;
 
 exports[`browser > SVG support > supports import of SVG as React Component in JS 2`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svg__src-Button-module__root",
   "label": "browser_svg__src-Button-module__label"
@@ -1957,6 +1993,10 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -1975,9 +2015,7 @@ exports[`browser > SVG support > supports import of SVG as URL in JS 1`] = `
 `;
 
 exports[`browser > SVG support > supports import of SVG as URL in JS 2`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svg__src-Button-module__root",
   "label": "browser_svg__src-Button-module__label"
@@ -2064,6 +2102,10 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2082,9 +2124,7 @@ exports[`browser > SVG support > supports sharing the same SVG between CSS and J
 `;
 
 exports[`browser > SVG support > supports sharing the same SVG between CSS and JS 2`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svg__src-Button-module__root",
   "label": "browser_svg__src-Button-module__label"
@@ -2171,6 +2211,10 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2188,9 +2232,7 @@ exports[`browser > SVG support > supports sharing the same SVG between CSS and J
 `;
 
 exports[`browser > SVG support > svgrComponentName > allows to transform component name with memoization 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_component_name_memo__src-Button-module__root",
   "label": "browser_svgr_component_name_memo__src-Button-module__label"
@@ -2277,14 +2319,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > SVG support > svgrComponentName > allows to transform component name without memoization 1`] = `
-"import "./index.css";
-
-// src/Button.module.css
+"// src/Button.module.css
 var Button_default = {
   "root": "browser_svgr_component_name_no_memo__src-Button-module__root",
   "label": "browser_svgr_component_name_no_memo__src-Button-module__label"
@@ -2367,14 +2411,16 @@ var Button = ({ children, onClick }) => /* @__PURE__ */ jsxDEV3("button", { clas
 export {
   Button
 };
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
 
 exports[`browser > cssClassPrefix > when package name have no scope > doesn't use prefix at all when given option is disabled 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "jBap2EKbG98-"
 };
@@ -2385,6 +2431,10 @@ var root = "_4gwm760";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2404,9 +2454,7 @@ exports[`browser > cssClassPrefix > when package name have no scope > doesn't us
 `;
 
 exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix by default 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "browser_css_class_prefix__jBap2EKbG98-"
 };
@@ -2417,6 +2465,10 @@ var root = "browser_css_class_prefix__4gwm760";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2436,9 +2488,7 @@ exports[`browser > cssClassPrefix > when package name have no scope > uses full 
 `;
 
 exports[`browser > cssClassPrefix > when package name have no scope > uses full package name as prefix when given option is enabled 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "browser_css_class_prefix__jBap2EKbG98-"
 };
@@ -2449,6 +2499,10 @@ var root = "browser_css_class_prefix__4gwm760";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2468,9 +2522,7 @@ exports[`browser > cssClassPrefix > when package name have no scope > uses full 
 `;
 
 exports[`browser > cssClassPrefix > when package name have no scope > uses prefix template as prefix when given option is string 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "browser_css_class_prefix____browser_css_class_prefix__jBap2EKbG98-"
 };
@@ -2481,6 +2533,10 @@ var root = "browser_css_class_prefix____browser_css_class_prefix__4gwm760";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2500,9 +2556,7 @@ exports[`browser > cssClassPrefix > when package name have no scope > uses prefi
 `;
 
 exports[`browser > cssClassPrefix > when package name have scope > doesn't use prefix at all when given option is disabled 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "Kk-Oj1GvaU8-"
 };
@@ -2513,6 +2567,10 @@ var root = "_1ueu1qv0";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2532,9 +2590,7 @@ exports[`browser > cssClassPrefix > when package name have scope > doesn't use p
 `;
 
 exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix by default 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-"
 };
@@ -2545,6 +2601,10 @@ var root = "my_scope_browser_css_class_prefix__1ueu1qv0";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2564,9 +2624,7 @@ exports[`browser > cssClassPrefix > when package name have scope > uses full pac
 `;
 
 exports[`browser > cssClassPrefix > when package name have scope > uses full package name as prefix when given option is enabled 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "my_scope_browser_css_class_prefix__Kk-Oj1GvaU8-"
 };
@@ -2577,6 +2635,10 @@ var root = "my_scope_browser_css_class_prefix__1ueu1qv0";
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -2596,9 +2658,7 @@ exports[`browser > cssClassPrefix > when package name have scope > uses full pac
 `;
 
 exports[`browser > cssClassPrefix > when package name have scope > uses prefix template as prefix when given option is string 1`] = `
-"import "./index.css";
-
-// src/index.module.css
+"// src/index.module.css
 var src_default = {
   "root": "my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefix__Kk-Oj1GvaU8-"
 };
@@ -2609,6 +2669,10 @@ var root = "my_scope_browser_css_class_prefix__my_scope__browser_css_class_prefi
 // src/index.ts
 document.body.classList.add(root);
 document.body.classList.add(src_default.root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -3341,9 +3405,7 @@ exports[`browser > entries > input > resolves "subdir-tsx" entry to "src/subdir-
 `;
 
 exports[`browser > entries > multiple entries > allows to handle multiple entries 1`] = `
-"import "./submoduleA.css";
-
-// src/submoduleA/index.module.scss
+"// src/submoduleA/index.module.scss
 var index_module_default = {
   "root": "browser_multiple_entries__LnJYjm20BSg-"
 };
@@ -3355,16 +3417,27 @@ export {
   className,
   entryPoint
 };
+
+// post-build: auto import bundled styles
+import "./submoduleA.css";
+
 //# sourceMappingURL=submoduleA.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > allows to handle multiple entries 2`] = `"{"version":3,"sources":["../src/submoduleA/index.module.scss","../src/submoduleA/index.ts"],"names":[],"mappings":";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa","sourcesContent":["import \\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"\\n};","import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleA';\\n"]}"`;
+exports[`browser > entries > multiple entries > allows to handle multiple entries 2`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleA/index.module.scss", "../src/submoduleA/index.ts"],
+  "sourcesContent": ["import \\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"\\n};", "import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleA';\\n"],
+  "mappings": ";AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > allows to handle multiple entries 3`] = `
-"import "./submoduleB.css";
-
-// src/submoduleB/index.module.scss
+"// src/submoduleB/index.module.scss
 var index_module_default = {
   "root": "browser_multiple_entries__lJPd-3LyR-k-"
 };
@@ -3376,16 +3449,27 @@ export {
   className,
   entryPoint
 };
+
+// post-build: auto import bundled styles
+import "./submoduleB.css";
+
 //# sourceMappingURL=submoduleB.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > allows to handle multiple entries 4`] = `"{"version":3,"sources":["../src/submoduleB/index.module.scss","../src/submoduleB/index.ts"],"names":[],"mappings":";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa","sourcesContent":["import \\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"\\n};","import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleB';\\n"]}"`;
+exports[`browser > entries > multiple entries > allows to handle multiple entries 4`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleB/index.module.scss", "../src/submoduleB/index.ts"],
+  "sourcesContent": ["import \\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"\\n};", "import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleB';\\n"],
+  "mappings": ";AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 1`] = `
-"import "./submoduleA.css";
-
-// src/submoduleA/index.module.scss
+"// src/submoduleA/index.module.scss
 var index_module_default = {
   "root": "browser_multiple_entries__LnJYjm20BSg-"
 };
@@ -3397,16 +3481,27 @@ export {
   className,
   entryPoint
 };
+
+// post-build: auto import bundled styles
+import "./submoduleA.css";
+
 //# sourceMappingURL=submoduleA.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 2`] = `"{"version":3,"sources":["../src/submoduleA/index.module.scss","../src/submoduleA/index.ts"],"names":[],"mappings":";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa","sourcesContent":["import \\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"\\n};","import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleA';\\n"]}"`;
+exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 2`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleA/index.module.scss", "../src/submoduleA/index.ts"],
+  "sourcesContent": ["import \\"ni:css-module;zw8j6mRTR7SV4cvRhK9xn5aMIwE4HqrtqVKeiP9JB6M\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__LnJYjm20BSg-\\"\\n};", "import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleA';\\n"],
+  "mappings": ";AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 3`] = `
-"import "./submoduleB.css";
-
-// src/submoduleB/index.module.scss
+"// src/submoduleB/index.module.scss
 var index_module_default = {
   "root": "browser_multiple_entries__lJPd-3LyR-k-"
 };
@@ -3418,11 +3513,24 @@ export {
   className,
   entryPoint
 };
+
+// post-build: auto import bundled styles
+import "./submoduleB.css";
+
 //# sourceMappingURL=submoduleB.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 4`] = `"{"version":3,"sources":["../src/submoduleB/index.module.scss","../src/submoduleB/index.ts"],"names":[],"mappings":";;;AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa","sourcesContent":["import \\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"\\n};","import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleB';\\n"]}"`;
+exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 4`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleB/index.module.scss", "../src/submoduleB/index.ts"],
+  "sourcesContent": ["import \\"ni:css-module;q4wQFIqQqHs0hzG9VwO4Pfdd6eF_h4W4RzsaWloAqoU\\";\\nexport default {\\n  \\"root\\": \\"browser_multiple_entries__lJPd-3LyR-k-\\"\\n};", "import styles from './index.module.scss';\\n\\nexport const className = styles.root;\\n\\nexport const entryPoint = 'submoduleB';\\n"],
+  "mappings": ";AACA,IAAO,uBAAQ;AAAA,EACb,QAAQ;AACV;;;ACDO,IAAM,YAAY,qBAAO;AAEzB,IAAM,aAAa;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > create a own CSS bundle for each entry 5`] = `
 "/* src/submoduleA/index.module.scss?css-module */
@@ -3465,9 +3573,7 @@ exports[`browser > entries > multiple entries > create a own CSS bundle for each
 `;
 
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 1`] = `
-"import "./submoduleA.css";
-
-import {
+"import {
   cssRoot,
   pcssRoot,
   scssRoot,
@@ -3484,16 +3590,27 @@ export {
   scssRoot,
   vanillaRoot
 };
+
+// post-build: auto import bundled styles
+import "./submoduleA.css";
+
 //# sourceMappingURL=submoduleA.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 2`] = `"{"version":3,"sources":["../src/submoduleA/index.ts"],"names":[],"mappings":";;;;;;;;;;;AAIO,IAAM,aAAa,KAAK,YAAY","sourcesContent":["import { wrap } from '../utils';\\n\\nexport * from '../styles';\\n\\nexport const entryPoint = wrap('submoduleA');\\n"]}"`;
+exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 2`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleA/index.ts"],
+  "sourcesContent": ["import { wrap } from '../utils';\\n\\nexport * from '../styles';\\n\\nexport const entryPoint = wrap('submoduleA');\\n"],
+  "mappings": ";;;;;;;;;AAIO,IAAM,aAAa,KAAK,YAAY;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 3`] = `
-"import "./submoduleB.css";
-
-import {
+"import {
   cssRoot,
   pcssRoot,
   scssRoot,
@@ -3510,11 +3627,24 @@ export {
   scssRoot,
   vanillaRoot
 };
+
+// post-build: auto import bundled styles
+import "./submoduleB.css";
+
 //# sourceMappingURL=submoduleB.js.map
 "
 `;
 
-exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 4`] = `"{"version":3,"sources":["../src/submoduleB/index.ts"],"names":[],"mappings":";;;;;;;;;;;AAIO,IAAM,aAAa,KAAK,YAAY","sourcesContent":["import { wrap } from '../utils';\\n\\nexport * from '../styles';\\n\\nexport const entryPoint = wrap('submoduleB');\\n"]}"`;
+exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 4`] = `
+"{
+  "version": 3,
+  "sources": ["../src/submoduleB/index.ts"],
+  "sourcesContent": ["import { wrap } from '../utils';\\n\\nexport * from '../styles';\\n\\nexport const entryPoint = wrap('submoduleB');\\n"],
+  "mappings": ";;;;;;;;;AAIO,IAAM,aAAa,KAAK,YAAY;",
+  "names": []
+}
+"
+`;
 
 exports[`browser > entries > multiple entries > create non shared CSS bundle for each entry 5`] = `
 "/* src/styles/styles.module.css?css-module */
@@ -4159,13 +4289,15 @@ exports[`browser > vanilla-extract support > ignores import of css files from \`
 `;
 
 exports[`browser > vanilla-extract support > supports \`vanilla-extract\` package 1`] = `
-"import "./index.css";
-
-// src/index.css.ts
+"// src/index.css.ts
 var root = "src_root__kj7rs40";
 
 // src/index.ts
 document.body.classList.add(root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -4180,9 +4312,7 @@ exports[`browser > vanilla-extract support > supports \`vanilla-extract\` packag
 `;
 
 exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is development > sets flags to development mode 1`] = `
-"import "./index.css";
-
-// src/index.css.ts
+"// src/index.css.ts
 var dev = "src_dev__fj0g6q0";
 var mode = "src_mode__fj0g6q2";
 var prod = "src_prod__fj0g6q1";
@@ -4191,6 +4321,10 @@ var prod = "src_prod__fj0g6q1";
 document.body.classList.add(dev);
 document.body.classList.add(prod);
 document.body.classList.add(mode);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -4211,9 +4345,7 @@ exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\`
 `;
 
 exports[`browser > vanilla-extract support > supports Vite \`import.meta.env.*\` flags > when mode is production > sets flags to production mode 1`] = `
-"import "./index.css";
-
-// src/index.css.ts
+"// src/index.css.ts
 var dev = "browser_vanilla_extract_vite__fj0g6q0";
 var mode = "browser_vanilla_extract_vite__fj0g6q2";
 var prod = "browser_vanilla_extract_vite__fj0g6q1";
@@ -4222,6 +4354,10 @@ var prod = "browser_vanilla_extract_vite__fj0g6q1";
 document.body.classList.add(dev);
 document.body.classList.add(prod);
 document.body.classList.add(mode);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
@@ -4251,13 +4387,15 @@ exports[`browser > vanilla-extract support > supports static files in the \`vani
 `;
 
 exports[`browser > vanilla-extract support > uses short ids when the production mode is on 1`] = `
-"import "./index.css";
-
-// src/index.css.ts
+"// src/index.css.ts
 var root = "browser_vanilla_extract__kj7rs40";
 
 // src/index.ts
 document.body.classList.add(root);
+
+// post-build: auto import bundled styles
+import "./index.css";
+
 //# sourceMappingURL=index.js.map
 "
 `;
