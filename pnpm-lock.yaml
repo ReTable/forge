@@ -71,9 +71,6 @@ importers:
       sass:
         specifier: ^1.77.8
         version: 1.77.8
-      source-map:
-        specifier: ^0.7.4
-        version: 0.7.4
       svgo:
         specifier: ^3.3.2
         version: 3.3.2
@@ -3434,10 +3431,6 @@ packages:
   source-map@0.5.7:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
-
-  source-map@0.7.4:
-    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
-    engines: {node: '>= 8'}
 
   spawndamnit@2.0.0:
     resolution: {integrity: sha512-j4JKEcncSjFlqIwU5L/rp2N5SIPsdxaRsIv678+TZxZ0SRDJTm8JrxJMjE/XuiEZNEir3S8l0Fa3Ke339WI4qA==}
@@ -7529,8 +7522,6 @@ snapshots:
   source-map-js@1.2.0: {}
 
   source-map@0.5.7: {}
-
-  source-map@0.7.4: {}
 
   spawndamnit@2.0.0:
     dependencies:

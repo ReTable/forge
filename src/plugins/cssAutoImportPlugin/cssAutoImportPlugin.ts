@@ -2,7 +2,6 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { Plugin } from 'esbuild';
-import { SourceMapConsumer, SourceNode } from 'source-map';
 
 export function cssAutoImportPlugin(): Plugin {
   return {
@@ -36,20 +35,18 @@ export function cssAutoImportPlugin(): Plugin {
           const sourcePath = path.join(absWorkingDir, output);
           const sourceContent = await fs.readFile(sourcePath, 'utf8');
 
-          const sourcemapPath = path.join(absWorkingDir, `${output}.map`);
-          const sourcemapContent = await fs.readFile(sourcemapPath, 'utf8');
-
-          const consumer = await new SourceMapConsumer(sourcemapContent);
-          const node = SourceNode.fromStringWithSourceMap(sourceContent, consumer);
+          const sourceMapName = `${path.basename(output)}.map`;
+          const sourceMapComment = `//# sourceMappingURL=${sourceMapName}\n`;
 
           const importPath = path.relative(path.dirname(output), cssBundle);
 
-          node.prepend(`import "./${importPath}";\n\n`);
+          const replacement = `\n// post-build: auto import bundled styles\nimport "./${importPath}";\n\n${sourceMapComment}`;
 
-          const { code, map } = node.toStringWithSourceMap();
-
-          await fs.writeFile(sourcePath, code, 'utf8');
-          await fs.writeFile(sourcemapPath, map.toString(), 'utf8');
+          await fs.writeFile(
+            sourcePath,
+            sourceContent.replace(sourceMapComment, replacement),
+            'utf8',
+          );
         }
       });
     },
