@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@tabula/forge": "3.0.0"
+  },
+  "changesets": []
+}
