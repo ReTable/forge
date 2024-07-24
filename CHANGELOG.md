@@ -1,5 +1,15 @@
 # @tabula/forge
 
+## 4.0.0-next.0
+
+### Major Changes
+
+- [#80](https://github.com/ReTable/forge/pull/80) [`3dd45b9`](https://github.com/ReTable/forge/commit/3dd45b9df7b826ac332c433a7efbb0cbf037e9fe) Thanks [@demiazz](https://github.com/demiazz)! - add auto import of bundled CSS styles to the end of JS bundle
+
+### Patch Changes
+
+- [#78](https://github.com/ReTable/forge/pull/78) [`274e744`](https://github.com/ReTable/forge/commit/274e74499d1f45f1478438e1a708e03ff03f9b32) Thanks [@demiazz](https://github.com/demiazz)! - update dependencies
+
 ## 3.0.0
 
 ### Major Changes

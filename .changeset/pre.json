@@ -4,5 +4,8 @@
   "initialVersions": {
     "@tabula/forge": "3.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "fluffy-birds-scream",
+    "small-hornets-joke"
+  ]
 }
