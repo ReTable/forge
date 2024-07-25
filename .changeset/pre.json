@@ -1,11 +1,8 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "next",
   "initialVersions": {
     "@tabula/forge": "3.0.0"
   },
-  "changesets": [
-    "fluffy-birds-scream",
-    "small-hornets-joke"
-  ]
+  "changesets": ["fluffy-birds-scream", "small-hornets-joke"]
 }
