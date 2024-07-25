@@ -89,7 +89,7 @@
     "esbuild": "^0.23.0",
     "execa": "^9.3.0",
     "find-up": "^7.0.0",
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.40",
     "postcss-load-config": "^6.0.1",
     "postcss-modules": "^6.0.0",
     "react-docgen": "^7.0.3",
