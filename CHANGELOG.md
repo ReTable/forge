@@ -1,5 +1,11 @@
 # @tabula/forge
 
+## 4.0.2-next.0
+
+### Patch Changes
+
+- [#85](https://github.com/ReTable/forge/pull/85) [`1bdf32b`](https://github.com/ReTable/forge/commit/1bdf32bc9e98a3218785f37abc5a25e914568b10) Thanks [@demiazz](https://github.com/demiazz)! - add `forge` bin and update dependencies
+
 ## 4.0.1
 
 ### Patch Changes

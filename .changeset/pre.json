@@ -4,5 +4,7 @@
   "initialVersions": {
     "@tabula/forge": "4.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "rich-bats-beam"
+  ]
 }
