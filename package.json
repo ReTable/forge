@@ -4,7 +4,7 @@
   "description": "The bundler for packages for Node.js and browser with support of various tools",
   "type": "module",
   "bin": {
-    "forge": "lib/index.js"
+    "forge": "bin/forge"
   },
   "typings": "./typings/index.d.ts",
   "exports": {
@@ -39,6 +39,7 @@
   "author": "Retable Inc.",
   "license": "ISC",
   "files": [
+    "bin",
     "lib",
     "typings"
   ],
