@@ -3,7 +3,7 @@ import module from 'node:module';
 import path from 'node:path';
 import url from 'node:url';
 
-import * as sass from 'sass';
+import * as sass from 'sass-embedded';
 import { fromObject } from 'convert-source-map';
 import { readPackageUpSync } from 'read-package-up';
 
@@ -81,7 +81,7 @@ function findImport(name: string, localRequire: NodeJS.Require) {
   return findImportConditionally(name, localRequire);
 }
 
-function createImporter(importerPath: string): sass.FileImporter<'sync'> {
+function createImporter(importerPath: string): sass.FileImporter<'async'> {
   return {
     findFileUrl(pkgUrl: string) {
       if (!pkgUrl.startsWith('~')) {
@@ -107,10 +107,14 @@ function createImporter(importerPath: string): sass.FileImporter<'sync'> {
   };
 }
 
-function renderScss({ path: importerPath, sourcemap, sourcesContent }: Options): Result {
+async function renderScss({
+  path: importerPath,
+  sourcemap,
+  sourcesContent,
+}: Options): Promise<Result> {
   const importer = createImporter(importerPath);
 
-  const result = sass.compile(importerPath, {
+  const result = await sass.compileAsync(importerPath, {
     importers: [importer],
     sourceMap: sourcemap,
     sourceMapIncludeSources: sourcesContent,
