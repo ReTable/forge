@@ -97,7 +97,7 @@
     "react-docgen": "^7.0.3",
     "react-docgen-typescript": "^2.2.2",
     "read-package-up": "^11.0.0",
-    "sass": "^1.79.5",
+    "sass-embedded": "^1.79.5",
     "svgo": "^3.3.2",
     "typanion": "^3.14.0",
     "zod": "^3.23.8"
