@@ -7,14 +7,14 @@ export function cssAutoImportPlugin(): Plugin {
   return {
     name: 'css-auto-import-plugin',
 
-    setup({ initialOptions, onEnd }) {
-      const { absWorkingDir } = initialOptions;
+    setup(build) {
+      const { absWorkingDir } = build.initialOptions;
 
       if (absWorkingDir == null) {
         throw new Error('The `absWorkingDir` option must be defined');
       }
 
-      onEnd(async (result) => {
+      build.onEnd(async (result) => {
         const { outputs } = result.metafile ?? { outputs: null };
 
         if (outputs == null) {

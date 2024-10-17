@@ -29,8 +29,8 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
   return {
     name: 'svg-plugin',
 
-    async setup({ initialOptions, onLoad, onResolve }) {
-      const minify = Boolean(initialOptions.minify);
+    async setup(build) {
+      const minify = Boolean(build.initialOptions.minify);
 
       // NOTE: The `svgr` uses runtime config over CLI config. We avoid this behaviour.
       const userConfig: { config: Config } | null = await cosmiconfig('svgr').search();
@@ -70,14 +70,14 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
         svgo: minify,
       };
 
-      onResolve(
+      build.onResolve(
         {
           filter: /^ni:svgr;/,
         },
         ({ pluginData }) => ({ path: (pluginData as PluginData).path }),
       );
 
-      onResolve(
+      build.onResolve(
         {
           filter: /\.svg$/,
         },
@@ -92,7 +92,7 @@ export function svgPlugin({ svgrComponentName, svgrDisplayName }: Options): Plug
         },
       );
 
-      onLoad(
+      build.onLoad(
         {
           filter: /\.svg(\?svgr)?$/,
         },

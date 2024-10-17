@@ -46,8 +46,8 @@ export function vanillaExtractPlugin(options: Options): Plugin {
         {
           name: 'vanilla-extract-plugin/static',
 
-          setup({ onLoad, onResolve }) {
-            onResolve(staticOptions, async ({ importer, path: importedPath }) => {
+          setup(build) {
+            build.onResolve(staticOptions, async ({ importer, path: importedPath }) => {
               const resolvedPath = path.resolve(path.dirname(importer), importedPath);
 
               // NOTE: Ignores imports of `vanilla-extract` files itself.
@@ -65,7 +65,7 @@ export function vanillaExtractPlugin(options: Options): Plugin {
               };
             });
 
-            onLoad(staticOptions, ({ pluginData }) => ({
+            build.onLoad(staticOptions, ({ pluginData }) => ({
               contents: `export default ${JSON.stringify((pluginData as PluginData).importPath)};`,
               loader: 'js',
             }));

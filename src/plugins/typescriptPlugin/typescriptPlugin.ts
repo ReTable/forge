@@ -6,8 +6,8 @@ export function typescriptPlugin(declarations = false): Plugin {
   return {
     name: 'typescript-plugin',
 
-    setup({ onStart }) {
-      onStart(async () => typescript(declarations));
+    setup(build) {
+      build.onStart(async () => typescript(declarations));
     },
   };
 }

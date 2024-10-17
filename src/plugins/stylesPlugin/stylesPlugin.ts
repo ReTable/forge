@@ -27,23 +27,23 @@ export function stylesPlugin({ processCss }: Options): Plugin {
   return {
     name: 'styles-plugin',
 
-    setup({ initialOptions, onLoad, onResolve, resolve }) {
-      const sourcemap = Boolean(initialOptions.sourcemap);
-      const sourcesContent = Boolean(initialOptions.sourcesContent);
+    setup(build) {
+      const sourcemap = Boolean(build.initialOptions.sourcemap);
+      const sourcesContent = Boolean(build.initialOptions.sourcesContent);
 
-      onResolve(
+      build.onResolve(
         {
           filter: /^~.*\.css$/,
         },
         async ({ path: importedPath, importer, resolveDir, kind }) =>
-          resolve(importedPath.slice(1), {
+          build.resolve(importedPath.slice(1), {
             importer,
             kind,
             resolveDir,
           }),
       );
 
-      onResolve(
+      build.onResolve(
         {
           filter: /^ni:css-module;/,
         },
@@ -57,7 +57,7 @@ export function stylesPlugin({ processCss }: Options): Plugin {
         }),
       );
 
-      onLoad(
+      build.onLoad(
         {
           filter: /\.(css|pcss|scss)(\?css-module)?$/,
           namespace: 'file',
