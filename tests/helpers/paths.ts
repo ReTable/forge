@@ -7,4 +7,4 @@ export const fixturesDir = path.join(rootDir, 'fixtures');
 
 export const tmpDir = path.join(rootDir, 'tmp');
 
-export const binPath = path.resolve(rootDir, '../lib/index.js');
+export const binPath = path.resolve(rootDir, '../bin/forge');
