@@ -10,12 +10,12 @@ export function reactDocgenPlugin(repositoryRoot: string): Plugin {
   return {
     name: 'react-docgen-plugin',
 
-    setup({ initialOptions, onLoad }) {
-      const { absWorkingDir } = initialOptions;
+    setup(build) {
+      const { absWorkingDir } = build.initialOptions;
 
       assert(absWorkingDir);
 
-      onLoad({ filter: /\.tsx$/ }, async (params) => {
+      build.onLoad({ filter: /\.tsx$/ }, async (params) => {
         const content = await readFile(params.path, 'utf8');
         const docs = parseDocs(params.path, {
           packageRoot: absWorkingDir,

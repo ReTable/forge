@@ -25,14 +25,14 @@ export function postBuildPlugin(initialHooks: Hook[]): Plugin {
   return {
     name: 'post-build-plugin',
 
-    setup({ initialOptions, onEnd }) {
+    setup(build) {
       if (initialHooks.length === 0) {
         return;
       }
 
-      const hooks = prepareHooks(initialHooks, initialOptions.absWorkingDir ?? process.cwd());
+      const hooks = prepareHooks(initialHooks, build.initialOptions.absWorkingDir ?? process.cwd());
 
-      onEnd(async (result) => {
+      build.onEnd(async (result) => {
         if (result.errors.length > 0) {
           return;
         }
