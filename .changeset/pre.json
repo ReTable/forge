@@ -1,8 +1,0 @@
-{
-  "mode": "exit",
-  "tag": "next",
-  "initialVersions": {
-    "@tabula/forge": "4.0.1"
-  },
-  "changesets": ["rare-penguins-cheat", "rich-bats-beam"]
-}
