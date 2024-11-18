@@ -53,6 +53,17 @@ export {
 "
 `;
 
+exports[`browser > React support > supports JSX runtime when the production mode is on 2`] = `
+"// src/Button.tsx
+import { jsx } from "react/jsx-runtime";
+var Button = ({ children, onClick }) => /* @__PURE__ */ jsx("button", { onClick, type: "button", children });
+export {
+  Button
+};
+//# sourceMappingURL=index.js.map
+"
+`;
+
 exports[`browser > React support > supports development JSX runtime 1`] = `
 "// src/Button.tsx
 import { jsxDEV } from "react/jsx-dev-runtime";

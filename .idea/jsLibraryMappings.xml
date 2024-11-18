@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="forge/tests/tmp/084706e1e2b8b0b48a5136f27f76c43c288b71afede34a816793b76741965a7f/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/0ecf5e95a293ad6a1d62e3eafdd14ea919716d0530e8ae3570669f073aaf6929/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/0f8cd72253085a795a10fc73f2e33520958067c17e98fde3c8a76f2305e1b445/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/20241c3fc9f8d04ddba8bee2a0252323cc04c94483b78ea6be3a612c7194f9cc/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/31928f8e3f01b05882dff71c4d727250b65a25677cb664e884ef2784b6a3d54c/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/3802f68e5a38f08a1baa41bd3b059e196c1026d10bbf32fea6160fd68ea8d76f/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/3ad122cbb522a894883f209a1f33318c0108d226836648bd632c6f3424e12a11/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/3db0672286d7799f59a5bb0cfd87f7f7573bdb296cde3d88ae51ce88e4390a62/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/3f3727569c7e7cc1f7b35922869d69583de0fdeaad5eca87e98952a219d7ac8b/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/44c74115759b6c4cfc4a5e1afeb509c942a6c47553a7b62714c44ac30c708e8b/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/5555f7adba81bcbee335318ec63d6bf6230e21ebc952c2015c40636b7d1c3e26/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/5725b64ee1683111614f2c942b56005dffd55a9732d61adf40c8af9515dd4504/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/5f5a6bbc3662d21baf8b6f51478b45edc8cad6b373e5c47defcde24e00cadba2/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/670d21f751164c89bf9852bbef3d8a3223f6ae32aadac2f975bf384697c72dc2/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/744e8997655e022760192716a65ab00bbb9f99c7dd90fef288071d69402327d6/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/7f8e7393687d2fa93eefd5bec42bc9f569e5534f5f55ce4832889a3534bd3b1e/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/8297065bb026f0bac0e4ae69cec6134a3e14a484b1d85ad73ddeab5b83b283de/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/932e570df7b3cfe179f70da9c18a39101f21c3a50d14d5ac7db171e6fe3f58cd/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/977ad0b14ed94f2f86c201b5daf2a524217a9a6bb1ed76783afb0fc458076a3d/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/9c78437c8fd14826aba0f1762b0169274f09a2cac9eaa04124454e0764c0ae9b/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/a37d9e3d88aca20a4ae65d80231d41218cbffcf54909610bb3ac8f8cc2960e2f/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/a9c0edd35e8a20f23757664bba83cc3b09ede4b26cf9b6669df6e4364dcd2d1b/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/ae38328f2c59e8ae4228fa3a55c73012dfbb67d6b78cbbb8a86fe687803fcf29/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/bd34523387d65e9954a8186691f0618b2826e1dc401c4e68b39572d7ec59a575/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/d1aa7fbe3715a465f240a7a24da1dcfb8c7a3d52c039915246c8dddc8f9d5c3d/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/d9578a06b0632c6a0c4e8d1bc4780981d20b4cb225b26d0f0e7e7db15316d315/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/db0ba25aa275ea088aac570b3f4535ced42cbb7dd2ed410e821fa3146f8757c1/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/debaa18cc5783190d90fed32400a078e7da35679b6468de59e3b3021fc5d25f3/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/ea0b873e76052e6ef525f23d3abc90928e51e8bcda06d5548f0dd1266786b2be/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/eb2cb34eeaa1b912b52c3223d4aad629708b2f58c59ada3b29c242b77b5622f2/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/f2491263c086f2aacd02e740264a1d87de5b18dcc06f7100237e273c8ed82f9e/node_modules" />
+    <excludedPredefinedLibrary name="forge/tests/tmp/fe5a4009cdf39c3a5935c16f12c1a21d7197fa53466dee0045cf967d457c38bd/node_modules" />
+  </component>
+</project>
